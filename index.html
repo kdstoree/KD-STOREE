@@ -173,31 +173,30 @@
             color: var(--primary-color);
         }
 
-        /* بەشێ ڤیدیۆیان */
-        .video-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 20px;
+        .video-container {
+            max-width: 800px;
+            margin: 0 auto;
         }
 
         .video-card {
             background: #fff;
-            border-radius: 10px;
+            border-radius: 12px;
             overflow: hidden;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
             text-align: center;
             padding-bottom: 15px;
         }
 
         .video-card video {
             width: 100%;
-            height: 250px;
-            object-fit: cover;
+            max-height: 450px;
+            background-color: #000;
         }
 
         .video-card h4 {
-            margin: 15px 0 10px;
+            margin: 15px 0 5px;
             color: var(--primary-color);
+            font-size: 20px;
         }
 
         .social-section {
@@ -323,23 +322,16 @@
         </div>
     </div>
 
-    <!-- بەشێ ڤیدیۆیان -->
     <div class="container" id="videos">
         <h2 class="section-title">فيديوهات خيمنا ومعداتنا</h2>
-        <div class="video-grid">
+        <div class="video-container">
             <div class="video-card">
-                <video controls>
-                    <source src="video1.mp4" type="video/mp4">
+                <video controls preload="metadata" playsinline>
+                    <source src="kd.2mx2m.pm4.MOV" type="video/mp4">
+                    <source src="kd.2mx2m.pm4.MOV" type="video/quicktime">
                     متصفحك لا يدعم تشغيل الفيديو.
                 </video>
-                <h4>شرح طريقة تركيب الخيمة العائلية</h4>
-            </div>
-            <div class="video-card">
-                <video controls>
-                    <source src="video2.mp4" type="video/mp4">
-                    متصفحك لا يدعم تشغيل الفيديو.
-                </video>
-                <h4>تجربة مقاومة الماء والأقمشة</h4>
+                <h4>عرض خيمة KD قياس 2x2m</h4>
             </div>
         </div>
     </div>
