@@ -178,7 +178,7 @@
 
         .grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
             gap: 25px;
         }
 
@@ -202,7 +202,7 @@
 
         .product-img {
             width: 100%;
-            height: 220px;
+            height: 240px;
             object-fit: cover;
             border-bottom: 1px solid rgba(255,255,255,0.05);
         }
@@ -223,8 +223,8 @@
 
         .product-badge {
             display: inline-block;
-            background: rgba(0, 210, 255, 0.15);
-            color: var(--accent-color);
+            background: linear-gradient(45deg, #00d2ff, #00ff88);
+            color: #000;
             padding: 4px 12px;
             border-radius: 20px;
             font-size: 12px;
@@ -233,12 +233,31 @@
             width: fit-content;
         }
 
-        .product-info p {
-            color: #94a3b8;
+        .product-specs {
+            list-style: none;
+            padding: 0;
+            margin: 10px 0 15px;
+            color: #cbd5e1;
             font-size: 14px;
-            line-height: 1.5;
+        }
+
+        .product-specs li {
+            margin-bottom: 6px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .product-specs i {
+            color: var(--accent-color);
+        }
+
+        .product-price {
+            font-size: 22px;
+            font-weight: bold;
+            color: #00ff88;
             margin-bottom: 15px;
-            flex-grow: 1;
+            text-shadow: 0 0 10px rgba(0, 255, 136, 0.3);
         }
 
         .btn-order {
@@ -248,12 +267,13 @@
             gap: 8px;
             background-color: var(--whatsapp-color);
             color: white;
-            padding: 10px 18px;
-            border-radius: 8px;
+            padding: 12px 18px;
+            border-radius: 10px;
             text-decoration: none;
             font-weight: bold;
-            font-size: 14px;
+            font-size: 15px;
             transition: background 0.3s;
+            box-shadow: 0 4px 15px rgba(37, 211, 102, 0.3);
         }
 
         .btn-order:hover {
@@ -441,45 +461,24 @@
         </div>
     </div>
 
-    <!-- بەشێ نوو یێ بەرهەمان (PRODUCTS CATALOG) -->
+    <!-- بەشێ بەرهەمان دگەل بیزانینێن دروست -->
     <div class="container" id="products">
         <h2 class="section-title">تشكيلة الخيم والمعدات</h2>
         <div class="grid">
             
-            <!-- بەرهەمێ 1 -->
+            <!-- خێما ئێکێ (tene1.jpg.jpg) -->
             <div class="product-card">
-                <img src="https://images.unsplash.com/photo-1504280390367-361c6d9f38f4?auto=format&fit=crop&w=600&q=80" alt="خيمة قياس 2x2m" class="product-img">
+                <img src="tene1.jpg.jpg" alt="خيمة عائلية فاخرة" class="product-img">
                 <div class="product-info">
-                    <span class="product-badge">مقاومة للماء 100%</span>
-                    <h3>خيمة KD قياس 2x2m</h3>
-                    <p>خيمة خفيفة وسهلة التركيب مناسبة للرحلات السريعة لشخصين إلى 3 أشخاص قماش متين جداً.</p>
-                    <a href="https://wa.me/9647769247574?text=مرحباً%20KD%20SHOP،%20أريد%20الاستفسار%20عن%20خيمة%20قياس%202x2m" class="btn-order" target="_blank">
-                        <i class="fa-brands fa-whatsapp"></i> اطلب عبر واتساب
-                    </a>
-                </div>
-            </div>
-
-            <!-- بەرهەمێ 2 -->
-            <div class="product-card">
-                <img src="https://images.unsplash.com/photo-1523987355523-c7b5b0dd90a7?auto=format&fit=crop&w=600&q=80" alt="خيمة قياس 3x3m" class="product-img">
-                <div class="product-info">
-                    <span class="product-badge">الأكثر مبيعاً</span>
-                    <h3>خيمة KD قياس 3x3m</h3>
-                    <p>خيمة واسعة ممتازة للرحلات العائلية، وتتحمل الرياح والأمطار الغزيرة مع تهوية ممتازة.</p>
-                    <a href="https://wa.me/9647769247574?text=مرحباً%20KD%20SHOP،%20أريد%20الاستفسار%20عن%20خيمة%20قياس%203x3m" class="btn-order" target="_blank">
-                        <i class="fa-brands fa-whatsapp"></i> اطلب عبر واتساب
-                    </a>
-                </div>
-            </div>
-
-            <!-- بەرهەمێ 3 -->
-            <div class="product-card">
-                <img src="https://images.unsplash.com/photo-1478827536114-da961b7f86d2?auto=format&fit=crop&w=600&q=80" alt="خيمة عائلية اتوماتيكية" class="product-img">
-                <div class="product-info">
-                    <span class="product-badge">فتح أوتوماتيكي</span>
+                    <span class="product-badge">🔥 الأكثر مبيعاً</span>
                     <h3>خيمة عائلية فاخرة</h3>
-                    <p>خيمة بحجم كبير تتسع لعدة أشخاص مع نظام فتح سريع جداً ومناسبة للرحلات الطويلة.</p>
-                    <a href="https://wa.me/9647769247574?text=مرحباً%20KD%20SHOP،%20أريد%20الاستفسار%20عن%20الخيمة%20العائلية%20الأوتوماتيكية" class="btn-order" target="_blank">
+                    <ul class="product-specs">
+                        <li><i class="fa-solid fa-ruler-combined"></i> <strong>القياس:</strong> 330 X 210 X 180 cm</li>
+                        <li><i class="fa-solid fa-shield-halved"></i> <strong>القماش:</strong> أكسفورد D210 فاخر عالي الجودة</li>
+                        <li><i class="fa-solid fa-cloud-showers-heavy"></i> <strong>المميزات:</strong> مقاومة للماء والظروف الجوية</li>
+                    </ul>
+                    <div class="product-price">150,000 د.ع</div>
+                    <a href="https://wa.me/9647769247574?text=مرحباً%20KD%20SHOP،%20أريد%20الاستفسار%20عن%20الخيمة%20العائلية%20(150,000%20د.ع)" class="btn-order" target="_blank">
                         <i class="fa-brands fa-whatsapp"></i> اطلب عبر واتساب
                     </a>
                 </div>
