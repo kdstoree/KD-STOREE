@@ -185,7 +185,6 @@
             flex-direction: column;
         }
 
-        /* بەرزکردنەوەی جێگای وێنەکان بە گەورەیی (360px) و ڕێکخستنی وێنە بێ بڕین */
         .slider-container {
             position: relative;
             width: 100%;
@@ -197,7 +196,7 @@
         .slider-item {
             width: 100%;
             height: 100%;
-            object-fit: contain; /* وێنەکە نابردرێت و بە تەواوی دیار دەبێت */
+            object-fit: contain;
             display: none;
             background-color: #05080f;
         }
@@ -478,7 +477,7 @@
             <h2 class="section-title">تشكيلة الخيم والمعدات</h2>
             <div class="grid">
                 
-                <!-- خێما 1 (العائلية) -->
+                <!-- 1. خێما العائلية -->
                 <div class="product-card">
                     <div class="slider-container">
                         <img src="tent1.jpg.jpg" class="slider-item active" alt="خيمة عائلية فاخرة">
@@ -520,11 +519,10 @@
                     </div>
                 </div>
 
-                <!-- خێما 2 (موديل دينار) -->
+                <!-- 2. خێما موديل دينار -->
                 <div class="product-card">
                     <div class="slider-container" id="slider-2">
                         <button class="slider-btn prev-btn" onclick="moveSlide('slider-2', -1)">&#10095;</button>
-                        
                         <img src="dinare1.jpg" class="slider-item active" alt="خيمة دينار 1">
                         <img src="dinare2.jpg" class="slider-item" alt="خيمة دينار 2">
                         <video class="slider-item" controls playsinline>
@@ -535,7 +533,6 @@
                         <img src="dinare4.jpg" class="slider-item" alt="خيمة دينار 4">
                         <img src="dinare5.jpg" class="slider-item" alt="خيمة دينار 5">
                         <img src="dinare6.jpg" class="slider-item" alt="خيمة دينار 6">
-
                         <button class="slider-btn next-btn" onclick="moveSlide('slider-2', 1)">&#10094;</button>
                         <div class="slider-counter">1 / 7</div>
                     </div>
@@ -578,11 +575,10 @@
                     </div>
                 </div>
 
-                <!-- خێما 3 (خيمة أوتوماتيكية سريعة الفتح 2x2m) -->
+                <!-- 3. خێما سريعة الفتح 2x2m -->
                 <div class="product-card">
                     <div class="slider-container" id="slider-3">
                         <button class="slider-btn prev-btn" onclick="moveSlide('slider-3', -1)">&#10095;</button>
-                        
                         <img src="tee1.jpg" class="slider-item active" alt="خيمة أوتوماتيكية 1">
                         <img src="tee2.jpg" class="slider-item" alt="خيمة أوتوماتيكية 2">
                         <img src="tee3.jpg" class="slider-item" alt="خيمة أوتوماتيكية 3">
@@ -593,7 +589,6 @@
                             <source src="tee9.MP4" type="video/mp4">
                             <source src="tee9.MP4" type="video/quicktime">
                         </video>
-
                         <button class="slider-btn next-btn" onclick="moveSlide('slider-3', 1)">&#10094;</button>
                         <div class="slider-counter">1 / 7</div>
                     </div>
@@ -632,6 +627,56 @@
                                 <div class="price-row total"><span>المجموع:</span><span id="total-display-3">55,000 د.ع</span></div>
                             </div>
                             <button onclick="sendOrder3()" class="btn-order"><i class="fa-brands fa-whatsapp"></i> إرسال الطلب عبر واتساب</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 4. حقيبة حمل الحطب (نوو - ١٥,٠٠٠ د.ع) -->
+                <div class="product-card">
+                    <div class="slider-container" id="slider-4">
+                        <button class="slider-btn prev-btn" onclick="moveSlide('slider-4', -1)">&#10095;</button>
+                        <img src="ha1.jpg" class="slider-item active" alt="حقيبة حمل الحطب 1">
+                        <img src="ha2.jpg" class="slider-item" alt="حقيبة حمل الحطب 2">
+                        <img src="ha3.jpg" class="slider-item" alt="حقيبة حمل الحطب 3">
+                        <img src="ha4.jpg" class="slider-item" alt="حقيبة حمل الحطب 4">
+                        <button class="slider-btn next-btn" onclick="moveSlide('slider-4', 1)">&#10094;</button>
+                        <div class="slider-counter">1 / 4</div>
+                    </div>
+
+                    <div class="product-info">
+                        <span class="product-badge">🪵🔥 متينة ومقاومة للماء</span>
+                        <h3>حقيبة حمل الحطب والمعدات</h3>
+                        <ul class="product-specs">
+                            <li><i class="fa-solid fa-ruler"></i> <strong>المقاس:</strong> 99 × 48 سم | <strong>السعة:</strong> 35 لتر</li>
+                            <li><i class="fa-solid fa-shield-halved"></i> <strong>الخامة:</strong> قماش متين مقاوم للاهتراء والرطوبة</li>
+                            <li><i class="fa-solid fa-grip-lines"></i> <strong>المميزات:</strong> أحزمة حمل مريحة مع حزام تثبيت للحطب</li>
+                            <li><i class="fa-solid fa-box-archive"></i> <strong>الاستخدام:</strong> قابلة للطي، تنفع للحطب، أجهزة الشواء والتخييم</li>
+                        </ul>
+                        <div class="product-price">15,000 د.ع <span style="font-size: 12px; color: #94a3b8;">(+ 5,000 التوصيل)</span></div>
+
+                        <div class="order-form">
+                            <h4 style="color: #00d2ff; margin-bottom: 10px; font-size: 14px;">نموذج الطلب المباشر:</h4>
+                            <div class="form-group"><label>الاسم الكامل:</label><input type="text" id="cust-name-4" placeholder="أدخل اسمك الكريم"></div>
+                            <div class="form-group"><label>رقم الهاتف:</label><input type="tel" id="cust-phone-4" placeholder="0750XXXXXXX"></div>
+                            <div class="form-group">
+                                <label>المحافظة:</label>
+                                <select id="cust-city-4">
+                                    <option value="دهوك">دهوك</option><option value="أربيل">أربيل</option><option value="سليمانية">سليمانية</option><option value="حلبجة">حلبجة</option><option value="كركوك">كركوك</option><option value="الموصل / نينوى">الموصل / نينوى</option><option value="بغداد">بغداد</option><option value="باقي المحافظات">باقي المحافظات</option>
+                                </select>
+                            </div>
+                            <div class="form-group"><label>المنطقة / الشارع / نقطة دالة:</label><input type="text" id="cust-address-4" placeholder="مثال: زاخو / قرب جامع الكبير"></div>
+                            <div class="form-group">
+                                <label>العدد المطلوب:</label>
+                                <select id="cust-qty-4" onchange="calculateTotal4()">
+                                    <option value="1">1 قطعة</option><option value="2">2 قطعة</option><option value="3">3 قطع</option>
+                                </select>
+                            </div>
+                            <div class="price-summary">
+                                <div class="price-row"><span>السعر:</span><span id="price-display-4">15,000 د.ع</span></div>
+                                <div class="price-row"><span>التوصيل:</span><span>5,000 د.ع</span></div>
+                                <div class="price-row total"><span>المجموع:</span><span id="total-display-4">20,000 د.ع</span></div>
+                            </div>
+                            <button onclick="sendOrder4()" class="btn-order"><i class="fa-brands fa-whatsapp"></i> إرسال الطلب عبر واتساب</button>
                         </div>
                     </div>
                 </div>
@@ -732,6 +777,7 @@
             counter.innerText = (newIndex + 1) + " / " + items.length;
         }
 
+        // 1. حیساباتی خێما 1
         function calculateTotal1() {
             const qty = parseInt(document.getElementById('cust-qty-1').value);
             document.getElementById('price-display-1').innerText = (qty * 150000).toLocaleString() + " د.ع";
@@ -749,6 +795,7 @@
             window.open(`https://wa.me/9647769247574?text=${text}`, '_blank');
         }
 
+        // 2. حیساباتی خێما 2
         function calculateTotal2() {
             const qty = parseInt(document.getElementById('cust-qty-2').value);
             document.getElementById('price-display-2').innerText = (qty * 80000).toLocaleString() + " د.ع";
@@ -766,6 +813,7 @@
             window.open(`https://wa.me/9647769247574?text=${text}`, '_blank');
         }
 
+        // 3. حیساباتی خێما 3
         function calculateTotal3() {
             const qty = parseInt(document.getElementById('cust-qty-3').value);
             document.getElementById('price-display-3').innerText = (qty * 50000).toLocaleString() + " د.ع";
@@ -780,6 +828,24 @@
             if(!name || !phone || !address) { alert('يرجى ملء جميع الحقول المطلوبة'); return; }
             const grandTotal = (qty * 50000) + 5000;
             const text = `مرحباً KD SHOP، لدي طلب جديد:%0A📌 *المنتج:* خيمة أوتوماتيكية سريعة الفتح (2x2m)%0A👤 *الاسم:* ${name}%0A📞 *الهاتف:* ${phone}%0A🏙️ *المحافظة:* ${city}%0A📍 *العنوان:* ${address}%0A📦 *العدد:* ${qty}%0A🚚 *التوصيل:* 5,000 د.ع%0A💰 *المجموع الكلي:* ${grandTotal.toLocaleString()} د.ع`;
+            window.open(`https://wa.me/9647769247574?text=${text}`, '_blank');
+        }
+
+        // 4. حیساباتی حقيبة حمل الحطب (١٥,٠٠٠ د.ع)
+        function calculateTotal4() {
+            const qty = parseInt(document.getElementById('cust-qty-4').value);
+            document.getElementById('price-display-4').innerText = (qty * 15000).toLocaleString() + " د.ع";
+            document.getElementById('total-display-4').innerText = ((qty * 15000) + 5000).toLocaleString() + " د.ع";
+        }
+        function sendOrder4() {
+            const name = document.getElementById('cust-name-4').value;
+            const phone = document.getElementById('cust-phone-4').value;
+            const city = document.getElementById('cust-city-4').value;
+            const address = document.getElementById('cust-address-4').value;
+            const qty = parseInt(document.getElementById('cust-qty-4').value);
+            if(!name || !phone || !address) { alert('يرجى ملء جميع الحقول المطلوبة'); return; }
+            const grandTotal = (qty * 15000) + 5000;
+            const text = `مرحباً KD SHOP، لدي طلب جديد:%0A📌 *المنتج:* حقيبة حمل الحطب والمعدات%0A👤 *الاسم:* ${name}%0A📞 *الهاتف:* ${phone}%0A🏙️ *المحافظة:* ${city}%0A📍 *العنوان:* ${address}%0A📦 *العدد:* ${qty}%0A🚚 *التوصيل:* 5,000 د.ع%0A💰 *المجموع الكلي:* ${grandTotal.toLocaleString()} د.ع`;
             window.open(`https://wa.me/9647769247574?text=${text}`, '_blank');
         }
     </script>
