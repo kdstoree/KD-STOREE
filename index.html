@@ -185,23 +185,24 @@
             flex-direction: column;
         }
 
-        /* ستایلی سلایدەری وێنەکان */
+        /* ستایلی سلایدەری وێنە و ڤیدیۆیان */
         .slider-container {
             position: relative;
             width: 100%;
-            height: 260px;
+            height: 280px;
             background-color: #0b0f19;
             overflow: hidden;
         }
 
-        .slider-img {
+        .slider-item {
             width: 100%;
             height: 100%;
             object-fit: cover;
             display: none;
+            background-color: #000;
         }
 
-        .slider-img.active {
+        .slider-item.active {
             display: block;
         }
 
@@ -470,7 +471,7 @@
         </div>
     </section>
 
-    <!-- 2. بەشێ منتجاتنا (خێما ئێکێ و خێما نوو یا دینار دگەل ٦ وێنان) -->
+    <!-- 2. بەشێ منتجاتنا -->
     <section class="section-block bg-dark-2" id="products">
         <div class="container">
             <h2 class="section-title">تشكيلة الخيم والمعدات</h2>
@@ -478,7 +479,7 @@
                 
                 <!-- خێما ئێکێ (العائلية) -->
                 <div class="product-card">
-                    <img src="tent1.jpg.jpg" alt="خيمة عائلية فاخرة" style="width:100%; height:260px; object-fit:cover;">
+                    <img src="tent1.jpg.jpg" alt="خيمة عائلية فاخرة" style="width:100%; height:280px; object-fit:cover;">
                     <div class="product-info">
                         <span class="product-badge">🔥 الأكثر مبيعاً</span>
                         <h3>خيمة عائلية فاخرة</h3>
@@ -516,20 +517,30 @@
                     </div>
                 </div>
 
-                <!-- خێما دووێ (الخيمة الأوتوماتيكية - موديل دينار دگەل ٦ وێنان) -->
+                <!-- خێما دووێ (الخيمة الأوتوماتيكية - موديل دينار دگەل ٦ وێنان + ١ ڤیدیۆ) -->
                 <div class="product-card">
                     
-                    <!-- سلایدەری ٦ وێنان -->
                     <div class="slider-container">
                         <button class="slider-btn prev-btn" onclick="moveSlide(-1)">&#10095;</button>
-                        <img src="dinare1.jpg" class="slider-img active" alt="خيمة دينار 1">
-                        <img src="dinare2.jpg" class="slider-img" alt="خيمة دينار 2">
-                        <img src="dinare3.jpg" class="slider-img" alt="خيمة دينار 3">
-                        <img src="dinare4.jpg" class="slider-img" alt="خيمة دينار 4">
-                        <img src="dinare5.jpg" class="slider-img" alt="خيمة دينار 5">
-                        <img src="dinare6.jpg" class="slider-img" alt="خيمة دينار 6">
+                        
+                        <!-- وێنە + ڤیدیۆ د ناڤ هەمان سلایدەر دا -->
+                        <img src="dinare1.jpg" class="slider-item active" alt="خيمة دينار 1">
+                        <img src="dinare2.jpg" class="slider-item" alt="خيمة دينار 2">
+                        
+                        <!-- ڤیدیۆیا Dinare7.MOV -->
+                        <video class="slider-item" controls playsinline>
+                            <source src="Dinare7.MOV" type="video/quicktime">
+                            <source src="Dinare7.MOV" type="video/mp4">
+                            متصفحك لا يدعم تشغيل الفيديو.
+                        </video>
+
+                        <img src="dinare3.jpg" class="slider-item" alt="خيمة دينار 3">
+                        <img src="dinare4.jpg" class="slider-item" alt="خيمة دينار 4">
+                        <img src="dinare5.jpg" class="slider-item" alt="خيمة دينار 5">
+                        <img src="dinare6.jpg" class="slider-item" alt="خيمة دينار 6">
+
                         <button class="slider-btn next-btn" onclick="moveSlide(1)">&#10094;</button>
-                        <div class="slider-counter" id="slide-num">1 / 6</div>
+                        <div class="slider-counter" id="slide-num">1 / 7</div>
                     </div>
 
                     <div class="product-info">
@@ -647,10 +658,15 @@
         }
         setInterval(drawSnow, 33);
 
-        // فانکشنی سلایدەری ٦ وێنەکە
+        // فانکشنی سلایدەر (وێنە + ڤیدیۆ)
         let currentSlide = 0;
-        const slides = document.querySelectorAll('.slider-img');
+        const slides = document.querySelectorAll('.slider-item');
         function moveSlide(direction) {
+            // ئەگەر ڤیدیۆ کار دکەت ڕابگرە کاتێک سلاید دەگۆڕدرێت
+            if(slides[currentSlide].tagName === 'VIDEO') {
+                slides[currentSlide].pause();
+            }
+            
             slides[currentSlide].classList.remove('active');
             currentSlide = (currentSlide + direction + slides.length) % slides.length;
             slides[currentSlide].classList.add('active');
