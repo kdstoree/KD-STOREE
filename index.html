@@ -185,7 +185,6 @@
             flex-direction: column;
         }
 
-        /* ستایلی سلایدەری وێنە و ڤیدیۆیان */
         .slider-container {
             position: relative;
             width: 100%;
@@ -477,7 +476,7 @@
             <h2 class="section-title">تشكيلة الخيم والمعدات</h2>
             <div class="grid">
                 
-                <!-- خێما ئێکێ (العائلية) -->
+                <!-- خێما 1 (العائلية) -->
                 <div class="product-card">
                     <img src="tent1.jpg.jpg" alt="خيمة عائلية فاخرة" style="width:100%; height:280px; object-fit:cover;">
                     <div class="product-info">
@@ -517,30 +516,24 @@
                     </div>
                 </div>
 
-                <!-- خێما دووێ (الخيمة الأوتوماتيكية - موديل دينار دگەل ٦ وێنان + ١ ڤیدیۆ) -->
+                <!-- خێما 2 (موديل دينار) -->
                 <div class="product-card">
-                    
-                    <div class="slider-container">
-                        <button class="slider-btn prev-btn" onclick="moveSlide(-1)">&#10095;</button>
+                    <div class="slider-container" id="slider-2">
+                        <button class="slider-btn prev-btn" onclick="moveSlide('slider-2', -1)">&#10095;</button>
                         
-                        <!-- وێنە + ڤیدیۆ د ناڤ هەمان سلایدەر دا -->
                         <img src="dinare1.jpg" class="slider-item active" alt="خيمة دينار 1">
                         <img src="dinare2.jpg" class="slider-item" alt="خيمة دينار 2">
-                        
-                        <!-- ڤیدیۆیا Dinare7.MOV -->
                         <video class="slider-item" controls playsinline>
                             <source src="Dinare7.MOV" type="video/quicktime">
                             <source src="Dinare7.MOV" type="video/mp4">
-                            متصفحك لا يدعم تشغيل الفيديو.
                         </video>
-
                         <img src="dinare3.jpg" class="slider-item" alt="خيمة دينار 3">
                         <img src="dinare4.jpg" class="slider-item" alt="خيمة دينار 4">
                         <img src="dinare5.jpg" class="slider-item" alt="خيمة دينار 5">
                         <img src="dinare6.jpg" class="slider-item" alt="خيمة دينار 6">
 
-                        <button class="slider-btn next-btn" onclick="moveSlide(1)">&#10094;</button>
-                        <div class="slider-counter" id="slide-num">1 / 7</div>
+                        <button class="slider-btn next-btn" onclick="moveSlide('slider-2', 1)">&#10094;</button>
+                        <div class="slider-counter">1 / 7</div>
                     </div>
 
                     <div class="product-info">
@@ -577,6 +570,64 @@
                                 <div class="price-row total"><span>المجموع:</span><span id="total-display-2">85,000 د.ع</span></div>
                             </div>
                             <button onclick="sendOrder2()" class="btn-order"><i class="fa-brands fa-whatsapp"></i> إرسال الطلب عبر واتساب</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- خێما 3 (خيمة أوتوماتيكية سريعة الفتح 2x2m) -->
+                <div class="product-card">
+                    <div class="slider-container" id="slider-3">
+                        <button class="slider-btn prev-btn" onclick="moveSlide('slider-3', -1)">&#10095;</button>
+                        
+                        <img src="tee1.jpg" class="slider-item active" alt="خيمة أوتوماتيكية 1">
+                        <img src="tee2.jpg" class="slider-item" alt="خيمة أوتوماتيكية 2">
+                        <img src="tee3.jpg" class="slider-item" alt="خيمة أوتوماتيكية 3">
+                        <img src="tee4.jpg" class="slider-item" alt="خيمة أوتوماتيكية 4">
+                        <img src="tee5.jpg" class="slider-item" alt="خيمة أوتوماتيكية 5">
+                        <img src="tee6.jpg" class="slider-item" alt="خيمة أوتوماتيكية 6">
+                        <video class="slider-item" controls playsinline>
+                            <source src="tee9.MP4" type="video/mp4">
+                            <source src="tee9.MP4" type="video/quicktime">
+                        </video>
+
+                        <button class="slider-btn next-btn" onclick="moveSlide('slider-3', 1)">&#10094;</button>
+                        <div class="slider-counter">1 / 7</div>
+                    </div>
+
+                    <div class="product-info">
+                        <span class="product-badge">⚡ سريعة الفتح | اقتصادية</span>
+                        <h3>خيمة أوتوماتيكية سريعة الفتح</h3>
+                        <ul class="product-specs">
+                            <li><i class="fa-solid fa-users"></i> <strong>السعة:</strong> تتسع من 4 إلى 6 أشخاص</li>
+                            <li><i class="fa-solid fa-ruler-combined"></i> <strong>القياس:</strong> 2m X 2m</li>
+                            <li><i class="fa-solid fa-cloud-showers-heavy"></i> <strong>القماش:</strong> مقاوم للماء والأمطار</li>
+                            <li><i class="fa-solid fa-bolt"></i> <strong>التركيب:</strong> فتح أوتوماتيكي سهل جداً وسريع</li>
+                        </ul>
+                        <div class="product-price">50,000 د.ع <span style="font-size: 12px; color: #94a3b8;">(+ 5,000 التوصيل)</span></div>
+
+                        <div class="order-form">
+                            <h4 style="color: #00d2ff; margin-bottom: 10px; font-size: 14px;">نموذج الطلب المباشر:</h4>
+                            <div class="form-group"><label>الاسم الكامل:</label><input type="text" id="cust-name-3" placeholder="أدخل اسمك الكريم"></div>
+                            <div class="form-group"><label>رقم الهاتف:</label><input type="tel" id="cust-phone-3" placeholder="0750XXXXXXX"></div>
+                            <div class="form-group">
+                                <label>المحافظة:</label>
+                                <select id="cust-city-3">
+                                    <option value="دهوك">دهوك</option><option value="أربيل">أربيل</option><option value="سليمانية">سليمانية</option><option value="حلبجة">حلبجة</option><option value="كركوك">كركوك</option><option value="الموصل / نينوى">الموصل / نينوى</option><option value="بغداد">بغداد</option><option value="باقي المحافظات">باقي المحافظات</option>
+                                </select>
+                            </div>
+                            <div class="form-group"><label>المنطقة / الشارع / نقطة دالة:</label><input type="text" id="cust-address-3" placeholder="مثال: زاخو / قرب جامع الكبير"></div>
+                            <div class="form-group">
+                                <label>العدد المطلوب:</label>
+                                <select id="cust-qty-3" onchange="calculateTotal3()">
+                                    <option value="1">1 خيمة</option><option value="2">2 خيمة</option>
+                                </select>
+                            </div>
+                            <div class="price-summary">
+                                <div class="price-row"><span>السعر:</span><span id="price-display-3">50,000 د.ع</span></div>
+                                <div class="price-row"><span>التوصيل:</span><span>5,000 د.ع</span></div>
+                                <div class="price-row total"><span>المجموع:</span><span id="total-display-3">55,000 د.ع</span></div>
+                            </div>
+                            <button onclick="sendOrder3()" class="btn-order"><i class="fa-brands fa-whatsapp"></i> إرسال الطلب عبر واتساب</button>
                         </div>
                     </div>
                 </div>
@@ -658,60 +709,77 @@
         }
         setInterval(drawSnow, 33);
 
-        // فانکشنی سلایدەر (وێنە + ڤیدیۆ)
-        let currentSlide = 0;
-        const slides = document.querySelectorAll('.slider-item');
-        function moveSlide(direction) {
-            // ئەگەر ڤیدیۆ کار دکەت ڕابگرە کاتێک سلاید دەگۆڕدرێت
-            if(slides[currentSlide].tagName === 'VIDEO') {
-                slides[currentSlide].pause();
-            }
+        // فانکشنی سەرپەرشتیکردنی چەندین سلایدەر ب شێوەیەکێ سەربەخۆ
+        function moveSlide(sliderId, direction) {
+            const container = document.getElementById(sliderId);
+            const items = container.querySelectorAll('.slider-item');
+            const counter = container.querySelector('.slider-counter');
             
-            slides[currentSlide].classList.remove('active');
-            currentSlide = (currentSlide + direction + slides.length) % slides.length;
-            slides[currentSlide].classList.add('active');
-            document.getElementById('slide-num').innerText = (currentSlide + 1) + " / " + slides.length;
+            let activeIndex = 0;
+            items.forEach((item, index) => {
+                if (item.classList.contains('active')) {
+                    activeIndex = index;
+                    if (item.tagName === 'VIDEO') item.pause();
+                }
+                item.classList.remove('active');
+            });
+
+            let newIndex = (activeIndex + direction + items.length) % items.length;
+            items[newIndex].classList.add('active');
+            counter.innerText = (newIndex + 1) + " / " + items.length;
         }
 
         // حیساباتی خێما 1
         function calculateTotal1() {
             const qty = parseInt(document.getElementById('cust-qty-1').value);
-            const total = (qty * 150000) + 5000;
             document.getElementById('price-display-1').innerText = (qty * 150000).toLocaleString() + " د.ع";
-            document.getElementById('total-display-1').innerText = total.toLocaleString() + " د.ع";
+            document.getElementById('total-display-1').innerText = ((qty * 150000) + 5000).toLocaleString() + " د.ع";
         }
-
         function sendOrder1() {
             const name = document.getElementById('cust-name-1').value;
             const phone = document.getElementById('cust-phone-1').value;
             const city = document.getElementById('cust-city-1').value;
             const address = document.getElementById('cust-address-1').value;
             const qty = parseInt(document.getElementById('cust-qty-1').value);
-
             if(!name || !phone || !address) { alert('يرجى ملء جميع الحقول المطلوبة'); return; }
             const grandTotal = (qty * 150000) + 5000;
             const text = `مرحباً KD SHOP، لدي طلب جديد:%0A📌 *المنتج:* خيمة عائلية فاخرة%0A👤 *الاسم:* ${name}%0A📞 *الهاتف:* ${phone}%0A🏙️ *المحافظة:* ${city}%0A📍 *العنوان:* ${address}%0A📦 *العدد:* ${qty}%0A🚚 *التوصيل:* 5,000 د.ع%0A💰 *المجموع الكلي:* ${grandTotal.toLocaleString()} د.ع`;
             window.open(`https://wa.me/9647769247574?text=${text}`, '_blank');
         }
 
-        // حیساباتی خێما 2 (دینار)
+        // حیساباتی خێما 2
         function calculateTotal2() {
             const qty = parseInt(document.getElementById('cust-qty-2').value);
-            const total = (qty * 80000) + 5000;
             document.getElementById('price-display-2').innerText = (qty * 80000).toLocaleString() + " د.ع";
-            document.getElementById('total-display-2').innerText = total.toLocaleString() + " د.ع";
+            document.getElementById('total-display-2').innerText = ((qty * 80000) + 5000).toLocaleString() + " د.ع";
         }
-
         function sendOrder2() {
             const name = document.getElementById('cust-name-2').value;
             const phone = document.getElementById('cust-phone-2').value;
             const city = document.getElementById('cust-city-2').value;
             const address = document.getElementById('cust-address-2').value;
             const qty = parseInt(document.getElementById('cust-qty-2').value);
-
             if(!name || !phone || !address) { alert('يرجى ملء جميع الحقول المطلوبة'); return; }
             const grandTotal = (qty * 80000) + 5000;
             const text = `مرحباً KD SHOP، لدي طلب جديد:%0A📌 *المنتج:* خيمة أوتوماتيكية (موديل دينار)%0A👤 *الاسم:* ${name}%0A📞 *الهاتف:* ${phone}%0A🏙️ *المحافظة:* ${city}%0A📍 *العنوان:* ${address}%0A📦 *العدد:* ${qty}%0A🚚 *التوصيل:* 5,000 د.ع%0A💰 *المجموع الكلي:* ${grandTotal.toLocaleString()} د.ع`;
+            window.open(`https://wa.me/9647769247574?text=${text}`, '_blank');
+        }
+
+        // حیساباتی خێما 3 (٥٠,٠٠٠ د.ع)
+        function calculateTotal3() {
+            const qty = parseInt(document.getElementById('cust-qty-3').value);
+            document.getElementById('price-display-3').innerText = (qty * 50000).toLocaleString() + " د.ع";
+            document.getElementById('total-display-3').innerText = ((qty * 50000) + 5000).toLocaleString() + " د.ع";
+        }
+        function sendOrder3() {
+            const name = document.getElementById('cust-name-3').value;
+            const phone = document.getElementById('cust-phone-3').value;
+            const city = document.getElementById('cust-city-3').value;
+            const address = document.getElementById('cust-address-3').value;
+            const qty = parseInt(document.getElementById('cust-qty-3').value);
+            if(!name || !phone || !address) { alert('يرجى ملء جميع الحقول المطلوبة'); return; }
+            const grandTotal = (qty * 50000) + 5000;
+            const text = `مرحباً KD SHOP، لدي طلب جديد:%0A📌 *المنتج:* خيمة أوتوماتيكية سريعة الفتح (2x2m)%0A👤 *الاسم:* ${name}%0A📞 *الهاتف:* ${phone}%0A🏙️ *المحافظة:* ${city}%0A📍 *العنوان:* ${address}%0A📦 *العدد:* ${qty}%0A🚚 *التوصيل:* 5,000 د.ع%0A💰 *المجموع الكلي:* ${grandTotal.toLocaleString()} د.ع`;
             window.open(`https://wa.me/9647769247574?text=${text}`, '_blank');
         }
     </script>
