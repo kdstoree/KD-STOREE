@@ -134,12 +134,20 @@
             line-height: 1.6;
         }
 
-        .container {
-            max-width: 1200px;
-            margin: 50px auto;
-            padding: 0 20px;
+        /* بەشێن جودا ب حەد و باگراوەندان */
+        .section-block {
+            padding: 50px 20px;
             position: relative;
             z-index: 2;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .bg-dark-1 { background-color: #080c14; }
+        .bg-dark-2 { background-color: #0c121e; }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
         }
 
         .section-title {
@@ -341,15 +349,6 @@
             font-size: 19px;
         }
 
-        .social-section {
-            background-color: #04070d;
-            padding: 50px 20px;
-            text-align: center;
-            position: relative;
-            z-index: 2;
-            border-top: 1px solid rgba(255, 255, 255, 0.05);
-        }
-
         .social-links {
             display: flex;
             justify-content: center;
@@ -439,12 +438,13 @@
             <a href="#" class="logo">
                 <i class="fa-solid fa-campground"></i> KD SHOP
             </a>
+            <!-- لیست ب ڕێزبەندیا نوو -->
             <ul class="nav-links">
-                <li><a href="#about">من نحن</a></li>
-                <li><a href="#products">منتجاتنا</a></li>
-                <li><a href="#features">مميزاتنا</a></li>
-                <li><a href="#videos">فيديوهاتنا</a></li>
                 <li><a href="#social">صفحاتنا</a></li>
+                <li><a href="#products">منتجاتنا</a></li>
+                <li><a href="#videos">فيديوهاتنا</a></li>
+                <li><a href="#features">مميزاتنا</a></li>
+                <li><a href="#about">من نحن</a></li>
             </ul>
         </div>
     </header>
@@ -454,88 +454,100 @@
         <p>استيراد مباشر من الصين إلى العراق | تجارة الجملة والمفرد بأعلى جودة وأفضل الأسعار</p>
     </section>
 
-    <div class="container" id="about">
-        <h2 class="section-title">عن KD SHOP</h2>
-        <div class="about-text">
-            نحن متخصصون في استيراد أحدث وأفضل مستلزمات التخييم والرحلات مباشرة من الصين إلى العراق. نوفر الخيم ومعدات الرحلات للمتاجر والأفراد بأسعار تنافسية وجودة مضمونة.
+    <!-- 1. بەشێ صفحاتنا -->
+    <section class="section-block bg-dark-1" id="social">
+        <div class="container">
+            <h2 class="section-title">تابعنا على وسائل التواصل الاجتماعي</h2>
+            <p style="text-align: center; color: #94a3b8; font-size: 15px;">اطّلع على أحدث المنتجات والعروض عبر صفحاتنا الرسمية:</p>
+            <div class="social-links">
+                <a href="https://www.facebook.com/share/1BUhsUdpwj/?mibextid=wwXIfr" class="social-btn facebook" target="_blank">
+                    <i class="fa-brands fa-facebook-f"></i> Facebook
+                </a>
+                <a href="https://www.instagram.com/kd_onlinee?igsi=N2JteTd1cWlha3ls&utm_source=qr" class="social-btn instagram" target="_blank">
+                    <i class="fa-brands fa-instagram"></i> Instagram
+                </a>
+                <a href="https://www.tiktok.com/@kd.onlinee?_r=1&_t=ZS-99SpZE4fueD" class="social-btn tiktok" target="_blank">
+                    <i class="fa-brands fa-tiktok"></i> TikTok
+                </a>
+            </div>
         </div>
-    </div>
+    </section>
 
-    <!-- بەشێ بەرهەمان -->
-    <div class="container" id="products">
-        <h2 class="section-title">تشكيلة الخيم والمعدات</h2>
-        <div class="grid">
-            
-            <div class="product-card">
-                <img src="tent1.jpg" alt="خيمة عائلية فاخرة" class="product-img">
-                <div class="product-info">
-                    <span class="product-badge">🔥 الأكثر مبيعاً</span>
-                    <h3>خيمة عائلية فاخرة</h3>
-                    <ul class="product-specs">
-                        <li><i class="fa-solid fa-ruler-combined"></i> <strong>القياس:</strong> 330 X 210 X 180 cm</li>
-                        <li><i class="fa-solid fa-shield-halved"></i> <strong>القماش:</strong> أكسفورد D210 فاخر عالي الجودة</li>
-                        <li><i class="fa-solid fa-cloud-showers-heavy"></i> <strong>المميزات:</strong> مقاومة للماء والظروف الجوية</li>
-                    </ul>
-                    <div class="product-price">150,000 د.ع</div>
-                    <a href="https://wa.me/9647769247574?text=مرحباً%20KD%20SHOP،%20أريد%20الاستفسار%20عن%20الخيمة%20العائلية%20(150,000%20د.ع)" class="btn-order" target="_blank">
-                        <i class="fa-brands fa-whatsapp"></i> اطلب عبر واتساب
-                    </a>
+    <!-- 2. بەشێ منتجاتنا -->
+    <section class="section-block bg-dark-2" id="products">
+        <div class="container">
+            <h2 class="section-title">تشكيلة الخيم والمعدات</h2>
+            <div class="grid">
+                <div class="product-card">
+                    <img src="tent1.jpg" alt="خيمة عائلية فاخرة" class="product-img">
+                    <div class="product-info">
+                        <span class="product-badge">🔥 الأكثر مبيعاً</span>
+                        <h3>خيمة عائلية فاخرة</h3>
+                        <ul class="product-specs">
+                            <li><i class="fa-solid fa-ruler-combined"></i> <strong>القياس:</strong> 330 X 210 X 180 cm</li>
+                            <li><i class="fa-solid fa-shield-halved"></i> <strong>القماش:</strong> أكسفورد D210 فاخر عالي الجودة</li>
+                            <li><i class="fa-solid fa-cloud-showers-heavy"></i> <strong>المميزات:</strong> مقاومة للماء والظروف الجوية</li>
+                        </ul>
+                        <div class="product-price">150,000 د.ع</div>
+                        <a href="https://wa.me/9647769247574?text=مرحباً%20KD%20SHOP،%20أريد%20الاستفسار%20عن%20الخيمة%20العائلية%20(150,000%20د.ع)" class="btn-order" target="_blank">
+                            <i class="fa-brands fa-whatsapp"></i> اطلب عبر واتساب
+                        </a>
+                    </div>
                 </div>
             </div>
-
         </div>
-    </div>
+    </section>
 
-    <div class="container" id="features">
-        <h2 class="section-title">لماذا تختار منتجاتنا؟</h2>
-        <div class="grid">
-            <div class="card">
-                <i class="fa-solid fa-tent"></i>
-                <h3>خيم عالية الجودة</h3>
-                <p>تشكيلة واسعة من الخيم العائلية والفردية المقاومة للظروف الجوية.</p>
-            </div>
-            <div class="card">
-                <i class="fa-solid fa-cloud-showers-heavy"></i>
-                <h3>أقمشة مقاومة للماء</h3>
-                <p>خامات متينة وقماش ممتاز مقاوم لمختلف الظروف الجوية والمطر.</p>
-            </div>
-            <div class="card">
-                <i class="fa-solid fa-boxes-packing"></i>
-                <h3>جملة ومفرد</h3>
-                <p>خيارات البيع للمحلات والتجار بالإضافة إلى الطلبات الشخصية.</p>
+    <!-- 3. بەشێ فيديوهاتنا -->
+    <section class="section-block bg-dark-1" id="videos">
+        <div class="container">
+            <h2 class="section-title">فيديوهات خيمنا ومعداتنا</h2>
+            <div class="video-container">
+                <div class="video-card">
+                    <video controls preload="metadata" playsinline style="width:100%; max-height:420px; background:#000;">
+                        <source src="Tent2x2.MP4" type="video/mp4">
+                        <source src="Tent2x2.MP4" type="video/quicktime">
+                        <source src="tent2x2.mp4" type="video/mp4">
+                        <source src="Tent2x2.mp4" type="video/mp4">
+                        متصفحك لا يدعم تشغيل الفيديو.
+                    </video>
+                    <h4>عرض خيمة KD قياس 2x2m</h4>
+                </div>
             </div>
         </div>
-    </div>
+    </section>
 
-    <div class="container" id="videos">
-        <h2 class="section-title">فيديوهات خيمنا ومعداتنا</h2>
-        <div class="video-container">
-            <div class="video-card">
-                <video controls preload="metadata" playsinline style="width:100%; max-height:420px; background:#000;">
-                    <source src="Tent2x2.MP4" type="video/mp4">
-                    <source src="Tent2x2.MP4" type="video/quicktime">
-                    <source src="tent2x2.mp4" type="video/mp4">
-                    <source src="Tent2x2.mp4" type="video/mp4">
-                    متصفحك لا يدعم تشغيل الفيديو.
-                </video>
-                <h4>عرض خيمة KD قياس 2x2m</h4>
+    <!-- 4. بەشێ مميزاتنا -->
+    <section class="section-block bg-dark-2" id="features">
+        <div class="container">
+            <h2 class="section-title">لماذا تختار منتجاتنا؟</h2>
+            <div class="grid">
+                <div class="card">
+                    <i class="fa-solid fa-tent"></i>
+                    <h3>خيم عالية الجودة</h3>
+                    <p>تشكيلة واسعة من الخيم العائلية والفردية المقاومة للظروف الجوية.</p>
+                </div>
+                <div class="card">
+                    <i class="fa-solid fa-cloud-showers-heavy"></i>
+                    <h3>أقمشة مقاومة للماء</h3>
+                    <p>خامات متينة وقماش ممتاز مقاوم لمختلف الظروف الجوية والمطر.</p>
+                </div>
+                <div class="card">
+                    <i class="fa-solid fa-boxes-packing"></i>
+                    <h3>جملة ومفرد</h3>
+                    <p>خيارات البيع للمحلات والتجار بالإضافة إلى الطلبات الشخصية.</p>
+                </div>
             </div>
         </div>
-    </div>
+    </section>
 
-    <section class="social-section" id="social">
-        <h2 class="section-title">تابعنا على وسائل التواصل الاجتماعي</h2>
-        <p style="color: #94a3b8; font-size: 15px;">اطّلع على أحدث المنتجات والعروض عبر صفحاتنا الرسمية:</p>
-        <div class="social-links">
-            <a href="https://www.facebook.com/share/1BUhsUdpwj/?mibextid=wwXIfr" class="social-btn facebook" target="_blank">
-                <i class="fa-brands fa-facebook-f"></i> Facebook
-            </a>
-            <a href="https://www.instagram.com/kd_onlinee?igsi=N2JteTd1cWlha3ls&utm_source=qr" class="social-btn instagram" target="_blank">
-                <i class="fa-brands fa-instagram"></i> Instagram
-            </a>
-            <a href="https://www.tiktok.com/@kd.onlinee?_r=1&_t=ZS-99SpZE4fueD" class="social-btn tiktok" target="_blank">
-                <i class="fa-brands fa-tiktok"></i> TikTok
-            </a>
+    <!-- 5. بەشێ من نحن -->
+    <section class="section-block bg-dark-1" id="about">
+        <div class="container">
+            <h2 class="section-title">عن KD SHOP</h2>
+            <div class="about-text">
+                نحن متخصصون في استيراد أحدث وأفضل مستلزمات التخييم والرحلات مباشرة من الصين إلى العراق. نوفر الخيم ومعدات الرحلات للمتاجر والأفراد بأسعار تنافسية وجودة مضمونة.
+            </div>
         </div>
     </section>
 
