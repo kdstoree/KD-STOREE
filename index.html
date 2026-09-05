@@ -246,7 +246,7 @@
             text-shadow: 0 0 10px rgba(0, 255, 136, 0.3);
         }
 
-        /* بەشی فۆرمی داواکاری */
+        /* فۆرم و بەشی حساباتی پارە */
         .order-form {
             background: rgba(8, 12, 20, 0.6);
             padding: 15px;
@@ -282,6 +282,32 @@
             border-color: var(--accent-color);
         }
 
+        /* بەشی ژمێرراوی پارە (Invoice Display) */
+        .price-summary {
+            background: rgba(0, 210, 255, 0.05);
+            border: 1px solid rgba(0, 210, 255, 0.2);
+            border-radius: 8px;
+            padding: 12px;
+            margin: 15px 0;
+            font-size: 13px;
+        }
+
+        .price-row {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 6px;
+            color: #cbd5e1;
+        }
+
+        .price-row.total {
+            border-top: 1px dashed rgba(255,255,255,0.2);
+            padding-top: 8px;
+            margin-top: 6px;
+            font-size: 16px;
+            font-weight: bold;
+            color: #00ff88;
+        }
+
         .btn-order {
             display: flex;
             align-items: center;
@@ -299,7 +325,6 @@
             width: 100%;
             transition: background 0.3s;
             box-shadow: 0 4px 15px rgba(37, 211, 102, 0.3);
-            margin-top: 10px;
         }
 
         .btn-order:hover {
@@ -470,7 +495,7 @@
         </div>
     </section>
 
-    <!-- 2. بەشێ منتجاتنا (دگەل فۆرمی داواکاری) -->
+    <!-- 2. بەشێ منتجاتنا (دگەل هەژمارکرنا ئۆتۆماتیکی یا پارەیی) -->
     <section class="section-block bg-dark-2" id="products">
         <div class="container">
             <h2 class="section-title">تشكيلة الخيم والمعدات</h2>
@@ -486,9 +511,9 @@
                             <li><i class="fa-solid fa-shield-halved"></i> <strong>القماش:</strong> أكسفورد D210 فاخر عالي الجودة</li>
                             <li><i class="fa-solid fa-cloud-showers-heavy"></i> <strong>المميزات:</strong> مقاومة للماء والظروف الجوية</li>
                         </ul>
-                        <div class="product-price">150,000 د.ع</div>
+                        <div class="product-price">150,000 د.ع <span style="font-size: 12px; color: #94a3b8;">(+ 5,000 التوصيل)</span></div>
 
-                        <!-- فۆرمی داواکاری ڕاستەوخۆ -->
+                        <!-- فۆرمی داواکاری -->
                         <div class="order-form">
                             <h4 style="color: #00d2ff; margin-bottom: 10px; font-size: 15px;">نموذج الطلب المباشر:</h4>
                             
@@ -503,17 +528,46 @@
                             </div>
 
                             <div class="form-group">
-                                <label>المدينة / العنوان:</label>
-                                <input type="text" id="cust-address" placeholder="دهوك / اربيل / سليمانية ...">
+                                <label>المحافظة / المدينة:</label>
+                                <select id="cust-city">
+                                    <option value="دهوك">دهوك</option>
+                                    <option value="أربيل">أربيل</option>
+                                    <option value="سليمانية">سليمانية</option>
+                                    <option value="كركوك">كركوك</option>
+                                    <option value="بغداد">بغداد</option>
+                                    <option value="الموصل">الموصل / نينوى</option>
+                                    <option value="محافظة أخرى">محافظة أخرى (باقي المحافظات)</option>
+                                </select>
+                            </div>
+
+                            <div class="form-group">
+                                <label>العنوان التفصيلي (المنطقة / الشارع):</label>
+                                <input type="text" id="cust-address" placeholder="اسم الحي أو المنطقة">
                             </div>
 
                             <div class="form-group">
                                 <label>العدد المطلوب:</label>
-                                <select id="cust-qty">
+                                <select id="cust-qty" onchange="calculateTotal()">
                                     <option value="1">1 خيمة</option>
                                     <option value="2">2 خيمة</option>
-                                    <option value="3">3 خيم أو أكثر (جملة)</option>
+                                    <option value="3">3 خيم</option>
                                 </select>
+                            </div>
+
+                            <!-- کۆی گشتیی حیسابات بە ئۆتۆماتیکی -->
+                            <div class="price-summary">
+                                <div class="price-row">
+                                    <span>سعر الخيمة:</span>
+                                    <span id="product-price-display">150,000 د.ع</span>
+                                </div>
+                                <div class="price-row">
+                                    <span>توصيل لكافة المحافظات:</span>
+                                    <span>5,000 د.ع</span>
+                                </div>
+                                <div class="price-row total">
+                                    <span>المجموع الكلي:</span>
+                                    <span id="total-price-display">155,000 د.ع</span>
+                                </div>
                             </div>
 
                             <button onclick="sendOrder()" class="btn-order">
@@ -588,7 +642,6 @@
     </footer>
 
     <script>
-        // سەرپەرشتیکردنی بەفر
         const canvas = document.getElementById('snow-canvas');
         const ctx = canvas.getContext('2d');
 
@@ -647,25 +700,46 @@
 
         setInterval(drawSnow, 33);
 
-        // فانکشن بۆ کۆکردنەوەی زانیارییەکان و ناردنی بۆ واتساپ
+        // فانکشنی هەژمارکردنی ئۆتۆماتیکی
+        function calculateTotal() {
+            const qty = parseInt(document.getElementById('cust-qty').value);
+            const itemPrice = 150000;
+            const deliveryPrice = 5000;
+
+            const productTotal = qty * itemPrice;
+            const grandTotal = productTotal + deliveryPrice;
+
+            document.getElementById('product-price-display').innerText = productTotal.toLocaleString() + " د.ع";
+            document.getElementById('total-price-display').innerText = grandTotal.toLocaleString() + " د.ع";
+        }
+
+        // فانکشنی ناردن بۆ واتساپ
         function sendOrder() {
             const name = document.getElementById('cust-name').value;
             const phone = document.getElementById('cust-phone').value;
+            const city = document.getElementById('cust-city').value;
             const address = document.getElementById('cust-address').value;
-            const qty = document.getElementById('cust-qty').value;
+            const qty = parseInt(document.getElementById('cust-qty').value);
 
             if(!name || !phone || !address) {
-                alert('يرجى ملء جميع الحقول (الاسم، الهاتف، العنوان)');
+                alert('يرجى ملء جميع الحقول المطلوبة (الاسم، رقم الهاتف، والعنوان التفصيلي)');
                 return;
             }
 
+            const itemPrice = 150000;
+            const deliveryPrice = 5000;
+            const grandTotal = (qty * itemPrice) + deliveryPrice;
+
             const myPhone = "9647769247574";
             const text = `مرحباً KD SHOP، لدي طلب جديد:%0A` +
-                         `📌 *المنتج:* خيمة عائلية فاخرة (150,000 د.ع)%0A` +
+                         `📌 *المنتج:* خيمة عائلية فاخرة%0A` +
                          `👤 *الاسم:* ${name}%0A` +
                          `📞 *الهاتف:* ${phone}%0A` +
+                         `🏙️ *المحافظة:* ${city}%0A` +
                          `📍 *العنوان:* ${address}%0A` +
-                         `📦 *العدد:* ${qty}`;
+                         `📦 *العدد:* ${qty}%0A` +
+                         `🚚 *التوصيل:* 5,000 د.ع%0A` +
+                         `💰 *المجموع الكلي:* ${grandTotal.toLocaleString()} د.ع`;
 
             window.open(`https://wa.me/${myPhone}?text=${text}`, '_blank');
         }
