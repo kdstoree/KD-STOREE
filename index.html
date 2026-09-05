@@ -246,7 +246,6 @@
             text-shadow: 0 0 10px rgba(0, 255, 136, 0.3);
         }
 
-        /* فۆرم و بەشی حساباتی پارە */
         .order-form {
             background: rgba(8, 12, 20, 0.6);
             padding: 15px;
@@ -282,7 +281,6 @@
             border-color: var(--accent-color);
         }
 
-        /* بەشی ژمێرراوی پارە (Invoice Display) */
         .price-summary {
             background: rgba(0, 210, 255, 0.05);
             border: 1px solid rgba(0, 210, 255, 0.2);
@@ -495,7 +493,7 @@
         </div>
     </section>
 
-    <!-- 2. بەشێ منتجاتنا (دگەل هەژمارکرنا ئۆتۆماتیکی یا پارەیی) -->
+    <!-- 2. بەشێ منتجاتنا (دگەل هەموو پارێزگاکان و شوێنە دیارەکان) -->
     <section class="section-block bg-dark-2" id="products">
         <div class="container">
             <h2 class="section-title">تشكيلة الخيم والمعدات</h2>
@@ -513,7 +511,6 @@
                         </ul>
                         <div class="product-price">150,000 د.ع <span style="font-size: 12px; color: #94a3b8;">(+ 5,000 التوصيل)</span></div>
 
-                        <!-- فۆرمی داواکاری -->
                         <div class="order-form">
                             <h4 style="color: #00d2ff; margin-bottom: 10px; font-size: 15px;">نموذج الطلب المباشر:</h4>
                             
@@ -528,21 +525,38 @@
                             </div>
 
                             <div class="form-group">
-                                <label>المحافظة / المدينة:</label>
+                                <label>المحافظة:</label>
                                 <select id="cust-city">
-                                    <option value="دهوك">دهوك</option>
-                                    <option value="أربيل">أربيل</option>
-                                    <option value="سليمانية">سليمانية</option>
-                                    <option value="كركوك">كركوك</option>
-                                    <option value="بغداد">بغداد</option>
-                                    <option value="الموصل">الموصل / نينوى</option>
-                                    <option value="محافظة أخرى">محافظة أخرى (باقي المحافظات)</option>
+                                    <option value="دهوك">دهوك (Duhok)</option>
+                                    <option value="أربيل">أربيل (Erbil)</option>
+                                    <option value="سليمانية">سليمانية (Sulaymaniyah)</option>
+                                    <option value="حلبجة">حلبجة (Halabja)</option>
+                                    <option value="كركوك">كركوك (Kirkuk)</option>
+                                    <option value="الموصل / نينوى">الموصل / نينوى (Nineveh)</option>
+                                    <option value="بغداد">بغداد (Baghdad)</option>
+                                    <option value="الأنبار">الأنبار (Anbar)</option>
+                                    <option value="بابل">بابل (Babil)</option>
+                                    <option value="البصرة">البصرة (Basra)</option>
+                                    <option value="ذي قار / الناصرية">ذي قار / الناصرية (Dhi Qar)</option>
+                                    <option value="القادسية / الديوانية">القادسية / الديوانية (Al-Qadisiyyah)</option>
+                                    <option value="المثنى / السماوة">المثنى / السماوة (Al-Muthanna)</option>
+                                    <option value="النجف الأشرف">النجف الأشرف (Najaf)</option>
+                                    <option value="كربلاء المقدسة">كربلاء المقدسة (Karbala)</option>
+                                    <option value="ميسان / العمارة">ميسان / العمارة (Maysan)</option>
+                                    <option value="واسط / الكوت">واسط / الكوت (Wasit)</option>
+                                    <option value="ديالى / بعقوبة">ديالى / بعقوبة (Diyala)</option>
+                                    <option value="صلاح الدين / تكريت">صلاح الدين / تكريت (Saladin)</option>
                                 </select>
                             </div>
 
                             <div class="form-group">
-                                <label>العنوان التفصيلي (المنطقة / الشارع):</label>
-                                <input type="text" id="cust-address" placeholder="اسم الحي أو المنطقة">
+                                <label>القضاء / المنطقة / الشارع:</label>
+                                <input type="text" id="cust-district" placeholder="مثال: قضاء زاخو / عقرة / سنتر المدينة / الحي ...">
+                            </div>
+
+                            <div class="form-group">
+                                <label>أقرب نقطة دالة (جامع / مدرسة / مستشفى ...):</label>
+                                <input type="text" id="cust-landmark" placeholder="مثال: قرب جامع الكبير / مدرسة رابيرين / الشارع العام">
                             </div>
 
                             <div class="form-group">
@@ -554,7 +568,6 @@
                                 </select>
                             </div>
 
-                            <!-- کۆی گشتیی حیسابات بە ئۆتۆماتیکی -->
                             <div class="price-summary">
                                 <div class="price-row">
                                     <span>سعر الخيمة:</span>
@@ -700,7 +713,6 @@
 
         setInterval(drawSnow, 33);
 
-        // فانکشنی هەژمارکردنی ئۆتۆماتیکی
         function calculateTotal() {
             const qty = parseInt(document.getElementById('cust-qty').value);
             const itemPrice = 150000;
@@ -713,16 +725,16 @@
             document.getElementById('total-price-display').innerText = grandTotal.toLocaleString() + " د.ع";
         }
 
-        // فانکشنی ناردن بۆ واتساپ
         function sendOrder() {
             const name = document.getElementById('cust-name').value;
             const phone = document.getElementById('cust-phone').value;
             const city = document.getElementById('cust-city').value;
-            const address = document.getElementById('cust-address').value;
+            const district = document.getElementById('cust-district').value;
+            const landmark = document.getElementById('cust-landmark').value;
             const qty = parseInt(document.getElementById('cust-qty').value);
 
-            if(!name || !phone || !address) {
-                alert('يرجى ملء جميع الحقول المطلوبة (الاسم، رقم الهاتف، والعنوان التفصيلي)');
+            if(!name || !phone || !district) {
+                alert('يرجى ملء جميع الحقول المطلوبة (الاسم، رقم الهاتف، والمنطقة/الشارع)');
                 return;
             }
 
@@ -736,7 +748,8 @@
                          `👤 *الاسم:* ${name}%0A` +
                          `📞 *الهاتف:* ${phone}%0A` +
                          `🏙️ *المحافظة:* ${city}%0A` +
-                         `📍 *العنوان:* ${address}%0A` +
+                         `📍 *المنطقة/الشارع:* ${district}%0A` +
+                         `🏫 *أقرب نقطة دالة:* ${landmark || 'غير محدد'}%0A` +
                          `📦 *العدد:* ${qty}%0A` +
                          `🚚 *التوصيل:* 5,000 د.ع%0A` +
                          `💰 *المجموع الكلي:* ${grandTotal.toLocaleString()} د.ع`;
