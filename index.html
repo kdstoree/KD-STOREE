@@ -171,7 +171,7 @@
 
         .grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
             gap: 25px;
         }
 
@@ -185,12 +185,59 @@
             flex-direction: column;
         }
 
-        .product-img {
+        /* ستایلی سلایدەری وێنەکان */
+        .slider-container {
+            position: relative;
             width: 100%;
             height: 260px;
-            object-fit: cover;
-            border-bottom: 1px solid rgba(255,255,255,0.05);
             background-color: #0b0f19;
+            overflow: hidden;
+        }
+
+        .slider-img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: none;
+        }
+
+        .slider-img.active {
+            display: block;
+        }
+
+        .slider-btn {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background: rgba(0, 0, 0, 0.6);
+            color: white;
+            border: none;
+            padding: 10px 14px;
+            cursor: pointer;
+            border-radius: 50%;
+            font-size: 16px;
+            z-index: 10;
+            transition: background 0.3s;
+        }
+
+        .slider-btn:hover {
+            background: var(--accent-color);
+            color: black;
+        }
+
+        .prev-btn { right: 10px; }
+        .next-btn { left: 10px; }
+
+        .slider-counter {
+            position: absolute;
+            bottom: 10px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: rgba(0,0,0,0.7);
+            color: #fff;
+            padding: 2px 10px;
+            border-radius: 12px;
+            font-size: 11px;
         }
 
         .product-info {
@@ -224,7 +271,7 @@
             padding: 0;
             margin: 10px 0 15px;
             color: #cbd5e1;
-            font-size: 14px;
+            font-size: 13px;
         }
 
         .product-specs li {
@@ -277,10 +324,6 @@
             outline: none;
         }
 
-        .form-group input:focus, .form-group select:focus {
-            border-color: var(--accent-color);
-        }
-
         .price-summary {
             background: rgba(0, 210, 255, 0.05);
             border: 1px solid rgba(0, 210, 255, 0.2);
@@ -325,9 +368,7 @@
             box-shadow: 0 4px 15px rgba(37, 211, 102, 0.3);
         }
 
-        .btn-order:hover {
-            background-color: #1ebd59;
-        }
+        .btn-order:hover { background-color: #1ebd59; }
 
         .card {
             background: var(--card-bg);
@@ -339,28 +380,11 @@
             border: 1px solid rgba(255, 255, 255, 0.05);
         }
 
-        .card i {
-            font-size: 45px;
-            color: var(--accent-color);
-            margin-bottom: 18px;
-        }
+        .card i { font-size: 45px; color: var(--accent-color); margin-bottom: 18px; }
+        .card h3 { margin-bottom: 12px; color: #ffffff; font-size: 19px; }
+        .card p { color: #94a3b8; font-size: 14px; }
 
-        .card h3 {
-            margin-bottom: 12px;
-            color: #ffffff;
-            font-size: 19px;
-        }
-
-        .card p {
-            color: #94a3b8;
-            font-size: 14px;
-        }
-
-        .video-container {
-            max-width: 750px;
-            margin: 0 auto;
-        }
-
+        .video-container { max-width: 750px; margin: 0 auto; }
         .video-card {
             background: var(--card-bg);
             border-radius: 16px;
@@ -371,37 +395,13 @@
             border: 1px solid rgba(255, 255, 255, 0.08);
         }
 
-        .video-card video {
-            width: 100%;
-            max-height: 420px;
-            background-color: #000;
-        }
+        .video-card video { width: 100%; max-height: 420px; background-color: #000; }
+        .video-card h4 { margin: 18px 0 5px; color: #ffffff; font-size: 19px; }
 
-        .video-card h4 {
-            margin: 18px 0 5px;
-            color: #ffffff;
-            font-size: 19px;
-        }
-
-        .social-links {
-            display: flex;
-            justify-content: center;
-            gap: 15px;
-            margin-top: 25px;
-            flex-wrap: wrap;
-        }
-
+        .social-links { display: flex; justify-content: center; gap: 15px; margin-top: 25px; flex-wrap: wrap; }
         .social-btn {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            padding: 12px 25px;
-            border-radius: 50px;
-            color: white;
-            text-decoration: none;
-            font-weight: bold;
-            font-size: 15px;
-            transition: all 0.3s;
+            display: flex; align-items: center; gap: 10px; padding: 12px 25px; border-radius: 50px;
+            color: white; text-decoration: none; font-weight: bold; font-size: 15px; transition: all 0.3s;
             box-shadow: 0 5px 15px rgba(0,0,0,0.3);
         }
 
@@ -410,43 +410,20 @@
         .tiktok { background-color: #111111; border: 1px solid #333; }
 
         .floating-whatsapp {
-            position: fixed;
-            bottom: 25px;
-            left: 25px;
-            background-color: var(--whatsapp-color);
-            color: white;
-            width: 60px;
-            height: 60px;
-            border-radius: 50%;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            font-size: 32px;
-            box-shadow: 0 0 20px rgba(37, 211, 102, 0.6);
-            text-decoration: none;
-            z-index: 1000;
+            position: fixed; bottom: 25px; left: 25px; background-color: var(--whatsapp-color); color: white;
+            width: 60px; height: 60px; border-radius: 50%; display: flex; justify-content: center; align-items: center;
+            font-size: 32px; box-shadow: 0 0 20px rgba(37, 211, 102, 0.6); text-decoration: none; z-index: 1000;
         }
 
         footer {
-            background-color: #020305;
-            color: #64748b;
-            text-align: center;
-            padding: 22px;
-            font-size: 13px;
+            background-color: #020305; color: #64748b; text-align: center; padding: 22px; font-size: 13px;
             border-top: 1px solid rgba(255, 255, 255, 0.05);
         }
 
         @media (min-width: 769px) {
-            .navbar {
-                flex-direction: row;
-                justify-content: space-between;
-            }
-            .nav-links {
-                width: auto;
-            }
-            .hero h1 {
-                font-size: 42px;
-            }
+            .navbar { flex-direction: row; justify-content: space-between; }
+            .nav-links { width: auto; }
+            .hero h1 { font-size: 42px; }
         }
     </style>
 </head>
@@ -493,14 +470,15 @@
         </div>
     </section>
 
-    <!-- 2. بەشێ منتجاتنا (دگەل هەموو پارێزگاکان و شوێنە دیارەکان) -->
+    <!-- 2. بەشێ منتجاتنا (خێما ئێکێ و خێما نوو یا دینار دگەل ٦ وێنان) -->
     <section class="section-block bg-dark-2" id="products">
         <div class="container">
             <h2 class="section-title">تشكيلة الخيم والمعدات</h2>
             <div class="grid">
                 
+                <!-- خێما ئێکێ (العائلية) -->
                 <div class="product-card">
-                    <img src="tent1.jpg.jpg" alt="خيمة عائلية فاخرة" class="product-img">
+                    <img src="tent1.jpg.jpg" alt="خيمة عائلية فاخرة" style="width:100%; height:260px; object-fit:cover;">
                     <div class="product-info">
                         <span class="product-badge">🔥 الأكثر مبيعاً</span>
                         <h3>خيمة عائلية فاخرة</h3>
@@ -512,82 +490,83 @@
                         <div class="product-price">150,000 د.ع <span style="font-size: 12px; color: #94a3b8;">(+ 5,000 التوصيل)</span></div>
 
                         <div class="order-form">
-                            <h4 style="color: #00d2ff; margin-bottom: 10px; font-size: 15px;">نموذج الطلب المباشر:</h4>
-                            
-                            <div class="form-group">
-                                <label>الاسم الكامل:</label>
-                                <input type="text" id="cust-name" placeholder="أدخل اسمك الكريم">
-                            </div>
-
-                            <div class="form-group">
-                                <label>رقم الهاتف:</label>
-                                <input type="tel" id="cust-phone" placeholder="0750XXXXXXX">
-                            </div>
-
+                            <h4 style="color: #00d2ff; margin-bottom: 10px; font-size: 14px;">نموذج الطلب المباشر:</h4>
+                            <div class="form-group"><label>الاسم الكامل:</label><input type="text" id="cust-name-1" placeholder="أدخل اسمك الكريم"></div>
+                            <div class="form-group"><label>رقم الهاتف:</label><input type="tel" id="cust-phone-1" placeholder="0750XXXXXXX"></div>
                             <div class="form-group">
                                 <label>المحافظة:</label>
-                                <select id="cust-city">
-                                    <option value="دهوك">دهوك (Duhok)</option>
-                                    <option value="أربيل">أربيل (Erbil)</option>
-                                    <option value="سليمانية">سليمانية (Sulaymaniyah)</option>
-                                    <option value="حلبجة">حلبجة (Halabja)</option>
-                                    <option value="كركوك">كركوك (Kirkuk)</option>
-                                    <option value="الموصل / نينوى">الموصل / نينوى (Nineveh)</option>
-                                    <option value="بغداد">بغداد (Baghdad)</option>
-                                    <option value="الأنبار">الأنبار (Anbar)</option>
-                                    <option value="بابل">بابل (Babil)</option>
-                                    <option value="البصرة">البصرة (Basra)</option>
-                                    <option value="ذي قار / الناصرية">ذي قار / الناصرية (Dhi Qar)</option>
-                                    <option value="القادسية / الديوانية">القادسية / الديوانية (Al-Qadisiyyah)</option>
-                                    <option value="المثنى / السماوة">المثنى / السماوة (Al-Muthanna)</option>
-                                    <option value="النجف الأشرف">النجف الأشرف (Najaf)</option>
-                                    <option value="كربلاء المقدسة">كربلاء المقدسة (Karbala)</option>
-                                    <option value="ميسان / العمارة">ميسان / العمارة (Maysan)</option>
-                                    <option value="واسط / الكوت">واسط / الكوت (Wasit)</option>
-                                    <option value="ديالى / بعقوبة">ديالى / بعقوبة (Diyala)</option>
-                                    <option value="صلاح الدين / تكريت">صلاح الدين / تكريت (Saladin)</option>
+                                <select id="cust-city-1">
+                                    <option value="دهوك">دهوك</option><option value="أربيل">أربيل</option><option value="سليمانية">سليمانية</option><option value="حلبجة">حلبجة</option><option value="كركوك">كركوك</option><option value="الموصل / نينوى">الموصل / نينوى</option><option value="بغداد">بغداد</option><option value="باقي المحافظات">باقي المحافظات</option>
                                 </select>
                             </div>
-
-                            <div class="form-group">
-                                <label>القضاء / المنطقة / الشارع:</label>
-                                <input type="text" id="cust-district" placeholder="مثال: قضاء زاخو / عقرة / سنتر المدينة / الحي ...">
-                            </div>
-
-                            <div class="form-group">
-                                <label>أقرب نقطة دالة (جامع / مدرسة / مستشفى ...):</label>
-                                <input type="text" id="cust-landmark" placeholder="مثال: قرب جامع الكبير / مدرسة رابيرين / الشارع العام">
-                            </div>
-
+                            <div class="form-group"><label>المنطقة / الشارع / نقطة دالة:</label><input type="text" id="cust-address-1" placeholder="مثال: زاخو / قرب جامع الكبير"></div>
                             <div class="form-group">
                                 <label>العدد المطلوب:</label>
-                                <select id="cust-qty" onchange="calculateTotal()">
-                                    <option value="1">1 خيمة</option>
-                                    <option value="2">2 خيمة</option>
-                                    <option value="3">3 خيم</option>
+                                <select id="cust-qty-1" onchange="calculateTotal1()">
+                                    <option value="1">1 خيمة</option><option value="2">2 خيمة</option>
                                 </select>
                             </div>
-
                             <div class="price-summary">
-                                <div class="price-row">
-                                    <span>سعر الخيمة:</span>
-                                    <span id="product-price-display">150,000 د.ع</span>
-                                </div>
-                                <div class="price-row">
-                                    <span>توصيل لكافة المحافظات:</span>
-                                    <span>5,000 د.ع</span>
-                                </div>
-                                <div class="price-row total">
-                                    <span>المجموع الكلي:</span>
-                                    <span id="total-price-display">155,000 د.ع</span>
-                                </div>
+                                <div class="price-row"><span>السعر:</span><span id="price-display-1">150,000 د.ع</span></div>
+                                <div class="price-row"><span>التوصيل:</span><span>5,000 د.ع</span></div>
+                                <div class="price-row total"><span>المجموع:</span><span id="total-display-1">155,000 د.ع</span></div>
                             </div>
-
-                            <button onclick="sendOrder()" class="btn-order">
-                                <i class="fa-brands fa-whatsapp"></i> إرسال الطلب عبر واتساب
-                            </button>
+                            <button onclick="sendOrder1()" class="btn-order"><i class="fa-brands fa-whatsapp"></i> إرسال الطلب عبر واتساب</button>
                         </div>
+                    </div>
+                </div>
 
+                <!-- خێما دووێ (الخيمة الأوتوماتيكية - موديل دينار دگەل ٦ وێنان) -->
+                <div class="product-card">
+                    
+                    <!-- سلایدەری ٦ وێنان -->
+                    <div class="slider-container">
+                        <button class="slider-btn prev-btn" onclick="moveSlide(-1)">&#10095;</button>
+                        <img src="dinare1.jpg" class="slider-img active" alt="خيمة دينار 1">
+                        <img src="dinare2.jpg" class="slider-img" alt="خيمة دينار 2">
+                        <img src="dinare3.jpg" class="slider-img" alt="خيمة دينار 3">
+                        <img src="dinare4.jpg" class="slider-img" alt="خيمة دينار 4">
+                        <img src="dinare5.jpg" class="slider-img" alt="خيمة دينار 5">
+                        <img src="dinare6.jpg" class="slider-img" alt="خيمة دينار 6">
+                        <button class="slider-btn next-btn" onclick="moveSlide(1)">&#10094;</button>
+                        <div class="slider-counter" id="slide-num">1 / 6</div>
+                    </div>
+
+                    <div class="product-info">
+                        <span class="product-badge">⚡ فتح سريع (أقل من 10 ثواني)</span>
+                        <h3>خيمة أوتوماتيكية (موديل دينار)</h3>
+                        <ul class="product-specs">
+                            <li><i class="fa-solid fa-ruler-combined"></i> <strong>القياس:</strong> 280 cm | <strong>الارتفاع:</strong> 165 cm</li>
+                            <li><i class="fa-solid fa-door-open"></i> <strong>التصميم:</strong> 2 باب + 4 شبابيك للتعديل والتهوية</li>
+                            <li><i class="fa-solid fa-shield-cat"></i> <strong>الوقاية:</strong> تور (تول) لكل باب وشباك لمنع الحشرات</li>
+                            <li><i class="fa-solid fa-cloud-showers-heavy"></i> <strong>القماش:</strong> أكسفورد مقاوم للمطر والثلج</li>
+                        </ul>
+                        <div class="product-price">80,000 د.ع <span style="font-size: 12px; color: #94a3b8;">(+ 5,000 التوصيل)</span></div>
+
+                        <div class="order-form">
+                            <h4 style="color: #00d2ff; margin-bottom: 10px; font-size: 14px;">نموذج الطلب المباشر:</h4>
+                            <div class="form-group"><label>الاسم الكامل:</label><input type="text" id="cust-name-2" placeholder="أدخل اسمك الكريم"></div>
+                            <div class="form-group"><label>رقم الهاتف:</label><input type="tel" id="cust-phone-2" placeholder="0750XXXXXXX"></div>
+                            <div class="form-group">
+                                <label>المحافظة:</label>
+                                <select id="cust-city-2">
+                                    <option value="دهوك">دهوك</option><option value="أربيل">أربيل</option><option value="سليمانية">سليمانية</option><option value="حلبجة">حلبجة</option><option value="كركوك">كركوك</option><option value="الموصل / نينوى">الموصل / نينوى</option><option value="بغداد">بغداد</option><option value="باقي المحافظات">باقي المحافظات</option>
+                                </select>
+                            </div>
+                            <div class="form-group"><label>المنطقة / الشارع / نقطة دالة:</label><input type="text" id="cust-address-2" placeholder="مثال: زاخو / قرب جامع الكبير"></div>
+                            <div class="form-group">
+                                <label>العدد المطلوب:</label>
+                                <select id="cust-qty-2" onchange="calculateTotal2()">
+                                    <option value="1">1 خيمة</option><option value="2">2 خيمة</option>
+                                </select>
+                            </div>
+                            <div class="price-summary">
+                                <div class="price-row"><span>السعر:</span><span id="price-display-2">80,000 د.ع</span></div>
+                                <div class="price-row"><span>التوصيل:</span><span>5,000 د.ع</span></div>
+                                <div class="price-row total"><span>المجموع:</span><span id="total-display-2">85,000 د.ع</span></div>
+                            </div>
+                            <button onclick="sendOrder2()" class="btn-order"><i class="fa-brands fa-whatsapp"></i> إرسال الطلب عبر واتساب</button>
+                        </div>
                     </div>
                 </div>
 
@@ -617,21 +596,9 @@
         <div class="container">
             <h2 class="section-title">لماذا تختار منتجاتنا؟</h2>
             <div class="grid">
-                <div class="card">
-                    <i class="fa-solid fa-tent"></i>
-                    <h3>خيم عالية الجودة</h3>
-                    <p>تشكيلة واسعة من الخيم العائلية والفردية المقاومة للظروف الجوية.</p>
-                </div>
-                <div class="card">
-                    <i class="fa-solid fa-cloud-showers-heavy"></i>
-                    <h3>أقمشة مقاومة للماء</h3>
-                    <p>خامات متينة وقماش ممتاز مقاوم لمختلف الظروف الجوية والمطر.</p>
-                </div>
-                <div class="card">
-                    <i class="fa-solid fa-boxes-packing"></i>
-                    <h3>جملة ومفرد</h3>
-                    <p>خيارات البيع للمحلات والتجار بالإضافة إلى الطلبات الشخصية.</p>
-                </div>
+                <div class="card"><i class="fa-solid fa-tent"></i><h3>خيم عالية الجودة</h3><p>تشكيلة واسعة من الخيم العائلية والفردية المقاومة للظروف الجوية.</p></div>
+                <div class="card"><i class="fa-solid fa-cloud-showers-heavy"></i><h3>أقمشة مقاومة للماء</h3><p>خامات متينة وقماش ممتاز مقاوم لمختلف الظروف الجوية والمطر.</p></div>
+                <div class="card"><i class="fa-solid fa-boxes-packing"></i><h3>جملة ومفرد</h3><p>خيارات البيع للمحلات والتجار بالإضافة إلى الطلبات الشخصية.</p></div>
             </div>
         </div>
     </section>
@@ -646,115 +613,90 @@
         </div>
     </section>
 
-    <a href="https://wa.me/9647769247574" class="floating-whatsapp" target="_blank" title="تواصل عبر واتساب">
-        <i class="fa-brands fa-whatsapp"></i>
-    </a>
+    <a href="https://wa.me/9647769247574" class="floating-whatsapp" target="_blank" title="تواصل عبر واتساب"><i class="fa-brands fa-whatsapp"></i></a>
 
-    <footer>
-        <p>جميع الحقوق محفوظة &copy; 2026 - KD SHOP</p>
-    </footer>
+    <footer><p>جميع الحقوق محفوظة &copy; 2026 - KD SHOP</p></footer>
 
     <script>
         const canvas = document.getElementById('snow-canvas');
         const ctx = canvas.getContext('2d');
+        function resizeCanvas() { canvas.width = window.innerWidth; canvas.height = window.innerHeight; }
+        window.addEventListener('resize', resizeCanvas); resizeCanvas();
 
-        function resizeCanvas() {
-            canvas.width = window.innerWidth;
-            canvas.height = window.innerHeight;
-        }
-
-        window.addEventListener('resize', resizeCanvas);
-        resizeCanvas();
-
-        const numFlakes = 60;
-        const flakes = [];
-
+        const numFlakes = 60; const flakes = [];
         for (let i = 0; i < numFlakes; i++) {
-            flakes.push({
-                x: Math.random() * canvas.width,
-                y: Math.random() * canvas.height,
-                radius: Math.random() * 2.5 + 1,
-                density: Math.random() * 1 + 0.5
-            });
+            flakes.push({ x: Math.random() * canvas.width, y: Math.random() * canvas.height, radius: Math.random() * 2.5 + 1, density: Math.random() * 1 + 0.5 });
         }
 
         function drawSnow() {
             ctx.clearRect(0, 0, canvas.width, canvas.height);
-            ctx.fillStyle = 'rgba(255, 255, 255, 0.7)';
-            ctx.beginPath();
-
+            ctx.fillStyle = 'rgba(255, 255, 255, 0.7)'; ctx.beginPath();
             for (let i = 0; i < numFlakes; i++) {
-                const f = flakes[i];
-                ctx.moveTo(f.x, f.y);
-                ctx.arc(f.x, f.y, f.radius, 0, Math.PI * 2, true);
+                const f = flakes[i]; ctx.moveTo(f.x, f.y); ctx.arc(f.x, f.y, f.radius, 0, Math.PI * 2, true);
             }
-            ctx.fill();
-            moveSnow();
+            ctx.fill(); moveSnow();
         }
 
         let angle = 0;
         function moveSnow() {
             angle += 0.01;
             for (let i = 0; i < numFlakes; i++) {
-                const f = flakes[i];
-                f.y += Math.pow(f.density, 2) + 1;
-                f.x += Math.sin(angle) * 1.2;
-
-                if (f.y > canvas.height) {
-                    flakes[i] = {
-                        x: Math.random() * canvas.width,
-                        y: 0,
-                        radius: f.radius,
-                        density: f.density
-                    };
-                }
+                const f = flakes[i]; f.y += Math.pow(f.density, 2) + 1; f.x += Math.sin(angle) * 1.2;
+                if (f.y > canvas.height) { flakes[i] = { x: Math.random() * canvas.width, y: 0, radius: f.radius, density: f.density }; }
             }
         }
-
         setInterval(drawSnow, 33);
 
-        function calculateTotal() {
-            const qty = parseInt(document.getElementById('cust-qty').value);
-            const itemPrice = 150000;
-            const deliveryPrice = 5000;
-
-            const productTotal = qty * itemPrice;
-            const grandTotal = productTotal + deliveryPrice;
-
-            document.getElementById('product-price-display').innerText = productTotal.toLocaleString() + " د.ع";
-            document.getElementById('total-price-display').innerText = grandTotal.toLocaleString() + " د.ع";
+        // فانکشنی سلایدەری ٦ وێنەکە
+        let currentSlide = 0;
+        const slides = document.querySelectorAll('.slider-img');
+        function moveSlide(direction) {
+            slides[currentSlide].classList.remove('active');
+            currentSlide = (currentSlide + direction + slides.length) % slides.length;
+            slides[currentSlide].classList.add('active');
+            document.getElementById('slide-num').innerText = (currentSlide + 1) + " / " + slides.length;
         }
 
-        function sendOrder() {
-            const name = document.getElementById('cust-name').value;
-            const phone = document.getElementById('cust-phone').value;
-            const city = document.getElementById('cust-city').value;
-            const district = document.getElementById('cust-district').value;
-            const landmark = document.getElementById('cust-landmark').value;
-            const qty = parseInt(document.getElementById('cust-qty').value);
+        // حیساباتی خێما 1
+        function calculateTotal1() {
+            const qty = parseInt(document.getElementById('cust-qty-1').value);
+            const total = (qty * 150000) + 5000;
+            document.getElementById('price-display-1').innerText = (qty * 150000).toLocaleString() + " د.ع";
+            document.getElementById('total-display-1').innerText = total.toLocaleString() + " د.ع";
+        }
 
-            if(!name || !phone || !district) {
-                alert('يرجى ملء جميع الحقول المطلوبة (الاسم، رقم الهاتف، والمنطقة/الشارع)');
-                return;
-            }
+        function sendOrder1() {
+            const name = document.getElementById('cust-name-1').value;
+            const phone = document.getElementById('cust-phone-1').value;
+            const city = document.getElementById('cust-city-1').value;
+            const address = document.getElementById('cust-address-1').value;
+            const qty = parseInt(document.getElementById('cust-qty-1').value);
 
-            const itemPrice = 150000;
-            const deliveryPrice = 5000;
-            const grandTotal = (qty * itemPrice) + deliveryPrice;
+            if(!name || !phone || !address) { alert('يرجى ملء جميع الحقول المطلوبة'); return; }
+            const grandTotal = (qty * 150000) + 5000;
+            const text = `مرحباً KD SHOP، لدي طلب جديد:%0A📌 *المنتج:* خيمة عائلية فاخرة%0A👤 *الاسم:* ${name}%0A📞 *الهاتف:* ${phone}%0A🏙️ *المحافظة:* ${city}%0A📍 *العنوان:* ${address}%0A📦 *العدد:* ${qty}%0A🚚 *التوصيل:* 5,000 د.ع%0A💰 *المجموع الكلي:* ${grandTotal.toLocaleString()} د.ع`;
+            window.open(`https://wa.me/9647769247574?text=${text}`, '_blank');
+        }
 
-            const myPhone = "9647769247574";
-            const text = `مرحباً KD SHOP، لدي طلب جديد:%0A` +
-                         `📌 *المنتج:* خيمة عائلية فاخرة%0A` +
-                         `👤 *الاسم:* ${name}%0A` +
-                         `📞 *الهاتف:* ${phone}%0A` +
-                         `🏙️ *المحافظة:* ${city}%0A` +
-                         `📍 *المنطقة/الشارع:* ${district}%0A` +
-                         `🏫 *أقرب نقطة دالة:* ${landmark || 'غير محدد'}%0A` +
-                         `📦 *العدد:* ${qty}%0A` +
-                         `🚚 *التوصيل:* 5,000 د.ع%0A` +
-                         `💰 *المجموع الكلي:* ${grandTotal.toLocaleString()} د.ع`;
+        // حیساباتی خێما 2 (دینار)
+        function calculateTotal2() {
+            const qty = parseInt(document.getElementById('cust-qty-2').value);
+            const total = (qty * 80000) + 5000;
+            document.getElementById('price-display-2').innerText = (qty * 80000).toLocaleString() + " د.ع";
+            document.getElementById('total-display-2').innerText = total.toLocaleString() + " د.ع";
+        }
 
-            window.open(`https://wa.me/${myPhone}?text=${text}`, '_blank');
+        function sendOrder2() {
+            const name = document.getElementById('cust-name-2').value;
+            const phone = document.getElementById('cust-phone-2').value;
+            const city = document.getElementById('cust-city-2').value;
+            const address = document.getElementById('cust-address-2').value;
+            const qty = parseInt(document.getElementById('cust-qty-2').value);
+
+            if(!name || !phone || !address) { alert('يرجى ملء جميع الحقول المطلوبة'); return; }
+            const grandTotal = (qty * 80000) + 5000;
+            const text = `مرحباً KD SHOP، لدي طلب جديد:%0A📌 *المنتج:* خيمة أوتوماتيكية (موديل دينار)%0A👤 *الاسم:* ${name}%0A📞 *الهاتف:* ${phone}%0A🏙️ *المحافظة:* ${city}%0A📍 *العنوان:* ${address}%0A📦 *العدد:* ${qty}%0A🚚 *التوصيل:* 5,000 د.ع%0A💰 *المجموع الكلي:* ${grandTotal.toLocaleString()} د.ع`;
+            window.open(`https://wa.me/9647769247574?text=${text}`, '_blank');
         }
     </script>
 
