@@ -169,20 +169,6 @@
             box-shadow: 0 0 10px var(--accent-color);
         }
 
-        .about-text {
-            text-align: center;
-            font-size: 17px;
-            color: #a0aec0;
-            max-width: 800px;
-            margin: 0 auto;
-            background: var(--card-bg);
-            padding: 25px 30px;
-            border-radius: 16px;
-            border: 1px solid rgba(255, 255, 255, 0.05);
-            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
-            line-height: 1.8;
-        }
-
         .grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
@@ -194,16 +180,9 @@
             border-radius: 16px;
             overflow: hidden;
             box-shadow: 0 10px 30px rgba(0,0,0,0.4);
-            transition: all 0.3s ease;
             border: 1px solid rgba(255, 255, 255, 0.05);
             display: flex;
             flex-direction: column;
-        }
-
-        .product-card:hover {
-            transform: translateY(-7px);
-            border-color: rgba(0, 210, 255, 0.4);
-            box-shadow: 0 15px 35px rgba(0, 210, 255, 0.15);
         }
 
         .product-img {
@@ -267,6 +246,42 @@
             text-shadow: 0 0 10px rgba(0, 255, 136, 0.3);
         }
 
+        /* بەشی فۆرمی داواکاری */
+        .order-form {
+            background: rgba(8, 12, 20, 0.6);
+            padding: 15px;
+            border-radius: 12px;
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            margin-top: 10px;
+        }
+
+        .form-group {
+            margin-bottom: 12px;
+            text-align: right;
+        }
+
+        .form-group label {
+            display: block;
+            font-size: 13px;
+            color: #94a3b8;
+            margin-bottom: 5px;
+        }
+
+        .form-group input, .form-group select {
+            width: 100%;
+            padding: 10px;
+            border-radius: 8px;
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            background-color: #080c14;
+            color: white;
+            font-size: 14px;
+            outline: none;
+        }
+
+        .form-group input:focus, .form-group select:focus {
+            border-color: var(--accent-color);
+        }
+
         .btn-order {
             display: flex;
             align-items: center;
@@ -279,8 +294,12 @@
             text-decoration: none;
             font-weight: bold;
             font-size: 15px;
+            border: none;
+            cursor: pointer;
+            width: 100%;
             transition: background 0.3s;
             box-shadow: 0 4px 15px rgba(37, 211, 102, 0.3);
+            margin-top: 10px;
         }
 
         .btn-order:hover {
@@ -294,20 +313,13 @@
             box-shadow: 0 10px 30px rgba(0,0,0,0.4);
             text-align: center;
             padding: 30px 20px;
-            transition: all 0.3s ease;
             border: 1px solid rgba(255, 255, 255, 0.05);
-        }
-
-        .card:hover {
-            transform: translateY(-7px);
-            border-color: rgba(0, 210, 255, 0.4);
         }
 
         .card i {
             font-size: 45px;
             color: var(--accent-color);
             margin-bottom: 18px;
-            filter: drop-shadow(0 0 10px rgba(0, 210, 255, 0.4));
         }
 
         .card h3 {
@@ -370,11 +382,6 @@
             box-shadow: 0 5px 15px rgba(0,0,0,0.3);
         }
 
-        .social-btn:hover {
-            transform: translateY(-4px);
-            filter: brightness(1.2);
-        }
-
         .facebook { background-color: #1877f2; }
         .instagram { background: linear-gradient(45deg, #f09433, #e6683c, #dc2743, #cc2366, #bc1888); }
         .tiktok { background-color: #111111; border: 1px solid #333; }
@@ -395,12 +402,6 @@
             box-shadow: 0 0 20px rgba(37, 211, 102, 0.6);
             text-decoration: none;
             z-index: 1000;
-            transition: all 0.3s ease;
-        }
-
-        .floating-whatsapp:hover {
-            transform: scale(1.12);
-            box-shadow: 0 0 30px rgba(37, 211, 102, 0.9);
         }
 
         footer {
@@ -409,8 +410,6 @@
             text-align: center;
             padding: 22px;
             font-size: 13px;
-            position: relative;
-            z-index: 2;
             border-top: 1px solid rgba(255, 255, 255, 0.05);
         }
 
@@ -471,13 +470,13 @@
         </div>
     </section>
 
-    <!-- 2. بەشێ منتجاتنا -->
+    <!-- 2. بەشێ منتجاتنا (دگەل فۆرمی داواکاری) -->
     <section class="section-block bg-dark-2" id="products">
         <div class="container">
             <h2 class="section-title">تشكيلة الخيم والمعدات</h2>
             <div class="grid">
+                
                 <div class="product-card">
-                    <!-- بەکارهێنانا ناڤێ دروست يێ وێنەیێ تە: tent1.jpg.jpg -->
                     <img src="tent1.jpg.jpg" alt="خيمة عائلية فاخرة" class="product-img">
                     <div class="product-info">
                         <span class="product-badge">🔥 الأكثر مبيعاً</span>
@@ -488,11 +487,43 @@
                             <li><i class="fa-solid fa-cloud-showers-heavy"></i> <strong>المميزات:</strong> مقاومة للماء والظروف الجوية</li>
                         </ul>
                         <div class="product-price">150,000 د.ع</div>
-                        <a href="https://wa.me/9647769247574?text=مرحباً%20KD%20SHOP،%20أريد%20الاستفسار%20عن%20الخيمة%20العائلية%20(150,000%20د.ع)" class="btn-order" target="_blank">
-                            <i class="fa-brands fa-whatsapp"></i> اطلب عبر واتساب
-                        </a>
+
+                        <!-- فۆرمی داواکاری ڕاستەوخۆ -->
+                        <div class="order-form">
+                            <h4 style="color: #00d2ff; margin-bottom: 10px; font-size: 15px;">نموذج الطلب المباشر:</h4>
+                            
+                            <div class="form-group">
+                                <label>الاسم الكامل:</label>
+                                <input type="text" id="cust-name" placeholder="أدخل اسمك الكريم">
+                            </div>
+
+                            <div class="form-group">
+                                <label>رقم الهاتف:</label>
+                                <input type="tel" id="cust-phone" placeholder="0750XXXXXXX">
+                            </div>
+
+                            <div class="form-group">
+                                <label>المدينة / العنوان:</label>
+                                <input type="text" id="cust-address" placeholder="دهوك / اربيل / سليمانية ...">
+                            </div>
+
+                            <div class="form-group">
+                                <label>العدد المطلوب:</label>
+                                <select id="cust-qty">
+                                    <option value="1">1 خيمة</option>
+                                    <option value="2">2 خيمة</option>
+                                    <option value="3">3 خيم أو أكثر (جملة)</option>
+                                </select>
+                            </div>
+
+                            <button onclick="sendOrder()" class="btn-order">
+                                <i class="fa-brands fa-whatsapp"></i> إرسال الطلب عبر واتساب
+                            </button>
+                        </div>
+
                     </div>
                 </div>
+
             </div>
         </div>
     </section>
@@ -504,7 +535,6 @@
             <div class="video-container">
                 <div class="video-card">
                     <video controls preload="metadata" playsinline style="width:100%; max-height:420px; background:#000;">
-                        <!-- بەکارهێنانا ناڤێ دروست يێ ڤیدیۆیا تە: tent2.mp4.MP4 -->
                         <source src="tent2.mp4.MP4" type="video/mp4">
                         <source src="tent2.mp4.MP4" type="video/quicktime">
                         متصفحك لا يدعم تشغيل الفيديو.
@@ -558,6 +588,7 @@
     </footer>
 
     <script>
+        // سەرپەرشتیکردنی بەفر
         const canvas = document.getElementById('snow-canvas');
         const ctx = canvas.getContext('2d');
 
@@ -615,6 +646,29 @@
         }
 
         setInterval(drawSnow, 33);
+
+        // فانکشن بۆ کۆکردنەوەی زانیارییەکان و ناردنی بۆ واتساپ
+        function sendOrder() {
+            const name = document.getElementById('cust-name').value;
+            const phone = document.getElementById('cust-phone').value;
+            const address = document.getElementById('cust-address').value;
+            const qty = document.getElementById('cust-qty').value;
+
+            if(!name || !phone || !address) {
+                alert('يرجى ملء جميع الحقول (الاسم، الهاتف، العنوان)');
+                return;
+            }
+
+            const myPhone = "9647769247574";
+            const text = `مرحباً KD SHOP، لدي طلب جديد:%0A` +
+                         `📌 *المنتج:* خيمة عائلية فاخرة (150,000 د.ع)%0A` +
+                         `👤 *الاسم:* ${name}%0A` +
+                         `📞 *الهاتف:* ${phone}%0A` +
+                         `📍 *العنوان:* ${address}%0A` +
+                         `📦 *العدد:* ${qty}`;
+
+            window.open(`https://wa.me/${myPhone}?text=${text}`, '_blank');
+        }
     </script>
 
 </body>
