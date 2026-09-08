@@ -106,99 +106,12 @@
             text-shadow: 0 0 10px var(--accent-color);
         }
 
-        /* دوگمەیا بازنەیی یا زمانان وەکی دوگمەیا واتساپێ ل خوارێ */
-        .floating-lang-container {
-            position: fixed;
-            bottom: 25px;
-            right: 25px;
-            z-index: 1000;
-        }
-
-        .floating-lang-btn {
-            background: #121824;
-            border: 2px solid var(--accent-color);
-            color: white;
-            width: 55px;
-            height: 55px;
-            border-radius: 50%;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            cursor: pointer;
-            box-shadow: 0 0 20px rgba(0, 210, 255, 0.5);
-            transition: all 0.3s;
-        }
-
-        .floating-lang-btn:hover {
-            transform: scale(1.08);
-            box-shadow: 0 0 25px rgba(0, 210, 255, 0.8);
-        }
-
-        .lang-menu-floating {
-            display: none;
-            position: absolute;
-            bottom: 65px;
-            right: 0;
-            background: #121824;
-            border: 1px solid rgba(0, 210, 255, 0.4);
-            border-radius: 18px;
-            padding: 8px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.9);
-            min-width: 130px;
-            flex-direction: column;
-            gap: 6px;
-        }
-
-        .lang-menu-floating.show {
-            display: flex;
-        }
-
-        .lang-option-btn {
-            display: flex;
-            align-items: center;
-            gap: 8px;
-            background: transparent;
-            border: none;
-            color: #cbd5e1;
-            padding: 8px 12px;
-            border-radius: 12px;
-            cursor: pointer;
-            font-size: 13px;
-            font-weight: 600;
-            width: 100%;
-            transition: all 0.2s;
-        }
-
-        .lang-option-btn:hover {
-            background: rgba(0, 210, 255, 0.15);
-            color: var(--accent-color);
-        }
-
-        .kurdistan-flag {
-            width: 18px;
-            height: 12px;
-            border-radius: 2px;
-            display: inline-block;
-            background: linear-gradient(to bottom, #E4002B 33.3%, #FFFFFF 33.3%, #FFFFFF 66.6%, #008751 66.6%);
-            position: relative;
-        }
-
-        .kurdistan-flag::after {
-            content: '☀️';
-            font-size: 7px;
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            line-height: 1;
-        }
-
         .hero {
             background: linear-gradient(rgba(8, 12, 20, 0.75), rgba(8, 12, 20, 0.98)), 
                         url('https://images.unsplash.com/photo-1504280390367-361c6d9f38f4?auto=format&fit=crop&w=1350&q=80') center/cover;
             color: white;
             text-align: center;
-            padding: 80px 20px 50px;
+            padding: 80px 20px 40px;
             position: relative;
             z-index: 2;
         }
@@ -217,6 +130,55 @@
             max-width: 650px;
             margin-left: auto;
             margin-right: auto;
+            color: #94a3b8;
+        }
+
+        .trust-badges-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 15px;
+            margin-top: 30px;
+            max-width: 1000px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .trust-card {
+            background: rgba(18, 24, 36, 0.85);
+            border: 1px solid rgba(0, 210, 255, 0.2);
+            border-radius: 12px;
+            padding: 15px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            backdrop-filter: blur(5px);
+            text-align: right;
+        }
+
+        [dir="ltr"] .trust-card { text-align: left; }
+
+        .trust-card i {
+            font-size: 26px;
+            color: #00ff88;
+            background: rgba(0, 255, 136, 0.1);
+            padding: 10px;
+            border-radius: 50%;
+            width: 48px;
+            height: 48px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+        }
+
+        .trust-card h4 {
+            font-size: 14px;
+            color: #ffffff;
+            margin-bottom: 2px;
+        }
+
+        .trust-card p {
+            font-size: 12px;
             color: #94a3b8;
         }
 
@@ -407,6 +369,69 @@
 
         .btn-order:hover { background-color: #1ebd59; }
 
+        .faq-container {
+            max-width: 800px;
+            margin: 0 auto;
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .faq-item {
+            background: var(--card-bg);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: 12px;
+            overflow: hidden;
+            transition: all 0.3s;
+        }
+
+        .faq-question {
+            width: 100%;
+            padding: 16px 20px;
+            background: transparent;
+            border: none;
+            color: #ffffff;
+            font-size: 15px;
+            font-weight: 600;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            cursor: pointer;
+            text-align: right;
+        }
+
+        [dir="ltr"] .faq-question { text-align: left; }
+
+        .faq-question i {
+            color: var(--accent-color);
+            transition: transform 0.3s;
+            font-size: 14px;
+        }
+
+        .faq-answer {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease-out, padding 0.3s ease;
+            background: rgba(8, 12, 20, 0.4);
+            color: #cbd5e1;
+            font-size: 14px;
+            line-height: 1.6;
+            padding: 0 20px;
+            text-align: right;
+        }
+
+        [dir="ltr"] .faq-answer { text-align: left; }
+
+        .faq-item.active .faq-answer {
+            max-height: 200px;
+            padding: 15px 20px 20px;
+            border-top: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .faq-item.active .faq-question i {
+            transform: rotate(180deg);
+        }
+
         .card {
             background: var(--card-bg); border-radius: 16px; text-align: center;
             padding: 30px 20px; border: 1px solid rgba(255, 255, 255, 0.05);
@@ -438,6 +463,90 @@
             font-size: 30px; box-shadow: 0 0 20px rgba(37, 211, 102, 0.6); text-decoration: none; z-index: 1000;
         }
 
+        .floating-lang-container {
+            position: fixed;
+            bottom: 25px;
+            right: 25px;
+            z-index: 1000;
+        }
+
+        .floating-lang-btn {
+            background: #121824;
+            border: 2px solid var(--accent-color);
+            color: white;
+            width: 55px;
+            height: 55px;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            cursor: pointer;
+            box-shadow: 0 0 20px rgba(0, 210, 255, 0.5);
+            transition: all 0.3s;
+        }
+
+        .floating-lang-btn:hover {
+            transform: scale(1.08);
+            box-shadow: 0 0 25px rgba(0, 210, 255, 0.8);
+        }
+
+        .lang-menu-floating {
+            display: none;
+            position: absolute;
+            bottom: 65px;
+            right: 0;
+            background: #121824;
+            border: 1px solid rgba(0, 210, 255, 0.4);
+            border-radius: 18px;
+            padding: 8px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.9);
+            min-width: 130px;
+            flex-direction: column;
+            gap: 6px;
+        }
+
+        .lang-menu-floating.show { display: flex; }
+
+        .lang-option-btn {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            background: transparent;
+            border: none;
+            color: #cbd5e1;
+            padding: 8px 12px;
+            border-radius: 12px;
+            cursor: pointer;
+            font-size: 13px;
+            font-weight: 600;
+            width: 100%;
+            transition: all 0.2s;
+        }
+
+        .lang-option-btn:hover {
+            background: rgba(0, 210, 255, 0.15);
+            color: var(--accent-color);
+        }
+
+        .kurdistan-flag {
+            width: 18px;
+            height: 12px;
+            border-radius: 2px;
+            display: inline-block;
+            background: linear-gradient(to bottom, #E4002B 33.3%, #FFFFFF 33.3%, #FFFFFF 66.6%, #008751 66.6%);
+            position: relative;
+        }
+
+        .kurdistan-flag::after {
+            content: '☀️';
+            font-size: 7px;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            line-height: 1;
+        }
+
         footer { background-color: #020305; color: #64748b; text-align: center; padding: 20px; font-size: 13px; }
 
         @media (min-width: 769px) {
@@ -458,6 +567,7 @@
                 <li><a href="#products" data-key="nav_products">بەرهەمێن مە</a></li>
                 <li><a href="#videos" data-key="nav_videos">ڤیدیۆیێن مە</a></li>
                 <li><a href="#features" data-key="nav_features">تایبەتمەندی</a></li>
+                <li><a href="#faq" data-key="nav_faq">پرسیارێن بەربەڵاڤ</a></li>
                 <li><a href="#about" data-key="nav_about">دبارەیا مەدا</a></li>
             </ul>
         </div>
@@ -466,6 +576,37 @@
     <section class="hero">
         <h1 data-key="hero_title">KD SHOP - جهێ تە یێ ئێکێ بۆ کەرەستێن تەخییمێ</h1>
         <p data-key="hero_desc">ئینانا ڕاستەوخۆ ژ چینێ بۆ عیراقێ | بازرگانیا کۆم و تا ب باشترین کوالیتی و نرخ</p>
+        
+        <div class="trust-badges-container">
+            <div class="trust-card">
+                <i class="fa-solid fa-hand-holding-dollar"></i>
+                <div>
+                    <h4 data-key="t1_title">پارەدان ل دەمێ وەرگرتنێ</h4>
+                    <p data-key="t1_desc">بەری وەرگرتنا بەرهەمی تو چ پارەی نادەی</p>
+                </div>
+            </div>
+            <div class="trust-card">
+                <i class="fa-solid fa-magnifying-glass-box"></i>
+                <div>
+                    <h4 data-key="t2_title">مافێ پشکنینێ</h4>
+                    <p data-key="t2_desc">تو دشێی بەرهەمی پشکنین بکەی بەری بکی</p>
+                </div>
+            </div>
+            <div class="trust-card">
+                <i class="fa-solid fa-rotate-left"></i>
+                <div>
+                    <h4 data-key="t3_title">گەرەنتیا گۆڕینێ</h4>
+                    <p data-key="t3_desc">دروستکرنا ئاریشەیێ دێ ڕاستەوخۆ هێتە گۆڕین</p>
+                </div>
+            </div>
+            <div class="trust-card">
+                <i class="fa-solid fa-truck-fast"></i>
+                <div>
+                    <h4 data-key="t4_title">گەهاندنا خێرا</h4>
+                    <p data-key="t4_desc">گەهاندن بۆ هەمی پارێزگەهێن عیراقێ</p>
+                </div>
+            </div>
+        </div>
     </section>
 
     <!-- 1. بەشێ صفحاتنا -->
@@ -495,11 +636,11 @@
                         <span class="product-badge" data-key="p1_badge">🔥 زۆرترین فرۆشراو</span>
                         <h3 data-key="p1_title">خێما خێزانی یا فاخڕ</h3>
                         <ul class="product-specs">
-                            <li><i class="fa-solid fa-ruler-combined"></i> <strong data-key="spec_size">قیاس:</strong> 330 X 210 X 180 cm</li>
-                            <li><i class="fa-solid fa-shield-halved"></i> <strong data-key="spec_fabric">قوماش:</strong> أكسفورد D210 یێ فاخر</li>
-                            <li><i class="fa-solid fa-cloud-showers-heavy"></i> <strong data-key="spec_features">تایبەتمەندی:</strong> دژی ئاڤ و بارانێ</li>
+                            <li><i class="fa-solid fa-ruler-combined"></i> <span data-key="p1_s1">قیاس: 330 X 210 X 180 cm</span></li>
+                            <li><i class="fa-solid fa-shield-halved"></i> <span data-key="p1_s2">قوماش: أكسفورد D210 یێ فاخر</span></li>
+                            <li><i class="fa-solid fa-cloud-showers-heavy"></i> <span data-key="p1_s3">تایبەتمەندی: دژی ئاڤ و بارانێ</span></li>
                         </ul>
-                        <div class="product-price">150,000 د.ع <span style="font-size: 12px; color: #94a3b8;" data-key="deliv_tag">(+ 5,000 گەهاندن)</span></div>
+                        <div class="product-price">150,000 <span data-key="currency">د.ع</span> <span style="font-size: 12px; color: #94a3b8;" data-key="deliv_tag">(+ 5,000 گەهاندن)</span></div>
 
                         <div class="order-form">
                             <div class="form-group"><label data-key="lbl_name">ناوێ تەمام:</label><input type="text" id="cust-name-1" placeholder="..."></div>
@@ -507,7 +648,7 @@
                             <div class="form-group">
                                 <label data-key="lbl_city">پارێزگەهـ:</label>
                                 <select id="cust-city-1">
-                                    <option value="دهوك">دهۆک</option><option value="أربيل">هەولێر</option><option value="سليمانية">سلێمانی</option><option value="كركوك">کەرکووک</option><option value="بغداد">بەغدا</option><option value="الموصل">مووسڵ / نەینەوا</option>
+                                    <option value="دهوك">دهۆک / Duhok</option><option value="أربيل">هەولێر / Erbil</option><option value="سليمانية">سلێمانی / Sulaymaniyah</option><option value="كركوك">کەرکووک / Kirkuk</option><option value="بغداد">بەغدا / Baghdad</option><option value="الموصل">مووسڵ / Mosul</option>
                                 </select>
                             </div>
                             <div class="form-group"><label data-key="lbl_address">ناونیشان / تاخ / جادە:</label><input type="text" id="cust-address-1" placeholder="..."></div>
@@ -517,7 +658,7 @@
                             </div>
                             <div class="price-summary">
                                 <div class="price-row"><span data-key="sum_price">نرخ:</span><span id="price-display-1">150,000 د.ع</span></div>
-                                <div class="price-row"><span data-key="sum_deliv">گەهاندن:</span><span>5,000 د.ع</span></div>
+                                <div class="price-row"><span data-key="sum_deliv">گەهاندن:</span><span data-key="deliv_val">5,000 د.ع</span></div>
                                 <div class="price-row total"><span data-key="sum_total">کۆمێ گشتی:</span><span id="total-display-1">155,000 د.ع</span></div>
                             </div>
                             <button onclick="sendOrder1()" class="btn-order"><i class="fa-brands fa-whatsapp"></i> <span data-key="btn_order">ناردنا داواکاریێ ب واتساپێ</span></button>
@@ -544,11 +685,11 @@
                         <span class="product-badge" data-key="p2_badge">⚡ ڤەکرنا خێرا (کێمتر ژ ١٠ چڕکان)</span>
                         <h3 data-key="p2_title">خێما ئۆتۆماتیکی (مۆدێل دینار)</h3>
                         <ul class="product-specs">
-                            <li><i class="fa-solid fa-ruler-combined"></i> <strong data-key="spec_size">قیاس:</strong> 280 cm | <strong data-key="spec_height">بەرزیا:</strong> 165 cm</li>
-                            <li><i class="fa-solid fa-door-open"></i> <strong data-key="p2_doors">دیزاین:</strong> ٢ دەرگەهـ + ٤ پەنجەرە</li>
-                            <li><i class="fa-solid fa-shield-cat"></i> <strong data-key="p2_mesh">تۆر (تول):</strong> بۆ ڕێگریکرن ل حەشەراتان</li>
+                            <li><i class="fa-solid fa-ruler-combined"></i> <span data-key="p2_s1">قیاس: 280 cm | بەرزیا: 165 cm</span></li>
+                            <li><i class="fa-solid fa-door-open"></i> <span data-key="p2_s2">دیزاین: ٢ دەرگەهـ + ٤ پەنجەرە</span></li>
+                            <li><i class="fa-solid fa-shield-cat"></i> <span data-key="p2_s3">تۆر (تول): بۆ ڕێگریکرن ل حەشەراتان</span></li>
                         </ul>
-                        <div class="product-price">80,000 د.ع <span style="font-size: 12px; color: #94a3b8;" data-key="deliv_tag">(+ 5,000 گەهاندن)</span></div>
+                        <div class="product-price">80,000 <span data-key="currency">د.ع</span> <span style="font-size: 12px; color: #94a3b8;" data-key="deliv_tag">(+ 5,000 گەهاندن)</span></div>
 
                         <div class="order-form">
                             <div class="form-group"><label data-key="lbl_name">ناوێ تەمام:</label><input type="text" id="cust-name-2" placeholder="..."></div>
@@ -556,7 +697,7 @@
                             <div class="form-group">
                                 <label data-key="lbl_city">پارێزگەهـ:</label>
                                 <select id="cust-city-2">
-                                    <option value="دهوك">دهۆک</option><option value="أربيل">هەولێر</option><option value="سليمانية">سلێمانی</option><option value="كركوك">کەرکووک</option><option value="بغداد">بەغدا</option>
+                                    <option value="دهوك">دهۆک / Duhok</option><option value="أربيل">هەولێر / Erbil</option><option value="سليمانية">سلێمانی / Sulaymaniyah</option><option value="كركوك">کەرکووک / Kirkuk</option><option value="بغداد">بەغدا / Baghdad</option>
                                 </select>
                             </div>
                             <div class="form-group"><label data-key="lbl_address">ناونیشان / تاخ / جادە:</label><input type="text" id="cust-address-2" placeholder="..."></div>
@@ -566,7 +707,7 @@
                             </div>
                             <div class="price-summary">
                                 <div class="price-row"><span data-key="sum_price">نرخ:</span><span id="price-display-2">80,000 د.ع</span></div>
-                                <div class="price-row"><span data-key="sum_deliv">گەهاندن:</span><span>5,000 د.ع</span></div>
+                                <div class="price-row"><span data-key="sum_deliv">گەهاندن:</span><span data-key="deliv_val">5,000 د.ع</span></div>
                                 <div class="price-row total"><span data-key="sum_total">کۆمێ گشتی:</span><span id="total-display-2">85,000 د.ع</span></div>
                             </div>
                             <button onclick="sendOrder2()" class="btn-order"><i class="fa-brands fa-whatsapp"></i> <span data-key="btn_order">ناردنا داواکاریێ ب واتساپێ</span></button>
@@ -593,11 +734,11 @@
                         <span class="product-badge" data-key="p3_badge">⚡ ڤەکرنا خێرا | ئابووری</span>
                         <h3 data-key="p3_title">خێما ئۆتۆماتیکی سادە (2x2m)</h3>
                         <ul class="product-specs">
-                            <li><i class="fa-solid fa-users"></i> <strong data-key="p3_cap">جهـ:</strong> بۆ ٤ تا ٦ کەسان</li>
-                            <li><i class="fa-solid fa-ruler-combined"></i> <strong data-key="spec_size">قیاس:</strong> 2m X 2m</li>
-                            <li><i class="fa-solid fa-cloud-showers-heavy"></i> <strong data-key="spec_features">تایبەتمەندی:</strong> دژی ئاڤ و بارانێ</li>
+                            <li><i class="fa-solid fa-users"></i> <span data-key="p3_s1">جهـ: بۆ ٤ تا ٦ کەسان</span></li>
+                            <li><i class="fa-solid fa-ruler-combined"></i> <span data-key="p3_s2">قیاس: 2m X 2m</span></li>
+                            <li><i class="fa-solid fa-cloud-showers-heavy"></i> <span data-key="p3_s3">تایبەتمەندی: دژی ئاڤ و بارانێ</span></li>
                         </ul>
-                        <div class="product-price">50,000 د.ع <span style="font-size: 12px; color: #94a3b8;" data-key="deliv_tag">(+ 5,000 گەهاندن)</span></div>
+                        <div class="product-price">50,000 <span data-key="currency">د.ع</span> <span style="font-size: 12px; color: #94a3b8;" data-key="deliv_tag">(+ 5,000 گەهاندن)</span></div>
 
                         <div class="order-form">
                             <div class="form-group"><label data-key="lbl_name">ناوێ تەمام:</label><input type="text" id="cust-name-3" placeholder="..."></div>
@@ -605,7 +746,7 @@
                             <div class="form-group">
                                 <label data-key="lbl_city">پارێزگەهـ:</label>
                                 <select id="cust-city-3">
-                                    <option value="دهوك">دهۆک</option><option value="أربيل">هەولێر</option><option value="سليمانية">سلێمانی</option><option value="كركوك">کەرکووک</option><option value="بغداد">بەغدا</option>
+                                    <option value="دهوك">دهۆک / Duhok</option><option value="أربيل">هەولێر / Erbil</option><option value="سليمانية">سلێمانی / Sulaymaniyah</option><option value="كركوك">کەرکووک / Kirkuk</option><option value="بغداد">بەغدا / Baghdad</option>
                                 </select>
                             </div>
                             <div class="form-group"><label data-key="lbl_address">ناونیشان / تاخ / جادە:</label><input type="text" id="cust-address-3" placeholder="..."></div>
@@ -615,7 +756,7 @@
                             </div>
                             <div class="price-summary">
                                 <div class="price-row"><span data-key="sum_price">نرخ:</span><span id="price-display-3">50,000 د.ع</span></div>
-                                <div class="price-row"><span data-key="sum_deliv">گەهاندن:</span><span>5,000 د.ع</span></div>
+                                <div class="price-row"><span data-key="sum_deliv">گەهاندن:</span><span data-key="deliv_val">5,000 د.ع</span></div>
                                 <div class="price-row total"><span data-key="sum_total">کۆمێ گشتی:</span><span id="total-display-3">55,000 د.ع</span></div>
                             </div>
                             <button onclick="sendOrder3()" class="btn-order"><i class="fa-brands fa-whatsapp"></i> <span data-key="btn_order">ناردنا داواکاریێ ب واتساپێ</span></button>
@@ -639,10 +780,10 @@
                         <span class="product-badge" data-key="p4_badge">🪵🔥 زۆر قایم و دژی ئاڤێ</span>
                         <h3 data-key="p4_title">جانتا هه‌لگرتنا داران و کەرەستان</h3>
                         <ul class="product-specs">
-                            <li><i class="fa-solid fa-ruler"></i> <strong data-key="spec_size">قیاس:</strong> 99 × 48 cm | <strong data-key="p4_vol">حەجم:</strong> 35L</li>
-                            <li><i class="fa-solid fa-shield-halved"></i> <strong data-key="spec_fabric">قوماش:</strong> زۆر محکم و دژی ئاڤ و شێیێ</li>
+                            <li><i class="fa-solid fa-ruler"></i> <span data-key="p4_s1">قیاس: 99 × 48 cm | حەجم: 35L</span></li>
+                            <li><i class="fa-solid fa-shield-halved"></i> <span data-key="p4_s2">قوماش: زۆر محکم و دژی ئاڤ و شێیێ</span></li>
                         </ul>
-                        <div class="product-price">15,000 د.ع <span style="font-size: 12px; color: #94a3b8;" data-key="deliv_tag">(+ 5,000 گەهاندن)</span></div>
+                        <div class="product-price">15,000 <span data-key="currency">د.ع</span> <span style="font-size: 12px; color: #94a3b8;" data-key="deliv_tag">(+ 5,000 گەهاندن)</span></div>
 
                         <div class="order-form">
                             <div class="form-group"><label data-key="lbl_name">ناوێ تەمام:</label><input type="text" id="cust-name-4" placeholder="..."></div>
@@ -650,7 +791,7 @@
                             <div class="form-group">
                                 <label data-key="lbl_city">پارێزگەهـ:</label>
                                 <select id="cust-city-4">
-                                    <option value="دهوك">دهۆک</option><option value="أربيل">هەولێر</option><option value="سليمانية">سلێمانی</option><option value="كركوك">کەرکووک</option><option value="بغداد">بەغدا</option>
+                                    <option value="دهوك">دهۆک / Duhok</option><option value="أربيل">هەولێر / Erbil</option><option value="سليمانية">سلێمانی / Sulaymaniyah</option><option value="كركوك">کەرکووک / Kirkuk</option><option value="بغداد">بەغدا / Baghdad</option>
                                 </select>
                             </div>
                             <div class="form-group"><label data-key="lbl_address">ناونیشان / تاخ / جادە:</label><input type="text" id="cust-address-4" placeholder="..."></div>
@@ -660,7 +801,7 @@
                             </div>
                             <div class="price-summary">
                                 <div class="price-row"><span data-key="sum_price">نرخ:</span><span id="price-display-4">15,000 د.ع</span></div>
-                                <div class="price-row"><span data-key="sum_deliv">گەهاندن:</span><span>5,000 د.ع</span></div>
+                                <div class="price-row"><span data-key="sum_deliv">گەهاندن:</span><span data-key="deliv_val">5,000 د.ع</span></div>
                                 <div class="price-row total"><span data-key="sum_total">کۆمێ گشتی:</span><span id="total-display-4">20,000 د.ع</span></div>
                             </div>
                             <button onclick="sendOrder4()" class="btn-order"><i class="fa-brands fa-whatsapp"></i> <span data-key="btn_order">ناردنا داواکاریێ ب واتساپێ</span></button>
@@ -697,8 +838,53 @@
         </div>
     </section>
 
-    <!-- 5. بەشێ دبارەیا مەدا -->
-    <section class="section-block bg-dark-1" id="about">
+    <!-- 5. بەشێ پرسیارێن بەربەڵاڤ (FAQ) -->
+    <section class="section-block bg-dark-1" id="faq">
+        <div class="container">
+            <h2 class="section-title" data-key="nav_faq">پرسیارێن بەربەڵاڤ</h2>
+            <div class="faq-container">
+                <div class="faq-item">
+                    <button class="faq-question" onclick="toggleFaq(this)">
+                        <span data-key="q1_txt">گەهاندن بۆ کیژ پارێزگەهان هەیە و چەند کووژمە؟</span>
+                        <i class="fa-solid fa-chevron-down"></i>
+                    </button>
+                    <div class="faq-answer" data-key="a1_txt">
+                        گەهاندن بۆ هەمی پارێزگەهێن عیراقێ و هەرێما کوردستانێ هەیە و نرخێ گەهاندنێ تەنها ٥,٠٠٠ دینارە بۆ هەمی شوێنان.
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <button class="faq-question" onclick="toggleFaq(this)">
+                        <span data-key="q2_txt">گەهاندن چەند ڕۆژان دکێشێت بۆ گەهشتنێ؟</span>
+                        <i class="fa-solid fa-chevron-down"></i>
+                    </button>
+                    <div class="faq-answer" data-key="a2_txt">
+                        داواکارییا تە د ماوێ ١ بۆ ٢ ڕۆژێن کاری دا ل بەر دەرگەهێ مالا تە دێ هێتە ڕادەستکرن.
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <button class="faq-question" onclick="toggleFaq(this)">
+                        <span data-key="q3_txt">ئایا ئەز دشێم بەرهەمی ببینم بەری پارەی بدم؟</span>
+                        <i class="fa-solid fa-chevron-down"></i>
+                    </button>
+                    <div class="faq-answer" data-key="a3_txt">
+                        بەڵێ ب بێگومان! مافێ تە یە ل دەمێ گەهشتنا مەندۆبێ گەهاندنێ بەرهەمی پشکنین بکەی و پاشان پارەی ڕادەست بکەی.
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <button class="faq-question" onclick="toggleFaq(this)">
+                        <span data-key="q4_txt">ئەگەر ئاریشەیەک یان کێشەیەک د بەرهەمی دا هەبۆ چ دبی؟</span>
+                        <i class="fa-solid fa-chevron-down"></i>
+                    </button>
+                    <div class="faq-answer" data-key="a4_txt">
+                        مە گەرەنتیا تەواو ل سەر بەرهەمان هەیە. هەگەر هەر کێشەیەک هەبۆ، بتنێ ب واتساپێ پەیوەندیێ ب مە بکه و ڕاستەوخۆ دێ بەرهەم بۆ تە هێتە گۆڕین.
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 6. بەشێ دبارەیا مەدا -->
+    <section class="section-block bg-dark-2" id="about">
         <div class="container">
             <h2 class="section-title" data-key="nav_about">دبارەیا مەدا</h2>
             <div style="text-align: center; color: #94a3b8; max-width: 800px; margin: 0 auto;" data-key="about_desc">
@@ -781,9 +967,14 @@
             document.getElementById('floatingLangMenu').classList.toggle('show');
         }
 
+        function toggleFaq(button) {
+            const faqItem = button.parentElement;
+            faqItem.classList.toggle('active');
+        }
+
         document.addEventListener('click', function() {
             const menu = document.getElementById('floatingLangMenu');
-            if (menu.classList.contains('show')) menu.classList.remove('show');
+            if (menu && menu.classList.contains('show')) menu.classList.remove('show');
         });
 
         function selectLang(lang, flagHtml) {
@@ -801,65 +992,101 @@
             });
         }
 
-        // وەرگێڕانا زاراڤێ بادینی یێ پڕاوپڕ
         const translations = {
             ku: {
-                nav_social: "پەیجێن مە", nav_products: "بەرهەمێن مە", nav_videos: "ڤیدیۆیێن مە", nav_features: "تایبەتمەندی", nav_about: "دبارەیا مەدا",
+                nav_social: "پەیجێن مە", nav_products: "بەرهەمێن مە", nav_videos: "ڤیدیۆیێن مە", nav_features: "تایبەتمەندی", nav_faq: "پرسیارێن بەربەڵاڤ", nav_about: "دبارەیا مەدا",
                 hero_title: "KD SHOP - جهێ تە یێ ئێکێ بۆ کەرەستێن تەخییمێ", hero_desc: "ئینانا ڕاستەوخۆ ژ چینێ بۆ عیراقێ | بازرگانیا کۆم و تا ب باشترین کوالیتی و نرخ",
+                t1_title: "پارەدان ل دەمێ وەرگرتنێ", t1_desc: "بەری وەرگرتنا بەرهەمی تو چ پارەی نادەی",
+                t2_title: "مافێ پشکنینێ", t2_desc: "تو دشێی بەرهەمی پشکنین بکەی بەری بکی",
+                t3_title: "گەرەنتیا گۆڕینێ", t3_desc: "دروستکرنا ئاریشەیێ دێ ڕاستەوخۆ هێتە گۆڕین",
+                t4_title: "گەهاندنا خێرا", t4_desc: "گەهاندن بۆ هەمی پارێزگەهێن عیراقێ",
                 social_title: "مە ل تۆڕێن کۆمەڵایەتی بپەیڕەوە", products_title: "کۆمەڵا خێمە و کەرەستان",
                 p1_badge: "🔥 زۆرترین فرۆشراو", p1_title: "خێما خێزانی یا فاخڕ",
-                p2_badge: "⚡ ڤەکرنا خێرا (کێمتر ژ ١٠ چڕکان)", p2_title: "خێما ئۆتۆماتیکی (مۆدێل دینار)", p2_doors: "دیزاین: ٢ دەرگەهـ + ٤ پەنجەرە", p2_mesh: "تۆر (تول): بۆ ڕێگریکرن ل حەشەراتان",
-                p3_badge: "⚡ ڤەکرنا خێرا | ئابووری", p3_title: "خێما ئۆتۆماتیکی سادە (2x2m)", p3_cap: "جهـ: بۆ ٤ تا ٦ کەسان",
-                p4_badge: "🪵🔥 زۆر قایم و دژی ئاڤێ", p4_title: "جانتا هه‌لگرتنا داران و کەرەستان", p4_vol: "حەجم: 35L",
-                spec_size: "قیاس:", spec_fabric: "قوماش:", spec_features: "تایبەتمەندی:", spec_height: "بەرزیا:", deliv_tag: "(+ 5,000 گەهاندن)",
+                p1_s1: "قیاس: 330 X 210 X 180 cm", p1_s2: "قوماش: أكسفورد D210 یێ فاخر", p1_s3: "تایبەتمەندی: دژی ئاڤ و بارانێ",
+                p2_badge: "⚡ ڤەکرنا خێرا (کێمتر ژ ١٠ چڕکان)", p2_title: "خێما ئۆتۆماتیکی (مۆدێل دینار)", 
+                p2_s1: "قیاس: 280 cm | بەرزیا: 165 cm", p2_s2: "دیزاین: ٢ دەرگەهـ + ٤ پەنجەرە", p2_s3: "تۆر (تول): بۆ ڕێگریکرن ل حەشەراتان",
+                p3_badge: "⚡ ڤەکرنا خێرا | ئابووری", p3_title: "خێما ئۆتۆماتیکی سادە (2x2m)", 
+                p3_s1: "جهـ: بۆ ٤ تا ٦ کەسان", p3_s2: "قیاس: 2m X 2m", p3_s3: "تایبەتمەندی: دژی ئاڤ و بارانێ",
+                p4_badge: "🪵🔥 زۆر قایم و دژی ئاڤێ", p4_title: "جانتا هه‌لگرتنا داران و کەرەستان", 
+                p4_s1: "قیاس: 99 × 48 cm | حەجم: 35L", p4_s2: "قوماش: زۆر محکم و دژی ئاڤ و شێیێ",
+                currency: "د.ع", deliv_tag: "(+ 5,000 گەهاندن)", deliv_val: "5,000 د.ع",
                 lbl_name: "ناوێ تەمام:", lbl_phone: "ژمارا تەلەفۆنێ:", lbl_city: "پارێزگەهـ:", lbl_address: "ناونیشان / تاخ / جادە:", lbl_qty: "ژمارا داواکری:",
                 sum_price: "نرخ:", sum_deliv: "گەهاندن:", sum_total: "کۆمێ گشتی:", btn_order: "ناردنا داواکاریێ ب واتساپێ",
                 vid_title: "نیشاندانا خێما KD قیاس 2x2m", feat_title: "بۆچی بەرهەمێن مە هەڵبژێری؟",
                 f1_t: "کوالیتییا بەرز", f1_d: "جۆرێن جۆراوجۆر ێن خێمان بۆ خێزان و کەسان ب کوالیتییا بەرز.",
                 f2_t: "دژی ئاڤێ", f2_d: "قوماشێ زۆر محکم و بەرهەنگار بۆ کەشوهەوایێ بارانێ.",
                 f3_t: "کۆم و تا", f3_d: "فرۆشتن بۆ دوکانان، بازرگانان و داواکاریێن کەسی.",
+                q1_txt: "گەهاندن بۆ کیژ پارێزگەهان هەیە و چەند کووژمە؟", a1_txt: "گەهاندن بۆ هەمی پارێزگەهێن عیراقێ و هەرێما کوردستانێ هەیە و نرخێ گەهاندنێ تەنها ٥,٠٠٠ دینارە بۆ هەمی شوێنان.",
+                q2_txt: "گەهاندن چەند ڕۆژان دکێشێت بۆ گەهشتنێ؟", a2_txt: "داواکارییا تە د ماوێ ١ بۆ ٢ ڕۆژێن کاری دا ل بەر دەرگەهێ مالا تە دێ هێتە ڕادەستکرن.",
+                q3_txt: "ئایا ئەز دشێم بەرهەمی ببینم بەری پارەی بدم؟", a3_txt: "بەڵێ ب بێگومان! مافێ تە یە ل دەمێ گەهشتنا مەندۆبێ گەهاندنێ بەرهەمی پشکنین بکەی و پاشان پارەی ڕادەست بکەی.",
+                q4_txt: "ئەگەر ئاریشەیەک یان کێشەیەک د بەرهەمی دا هەبۆ چ دبی؟", a4_txt: "مە گەرەنتیا تەواو ل سەر بەرهەمان هەیە. هەگەر هەر کێشەیەک هەبۆ، بتنێ ب واتساپێ پەیوەندیێ ب مە بکه و ڕاستەوخۆ دێ بەرهەم بۆ تە هێتە گۆڕین.",
                 about_desc: "ئەم تایبەتمەندین د ئینانا نووترین و باشترین کەرەستێن تەخییم و سەیرانان ڕاستەوخۆ ژ چینێ بۆ عیراقێ. مە بەرهەمێن کوالیتی بەرز بۆ دوکان و کەسان هەنە ب نرخێن کێبڕکێکار."
             },
             ar: {
-                nav_social: "صفحاتنا", nav_products: "منتجاتنا", nav_videos: "فيديوهاتنا", nav_features: "مميزاتنا", nav_about: "من نحن",
+                nav_social: "صفحاتنا", nav_products: "منتجاتنا", nav_videos: "فيديوهاتنا", nav_features: "مميزاتنا", nav_faq: "الأسئلة الشائعة", nav_about: "من نحن",
                 hero_title: "KD SHOP - وجهتك الأولى لمعدات التخييم", hero_desc: "استيراد مباشر من الصين إلى العراق | تجارة الجملة والمفرد بأعلى جودة وأفضل الأسعار",
+                t1_title: "الدفع عند الاستلام", t1_desc: "لا تدفع أي مبلغ حتى تستلم منتجك",
+                t2_title: "حق المعاينة", t2_desc: "يمكنك فحص المنتج قبل إتمام الدفع",
+                t3_title: "ضمان الاستبدال", t3_desc: "استبدال مباشر في حال وجود أي عيب",
+                t4_title: "توصيل سريع", t4_desc: "شحن لكافة محافظات العراق",
                 social_title: "تابعنا على وسائل التواصل الاجتماعي", products_title: "تشكيلة الخيم والمعدات",
                 p1_badge: "🔥 الأكثر مبيعاً", p1_title: "خيمة عائلية فاخرة",
-                p2_badge: "⚡ فتح سريع (أقل من 10 ثواني)", p2_title: "خيمة أوتوماتيكية (موديل دينار)", p2_doors: "التصميم: 2 باب + 4 شبابيك", p2_mesh: "الوقاية: تور لمنع الحشرات",
-                p3_badge: "⚡ فتح سريع | اقتصادية", p3_title: "خيمة أوتوماتيكية سريعة الفتح (2x2m)", p3_cap: "السعة: 4 إلى 6 أشخاص",
-                p4_badge: "🪵🔥 متينة ومقاومة للماء", p4_title: "حقيبة حمل الحطب والمعدات", p4_vol: "السعة: 35 لتر",
-                spec_size: "القياس:", spec_fabric: "القماش:", spec_features: "المميزات:", spec_height: "الارتفاع:", deliv_tag: "(+ 5,000 التوصيل)",
+                p1_s1: "القياس: 330 X 210 X 180 cm", p1_s2: "القماش: أكسفورد D210 فاخر", p1_s3: "المميزات: مقاوم للماء والمطر",
+                p2_badge: "⚡ فتح سريع (أقل من 10 ثواني)", p2_title: "خيمة أوتوماتيكية (موديل دينار)", 
+                p2_s1: "القياس: 280 cm | الارتفاع: 165 cm", p2_s2: "التصميم: 2 باب + 4 شبابيك", p2_s3: "الوقاية: تور لمنع الحشرات",
+                p3_badge: "⚡ فتح سريع | اقتصادية", p3_title: "خيمة أوتوماتيكية سريعة الفتح (2x2m)", 
+                p3_s1: "السعة: 4 إلى 6 أشخاص", p3_s2: "القياس: 2m X 2m", p3_s3: "المميزات: مقاوم للماء والمطر",
+                p4_badge: "🪵🔥 متينة ومقاومة للماء", p4_title: "حقيبة حمل الحطب والمعدات", 
+                p4_s1: "القياس: 99 × 48 cm | السعة: 35 لتر", p4_s2: "القماش: متين ومقاوم للماء والكرطوبة",
+                currency: "د.ع", deliv_tag: "(+ 5,000 التوصيل)", deliv_val: "5,000 د.ع",
                 lbl_name: "الاسم الكامل:", lbl_phone: "رقم الهاتف:", lbl_city: "المحافظة:", lbl_address: "العنوان التفصيلي / الشارع:", lbl_qty: "العدد المطلوب:",
                 sum_price: "السعر:", sum_deliv: "التوصيل:", sum_total: "المجموع الكلي:", btn_order: "إرسال الطلب عبر واتساب",
                 vid_title: "عرض خيمة KD قياس 2x2m", feat_title: "لماذا تختار منتجاتنا؟",
                 f1_t: "خيم عالية الجودة", f1_d: "تشكيلة واسعة من الخيم العائلية والفردية المقاومة للظروف الجوية.",
                 f2_t: "أقمشة مقاومة للماء", f2_d: "خامات متينة وقماش ممتاز مقاوم لمختلف الظروف الجوية والمطر.",
                 f3_t: "جملة ومفرد", f3_d: "خيارات البيع للمحلات والتجار بالإضافة إلى الطلبات الشخصية.",
+                q1_txt: "ما هي المحافظات المشمولة بالتوصيل وما هي التكلفة؟", a1_txt: "التوصيل متاح لكافة محافظات العراق وإقليم كردستان بتكلفة ثابتة قدرها 5,000 دينار فقط.",
+                q2_txt: "كم يستغرق التوصيل للوصول إلى عنواني؟", a2_txt: "يصلك الطلب خلال 1 إلى 2 يوم عمل فقط حتى باب منزلك.",
+                q3_txt: "هل يمكنني معاينة المنتج قبل الدفع؟", a3_txt: "نعم بالتأكيد! يحق لك فحص المنتج مع مندوب التوصيل قبل دفع المبلغ.",
+                q4_txt: "ماذا أوفعل إذا كان هناك عيب أو مشكلة في المنتج؟", a4_txt: "منتجاتنا مشمولة بالضمان الكامل، في حال وجود أي مشكلة تواصل معنا عبر الواتساب وسنقوم باستبدال المنتج مباشرة.",
                 about_desc: "نحن متخصصون في استيراد أحدث وأفضل مستلزمات التخييم والرحلات مباشرة من الصين إلى العراق. نوفر الخيم ومعدات الرحلات للمتاجر والأفراد بأسعار تنافسية وجودة مضمونة."
             },
             en: {
-                nav_social: "Socials", nav_products: "Products", nav_videos: "Videos", nav_features: "Features", nav_about: "About Us",
+                nav_social: "Socials", nav_products: "Products", nav_videos: "Videos", nav_features: "Features", nav_faq: "FAQ", nav_about: "About Us",
                 hero_title: "KD SHOP - Your #1 Camping Equipment Destination", hero_desc: "Direct imports from China to Iraq | Wholesale & Retail with top quality & best prices",
+                t1_title: "Cash on Delivery", t1_desc: "Pay only when you receive your item",
+                t2_title: "Inspection Right", t2_desc: "Inspect product quality before payment",
+                t3_title: "Replacement Guarantee", t3_desc: "Instant exchange in case of defects",
+                t4_title: "Fast Shipping", t4_desc: "Fast delivery across all of Iraq",
                 social_title: "Follow Us On Social Media", products_title: "Tents & Gear Collection",
                 p1_badge: "🔥 Best Seller", p1_title: "Luxury Family Tent",
-                p2_badge: "⚡ Fast Setup (< 10s)", p2_title: "Automatic Tent (Dinar Model)", p2_doors: "Design: 2 Doors + 4 Windows", p2_mesh: "Protection: Anti-bug Mesh",
-                p3_badge: "⚡ Quick Setup | Budget", p3_title: "Automatic Pop-Up Tent (2x2m)", p3_cap: "Capacity: 4 to 6 Persons",
-                p4_badge: "🪵🔥 Heavy-Duty & Waterproof", p4_title: "Firewood & Gear Carrying Bag", p4_vol: "Capacity: 35L",
-                spec_size: "Size:", spec_fabric: "Fabric:", spec_features: "Features:", spec_height: "Height:", deliv_tag: "(+ 5,000 Delivery)",
+                p1_s1: "Size: 330 X 210 X 180 cm", p1_s2: "Fabric: Premium Oxford D210", p1_s3: "Features: Waterproof & Rainproof",
+                p2_badge: "⚡ Fast Setup (< 10s)", p2_title: "Automatic Tent (Dinar Model)", 
+                p2_s1: "Size: 280 cm | Height: 165 cm", p2_s2: "Design: 2 Doors + 4 Windows", p2_s3: "Protection: Anti-bug Mesh",
+                p3_badge: "⚡ Quick Setup | Budget", p3_title: "Automatic Pop-Up Tent (2x2m)", 
+                p3_s1: "Capacity: 4 to 6 Persons", p3_s2: "Size: 2m X 2m", p3_s3: "Features: Waterproof & Rainproof",
+                p4_badge: "🪵🔥 Heavy-Duty & Waterproof", p4_title: "Firewood & Gear Carrying Bag", 
+                p4_s1: "Size: 99 × 48 cm | Capacity: 35L", p4_s2: "Fabric: Heavy Duty & Moisture-proof",
+                currency: "IQD", deliv_tag: "(+ 5,000 Delivery)", deliv_val: "5,000 IQD",
                 lbl_name: "Full Name:", lbl_phone: "Phone Number:", lbl_city: "City / Governorate:", lbl_address: "Detailed Address / Street:", lbl_qty: "Quantity:",
                 sum_price: "Price:", sum_deliv: "Delivery:", sum_total: "Grand Total:", btn_order: "Order via WhatsApp",
                 vid_title: "KD Tent Demo 2x2m", feat_title: "Why Choose Our Products?",
                 f1_t: "Top Quality Tents", f1_d: "Wide range of weather-resistant family and personal tents.",
                 f2_t: "Waterproof Fabric", f2_d: "Durable and premium materials designed to handle heavy rain.",
                 f3_t: "Wholesale & Retail", f3_d: "Options for shops, business owners, and personal orders.",
+                q1_txt: "Which areas do you deliver to and how much is shipping?", a1_txt: "We deliver to all governorates in Iraq & Kurdistan Region for a flat rate of 5,000 IQD.",
+                q2_txt: "How long does shipping take?", a2_txt: "Your order will be delivered to your doorstep within 1 to 2 business days.",
+                q3_txt: "Can I inspect the product before paying?", a3_txt: "Yes, absolutely! You have full right to inspect the item before making payment.",
+                q4_txt: "What happens if there is a defect in the product?", a4_txt: "Our products come with replacement guarantee. Contact us via WhatsApp for instant replacement.",
                 about_desc: "We specialize in importing premium camping gear directly from China to Iraq. Offering high-grade products for stores and individuals at competitive prices."
             }
         };
 
         function calculateTotal1() {
             const qty = parseInt(document.getElementById('cust-qty-1').value);
-            document.getElementById('price-display-1').innerText = (qty * 150000).toLocaleString() + " د.ع";
-            document.getElementById('total-display-1').innerText = ((qty * 150000) + 5000).toLocaleString() + " د.ع";
+            const curr = document.documentElement.lang === 'en' ? 'IQD' : 'د.ع';
+            document.getElementById('price-display-1').innerText = (qty * 150000).toLocaleString() + " " + curr;
+            document.getElementById('total-display-1').innerText = ((qty * 150000) + 5000).toLocaleString() + " " + curr;
         }
         function sendOrder1() {
             const name = document.getElementById('cust-name-1').value;
@@ -875,8 +1102,9 @@
 
         function calculateTotal2() {
             const qty = parseInt(document.getElementById('cust-qty-2').value);
-            document.getElementById('price-display-2').innerText = (qty * 80000).toLocaleString() + " د.ع";
-            document.getElementById('total-display-2').innerText = ((qty * 80000) + 5000).toLocaleString() + " د.ع";
+            const curr = document.documentElement.lang === 'en' ? 'IQD' : 'د.ع';
+            document.getElementById('price-display-2').innerText = (qty * 80000).toLocaleString() + " " + curr;
+            document.getElementById('total-display-2').innerText = ((qty * 80000) + 5000).toLocaleString() + " " + curr;
         }
         function sendOrder2() {
             const name = document.getElementById('cust-name-2').value;
@@ -892,8 +1120,9 @@
 
         function calculateTotal3() {
             const qty = parseInt(document.getElementById('cust-qty-3').value);
-            document.getElementById('price-display-3').innerText = (qty * 50000).toLocaleString() + " د.ع";
-            document.getElementById('total-display-3').innerText = ((qty * 50000) + 5000).toLocaleString() + " د.ع";
+            const curr = document.documentElement.lang === 'en' ? 'IQD' : 'د.ع';
+            document.getElementById('price-display-3').innerText = (qty * 50000).toLocaleString() + " " + curr;
+            document.getElementById('total-display-3').innerText = ((qty * 50000) + 5000).toLocaleString() + " " + curr;
         }
         function sendOrder3() {
             const name = document.getElementById('cust-name-3').value;
@@ -909,8 +1138,9 @@
 
         function calculateTotal4() {
             const qty = parseInt(document.getElementById('cust-qty-4').value);
-            document.getElementById('price-display-4').innerText = (qty * 15000).toLocaleString() + " د.ع";
-            document.getElementById('total-display-4').innerText = ((qty * 15000) + 5000).toLocaleString() + " د.ع";
+            const curr = document.documentElement.lang === 'en' ? 'IQD' : 'د.ع';
+            document.getElementById('price-display-4').innerText = (qty * 15000).toLocaleString() + " " + curr;
+            document.getElementById('total-display-4').innerText = ((qty * 15000) + 5000).toLocaleString() + " " + curr;
         }
         function sendOrder4() {
             const name = document.getElementById('cust-name-4').value;
