@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html lang="ar" dir="rtl">
+<html lang="ku" dir="rtl">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>KD SHOP - معدات ومستلزمات التخييم في العراق</title>
+    <title>KD SHOP - كەرەستێن تەخییمێ ل عیراقێ</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         :root {
@@ -47,6 +47,7 @@
             z-index: 1000;
             backdrop-filter: blur(12px);
             border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+            padding: 12px 0;
         }
 
         .navbar {
@@ -55,7 +56,7 @@
             align-items: center;
             max-width: 1200px;
             margin: 0 auto;
-            padding: 12px 15px;
+            padding: 0 15px;
             gap: 12px;
         }
 
@@ -105,33 +106,118 @@
             text-shadow: 0 0 10px var(--accent-color);
         }
 
+        /* دوگمەیا بازنەیی یا زمانان وەکی دوگمەیا واتساپێ ل خوارێ */
+        .floating-lang-container {
+            position: fixed;
+            bottom: 25px;
+            right: 25px;
+            z-index: 1000;
+        }
+
+        .floating-lang-btn {
+            background: #121824;
+            border: 2px solid var(--accent-color);
+            color: white;
+            width: 55px;
+            height: 55px;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            cursor: pointer;
+            box-shadow: 0 0 20px rgba(0, 210, 255, 0.5);
+            transition: all 0.3s;
+        }
+
+        .floating-lang-btn:hover {
+            transform: scale(1.08);
+            box-shadow: 0 0 25px rgba(0, 210, 255, 0.8);
+        }
+
+        .lang-menu-floating {
+            display: none;
+            position: absolute;
+            bottom: 65px;
+            right: 0;
+            background: #121824;
+            border: 1px solid rgba(0, 210, 255, 0.4);
+            border-radius: 18px;
+            padding: 8px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.9);
+            min-width: 130px;
+            flex-direction: column;
+            gap: 6px;
+        }
+
+        .lang-menu-floating.show {
+            display: flex;
+        }
+
+        .lang-option-btn {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            background: transparent;
+            border: none;
+            color: #cbd5e1;
+            padding: 8px 12px;
+            border-radius: 12px;
+            cursor: pointer;
+            font-size: 13px;
+            font-weight: 600;
+            width: 100%;
+            transition: all 0.2s;
+        }
+
+        .lang-option-btn:hover {
+            background: rgba(0, 210, 255, 0.15);
+            color: var(--accent-color);
+        }
+
+        .kurdistan-flag {
+            width: 18px;
+            height: 12px;
+            border-radius: 2px;
+            display: inline-block;
+            background: linear-gradient(to bottom, #E4002B 33.3%, #FFFFFF 33.3%, #FFFFFF 66.6%, #008751 66.6%);
+            position: relative;
+        }
+
+        .kurdistan-flag::after {
+            content: '☀️';
+            font-size: 7px;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            line-height: 1;
+        }
+
         .hero {
             background: linear-gradient(rgba(8, 12, 20, 0.75), rgba(8, 12, 20, 0.98)), 
                         url('https://images.unsplash.com/photo-1504280390367-361c6d9f38f4?auto=format&fit=crop&w=1350&q=80') center/cover;
             color: white;
             text-align: center;
-            padding: 90px 20px 60px;
+            padding: 80px 20px 50px;
             position: relative;
             z-index: 2;
         }
 
         .hero h1 {
-            font-size: 34px;
+            font-size: 32px;
             margin-bottom: 15px;
             line-height: 1.3;
-            text-shadow: 0 0 20px rgba(0,0,0,0.9);
             background: linear-gradient(180deg, #ffffff, #cbd5e1);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
         }
 
         .hero p {
-            font-size: 17px;
+            font-size: 16px;
             max-width: 650px;
             margin-left: auto;
             margin-right: auto;
             color: #94a3b8;
-            line-height: 1.6;
         }
 
         .section-block {
@@ -144,18 +230,14 @@
         .bg-dark-1 { background-color: #080c14; }
         .bg-dark-2 { background-color: #0c121e; }
 
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-        }
+        .container { max-width: 1200px; margin: 0 auto; }
 
         .section-title {
             text-align: center;
-            font-size: 28px;
+            font-size: 26px;
             color: #ffffff;
             margin-bottom: 35px;
             position: relative;
-            letter-spacing: 0.5px;
         }
 
         .section-title::after {
@@ -166,12 +248,11 @@
             display: block;
             margin: 10px auto 0;
             border-radius: 2px;
-            box-shadow: 0 0 10px var(--accent-color);
         }
 
         .grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(290px, 1fr));
             gap: 25px;
         }
 
@@ -188,7 +269,7 @@
         .slider-container {
             position: relative;
             width: 100%;
-            height: 360px;
+            height: 340px;
             background-color: #05080f;
             overflow: hidden;
         }
@@ -201,9 +282,7 @@
             background-color: #05080f;
         }
 
-        .slider-item.active {
-            display: block;
-        }
+        .slider-item.active { display: block; }
 
         .slider-btn {
             position: absolute;
@@ -217,16 +296,13 @@
             border-radius: 50%;
             font-size: 16px;
             z-index: 10;
-            transition: all 0.3s;
-        }
-
-        .slider-btn:hover {
-            background: var(--accent-color);
-            color: black;
         }
 
         .prev-btn { right: 10px; }
         .next-btn { left: 10px; }
+
+        [dir="ltr"] .prev-btn { right: auto; left: 10px; }
+        [dir="ltr"] .next-btn { left: auto; right: 10px; }
 
         .slider-counter {
             position: absolute;
@@ -234,7 +310,6 @@
             left: 50%;
             transform: translateX(-50%);
             background: rgba(0,0,0,0.85);
-            border: 1px solid rgba(255,255,255,0.1);
             color: #fff;
             padding: 3px 12px;
             border-radius: 12px;
@@ -249,11 +324,9 @@
             text-align: right;
         }
 
-        .product-info h3 {
-            color: #ffffff;
-            font-size: 20px;
-            margin-bottom: 8px;
-        }
+        [dir="ltr"] .product-info { text-align: left; }
+
+        .product-info h3 { color: #ffffff; font-size: 19px; margin-bottom: 8px; }
 
         .product-badge {
             display: inline-block;
@@ -275,23 +348,14 @@
             font-size: 13px;
         }
 
-        .product-specs li {
-            margin-bottom: 6px;
-            display: flex;
-            align-items: center;
-            gap: 8px;
-        }
-
-        .product-specs i {
-            color: var(--accent-color);
-        }
+        .product-specs li { margin-bottom: 6px; display: flex; align-items: center; gap: 8px; }
+        .product-specs i { color: var(--accent-color); }
 
         .product-price {
             font-size: 22px;
             font-weight: bold;
             color: #00ff88;
             margin-bottom: 15px;
-            text-shadow: 0 0 10px rgba(0, 255, 136, 0.3);
         }
 
         .order-form {
@@ -302,18 +366,8 @@
             margin-top: 10px;
         }
 
-        .form-group {
-            margin-bottom: 12px;
-            text-align: right;
-        }
-
-        .form-group label {
-            display: block;
-            font-size: 13px;
-            color: #94a3b8;
-            margin-bottom: 5px;
-        }
-
+        .form-group { margin-bottom: 12px; }
+        .form-group label { display: block; font-size: 13px; color: #94a3b8; margin-bottom: 5px; }
         .form-group input, .form-group select {
             width: 100%;
             padding: 10px;
@@ -334,13 +388,7 @@
             font-size: 13px;
         }
 
-        .price-row {
-            display: flex;
-            justify-content: space-between;
-            margin-bottom: 6px;
-            color: #cbd5e1;
-        }
-
+        .price-row { display: flex; justify-content: space-between; margin-bottom: 6px; color: #cbd5e1; }
         .price-row.total {
             border-top: 1px dashed rgba(255,255,255,0.2);
             padding-top: 8px;
@@ -351,80 +399,50 @@
         }
 
         .btn-order {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 8px;
-            background-color: var(--whatsapp-color);
-            color: white;
-            padding: 12px 18px;
-            border-radius: 10px;
-            text-decoration: none;
-            font-weight: bold;
-            font-size: 15px;
-            border: none;
-            cursor: pointer;
-            width: 100%;
-            transition: background 0.3s;
-            box-shadow: 0 4px 15px rgba(37, 211, 102, 0.3);
+            display: flex; align-items: center; justify-content: center; gap: 8px;
+            background-color: var(--whatsapp-color); color: white; padding: 12px 18px;
+            border-radius: 10px; text-decoration: none; font-weight: bold; font-size: 15px;
+            border: none; cursor: pointer; width: 100%; transition: background 0.3s;
         }
 
         .btn-order:hover { background-color: #1ebd59; }
 
         .card {
-            background: var(--card-bg);
-            border-radius: 16px;
-            overflow: hidden;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.4);
-            text-align: center;
-            padding: 30px 20px;
-            border: 1px solid rgba(255, 255, 255, 0.05);
+            background: var(--card-bg); border-radius: 16px; text-align: center;
+            padding: 30px 20px; border: 1px solid rgba(255, 255, 255, 0.05);
         }
+        .card i { font-size: 40px; color: var(--accent-color); margin-bottom: 15px; }
+        .card h3 { margin-bottom: 10px; color: #ffffff; font-size: 18px; }
+        .card p { color: #94a3b8; font-size: 13px; }
 
-        .card i { font-size: 45px; color: var(--accent-color); margin-bottom: 18px; }
-        .card h3 { margin-bottom: 12px; color: #ffffff; font-size: 19px; }
-        .card p { color: #94a3b8; font-size: 14px; }
-
-        .video-container { max-width: 750px; margin: 0 auto; }
         .video-card {
-            background: var(--card-bg);
-            border-radius: 16px;
-            overflow: hidden;
-            box-shadow: 0 12px 35px rgba(0,0,0,0.5);
-            text-align: center;
-            padding-bottom: 18px;
-            border: 1px solid rgba(255, 255, 255, 0.08);
+            background: var(--card-bg); border-radius: 16px; overflow: hidden;
+            text-align: center; padding-bottom: 15px; border: 1px solid rgba(255, 255, 255, 0.08);
+            max-width: 700px; margin: 0 auto;
         }
+        .video-card video { width: 100%; max-height: 400px; background: #000; }
+        .video-card h4 { margin: 15px 0 5px; color: #ffffff; }
 
-        .video-card video { width: 100%; max-height: 420px; background-color: #000; }
-        .video-card h4 { margin: 18px 0 5px; color: #ffffff; font-size: 19px; }
-
-        .social-links { display: flex; justify-content: center; gap: 15px; margin-top: 25px; flex-wrap: wrap; }
+        .social-links { display: flex; justify-content: center; gap: 15px; margin-top: 20px; flex-wrap: wrap; }
         .social-btn {
-            display: flex; align-items: center; gap: 10px; padding: 12px 25px; border-radius: 50px;
-            color: white; text-decoration: none; font-weight: bold; font-size: 15px; transition: all 0.3s;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+            display: flex; align-items: center; gap: 10px; padding: 10px 22px;
+            border-radius: 50px; color: white; text-decoration: none; font-weight: bold; font-size: 14px;
         }
-
         .facebook { background-color: #1877f2; }
         .instagram { background: linear-gradient(45deg, #f09433, #e6683c, #dc2743, #cc2366, #bc1888); }
         .tiktok { background-color: #111111; border: 1px solid #333; }
 
         .floating-whatsapp {
             position: fixed; bottom: 25px; left: 25px; background-color: var(--whatsapp-color); color: white;
-            width: 60px; height: 60px; border-radius: 50%; display: flex; justify-content: center; align-items: center;
-            font-size: 32px; box-shadow: 0 0 20px rgba(37, 211, 102, 0.6); text-decoration: none; z-index: 1000;
+            width: 55px; height: 55px; border-radius: 50%; display: flex; justify-content: center; align-items: center;
+            font-size: 30px; box-shadow: 0 0 20px rgba(37, 211, 102, 0.6); text-decoration: none; z-index: 1000;
         }
 
-        footer {
-            background-color: #020305; color: #64748b; text-align: center; padding: 22px; font-size: 13px;
-            border-top: 1px solid rgba(255, 255, 255, 0.05);
-        }
+        footer { background-color: #020305; color: #64748b; text-align: center; padding: 20px; font-size: 13px; }
 
         @media (min-width: 769px) {
             .navbar { flex-direction: row; justify-content: space-between; }
             .nav-links { width: auto; }
-            .hero h1 { font-size: 42px; }
         }
     </style>
 </head>
@@ -434,249 +452,218 @@
 
     <header>
         <div class="navbar">
-            <a href="#" class="logo">
-                <i class="fa-solid fa-campground"></i> KD SHOP
-            </a>
+            <a href="#" class="logo"><i class="fa-solid fa-campground"></i> KD SHOP</a>
             <ul class="nav-links">
-                <li><a href="#social">صفحاتنا</a></li>
-                <li><a href="#products">منتجاتنا</a></li>
-                <li><a href="#videos">فيديوهاتنا</a></li>
-                <li><a href="#features">مميزاتنا</a></li>
-                <li><a href="#about">من نحن</a></li>
+                <li><a href="#social" data-key="nav_social">پەیجێن مە</a></li>
+                <li><a href="#products" data-key="nav_products">بەرهەمێن مە</a></li>
+                <li><a href="#videos" data-key="nav_videos">ڤیدیۆیێن مە</a></li>
+                <li><a href="#features" data-key="nav_features">تایبەتمەندی</a></li>
+                <li><a href="#about" data-key="nav_about">دبارەیا مەدا</a></li>
             </ul>
         </div>
     </header>
 
     <section class="hero">
-        <h1>KD SHOP - وجهتك الأولى لمعدات التخييم</h1>
-        <p>استيراد مباشر من الصين إلى العراق | تجارة الجملة والمفرد بأعلى جودة وأفضل الأسعار</p>
+        <h1 data-key="hero_title">KD SHOP - جهێ تە یێ ئێکێ بۆ کەرەستێن تەخییمێ</h1>
+        <p data-key="hero_desc">ئینانا ڕاستەوخۆ ژ چینێ بۆ عیراقێ | بازرگانیا کۆم و تا ب باشترین کوالیتی و نرخ</p>
     </section>
 
     <!-- 1. بەشێ صفحاتنا -->
     <section class="section-block bg-dark-1" id="social">
         <div class="container">
-            <h2 class="section-title">تابعنا على وسائل التواصل الاجتماعي</h2>
-            <p style="text-align: center; color: #94a3b8; font-size: 15px;">اطّلع على أحدث المنتجات والعروض عبر صفحاتنا الرسمية:</p>
+            <h2 class="section-title" data-key="social_title">مە ل تۆڕێن کۆمەڵایەتی بپەیڕەوە</h2>
             <div class="social-links">
-                <a href="https://www.facebook.com/share/1BUhsUdpwj/?mibextid=wwXIfr" class="social-btn facebook" target="_blank">
-                    <i class="fa-brands fa-facebook-f"></i> Facebook
-                </a>
-                <a href="https://www.instagram.com/kd_onlinee?igsi=N2JteTd1cWlha3ls&utm_source=qr" class="social-btn instagram" target="_blank">
-                    <i class="fa-brands fa-instagram"></i> Instagram
-                </a>
-                <a href="https://www.tiktok.com/@kd.onlinee?_r=1&_t=ZS-99SpZE4fueD" class="social-btn tiktok" target="_blank">
-                    <i class="fa-brands fa-tiktok"></i> TikTok
-                </a>
+                <a href="https://www.facebook.com/share/1BUhsUdpwj/?mibextid=wwXIfr" class="social-btn facebook" target="_blank"><i class="fa-brands fa-facebook-f"></i> Facebook</a>
+                <a href="https://www.instagram.com/kd_onlinee?igsi=N2JteTd1cWlha3ls&utm_source=qr" class="social-btn instagram" target="_blank"><i class="fa-brands fa-instagram"></i> Instagram</a>
+                <a href="https://www.tiktok.com/@kd.onlinee?_r=1&_t=ZS-99SpZE4fueD" class="social-btn tiktok" target="_blank"><i class="fa-brands fa-tiktok"></i> TikTok</a>
             </div>
         </div>
     </section>
 
-    <!-- 2. بەشێ منتجاتنا -->
+    <!-- 2. بەشێ بەرهەمان -->
     <section class="section-block bg-dark-2" id="products">
         <div class="container">
-            <h2 class="section-title">تشكيلة الخيم والمعدات</h2>
+            <h2 class="section-title" data-key="products_title">کۆمەڵا خێمە و کەرەستان</h2>
             <div class="grid">
                 
-                <!-- 1. خێما العائلية -->
+                <!-- خێما 1 -->
                 <div class="product-card">
                     <div class="slider-container">
-                        <img src="tent1.jpg.jpg" class="slider-item active" alt="خيمة عائلية فاخرة">
+                        <img src="tent1.jpg.jpg" class="slider-item active" alt="خيمة عائلية">
                     </div>
                     <div class="product-info">
-                        <span class="product-badge">🔥 الأكثر مبيعاً</span>
-                        <h3>خيمة عائلية فاخرة</h3>
+                        <span class="product-badge" data-key="p1_badge">🔥 زۆرترین فرۆشراو</span>
+                        <h3 data-key="p1_title">خێما خێزانی یا فاخڕ</h3>
                         <ul class="product-specs">
-                            <li><i class="fa-solid fa-ruler-combined"></i> <strong>القياس:</strong> 330 X 210 X 180 cm</li>
-                            <li><i class="fa-solid fa-shield-halved"></i> <strong>القماش:</strong> أكسفورد D210 فاخر عالي الجودة</li>
-                            <li><i class="fa-solid fa-cloud-showers-heavy"></i> <strong>المميزات:</strong> مقاومة للماء والظروف الجوية</li>
+                            <li><i class="fa-solid fa-ruler-combined"></i> <strong data-key="spec_size">قیاس:</strong> 330 X 210 X 180 cm</li>
+                            <li><i class="fa-solid fa-shield-halved"></i> <strong data-key="spec_fabric">قوماش:</strong> أكسفورد D210 یێ فاخر</li>
+                            <li><i class="fa-solid fa-cloud-showers-heavy"></i> <strong data-key="spec_features">تایبەتمەندی:</strong> دژی ئاڤ و بارانێ</li>
                         </ul>
-                        <div class="product-price">150,000 د.ع <span style="font-size: 12px; color: #94a3b8;">(+ 5,000 التوصيل)</span></div>
+                        <div class="product-price">150,000 د.ع <span style="font-size: 12px; color: #94a3b8;" data-key="deliv_tag">(+ 5,000 گەهاندن)</span></div>
 
                         <div class="order-form">
-                            <h4 style="color: #00d2ff; margin-bottom: 10px; font-size: 14px;">نموذج الطلب المباشر:</h4>
-                            <div class="form-group"><label>الاسم الكامل:</label><input type="text" id="cust-name-1" placeholder="أدخل اسمك الكريم"></div>
-                            <div class="form-group"><label>رقم الهاتف:</label><input type="tel" id="cust-phone-1" placeholder="0750XXXXXXX"></div>
+                            <div class="form-group"><label data-key="lbl_name">ناوێ تەمام:</label><input type="text" id="cust-name-1" placeholder="..."></div>
+                            <div class="form-group"><label data-key="lbl_phone">ژمارا تەلەفۆنێ:</label><input type="tel" id="cust-phone-1" placeholder="0750XXXXXXX"></div>
                             <div class="form-group">
-                                <label>المحافظة:</label>
+                                <label data-key="lbl_city">پارێزگەهـ:</label>
                                 <select id="cust-city-1">
-                                    <option value="دهوك">دهوك</option><option value="أربيل">أربيل</option><option value="سليمانية">سليمانية</option><option value="حلبجة">حلبجة</option><option value="كركوك">كركوك</option><option value="الموصل / نينوى">الموصل / نينوى</option><option value="بغداد">بغداد</option><option value="باقي المحافظات">باقي المحافظات</option>
+                                    <option value="دهوك">دهۆک</option><option value="أربيل">هەولێر</option><option value="سليمانية">سلێمانی</option><option value="كركوك">کەرکووک</option><option value="بغداد">بەغدا</option><option value="الموصل">مووسڵ / نەینەوا</option>
                                 </select>
                             </div>
-                            <div class="form-group"><label>المنطقة / الشارع / نقطة دالة:</label><input type="text" id="cust-address-1" placeholder="مثال: زاخو / قرب جامع الكبير"></div>
+                            <div class="form-group"><label data-key="lbl_address">ناونیشان / تاخ / جادە:</label><input type="text" id="cust-address-1" placeholder="..."></div>
                             <div class="form-group">
-                                <label>العدد المطلوب:</label>
-                                <select id="cust-qty-1" onchange="calculateTotal1()">
-                                    <option value="1">1 خيمة</option><option value="2">2 خيمة</option>
-                                </select>
+                                <label data-key="lbl_qty">ژمارا داواکری:</label>
+                                <select id="cust-qty-1" onchange="calculateTotal1()"><option value="1">1</option><option value="2">2</option></select>
                             </div>
                             <div class="price-summary">
-                                <div class="price-row"><span>السعر:</span><span id="price-display-1">150,000 د.ع</span></div>
-                                <div class="price-row"><span>التوصيل:</span><span>5,000 د.ع</span></div>
-                                <div class="price-row total"><span>المجموع:</span><span id="total-display-1">155,000 د.ع</span></div>
+                                <div class="price-row"><span data-key="sum_price">نرخ:</span><span id="price-display-1">150,000 د.ع</span></div>
+                                <div class="price-row"><span data-key="sum_deliv">گەهاندن:</span><span>5,000 د.ع</span></div>
+                                <div class="price-row total"><span data-key="sum_total">کۆمێ گشتی:</span><span id="total-display-1">155,000 د.ع</span></div>
                             </div>
-                            <button onclick="sendOrder1()" class="btn-order"><i class="fa-brands fa-whatsapp"></i> إرسال الطلب عبر واتساب</button>
+                            <button onclick="sendOrder1()" class="btn-order"><i class="fa-brands fa-whatsapp"></i> <span data-key="btn_order">ناردنا داواکاریێ ب واتساپێ</span></button>
                         </div>
                     </div>
                 </div>
 
-                <!-- 2. خێما موديل دينار -->
+                <!-- خێما 2 (دينار) -->
                 <div class="product-card">
                     <div class="slider-container" id="slider-2">
                         <button class="slider-btn prev-btn" onclick="moveSlide('slider-2', -1)">&#10095;</button>
-                        <img src="dinare1.jpg" class="slider-item active" alt="خيمة دينار 1">
-                        <img src="dinare2.jpg" class="slider-item" alt="خيمة دينار 2">
-                        <video class="slider-item" controls playsinline>
-                            <source src="Dinare7.MOV" type="video/quicktime">
-                            <source src="Dinare7.MOV" type="video/mp4">
-                        </video>
-                        <img src="dinare3.jpg" class="slider-item" alt="خيمة دينار 3">
-                        <img src="dinare4.jpg" class="slider-item" alt="خيمة دينار 4">
-                        <img src="dinare5.jpg" class="slider-item" alt="خيمة دينار 5">
-                        <img src="dinare6.jpg" class="slider-item" alt="خيمة دينار 6">
+                        <img src="dinare1.jpg" class="slider-item active">
+                        <img src="dinare2.jpg" class="slider-item">
+                        <video class="slider-item" controls playsinline><source src="Dinare7.MOV" type="video/mp4"></video>
+                        <img src="dinare3.jpg" class="slider-item">
+                        <img src="dinare4.jpg" class="slider-item">
+                        <img src="dinare5.jpg" class="slider-item">
+                        <img src="dinare6.jpg" class="slider-item">
                         <button class="slider-btn next-btn" onclick="moveSlide('slider-2', 1)">&#10094;</button>
                         <div class="slider-counter">1 / 7</div>
                     </div>
 
                     <div class="product-info">
-                        <span class="product-badge">⚡ فتح سريع (أقل من 10 ثواني)</span>
-                        <h3>خيمة أوتوماتيكية (موديل دينار)</h3>
+                        <span class="product-badge" data-key="p2_badge">⚡ ڤەکرنا خێرا (کێمتر ژ ١٠ چڕکان)</span>
+                        <h3 data-key="p2_title">خێما ئۆتۆماتیکی (مۆدێل دینار)</h3>
                         <ul class="product-specs">
-                            <li><i class="fa-solid fa-ruler-combined"></i> <strong>القياس:</strong> 280 cm | <strong>الارتفاع:</strong> 165 cm</li>
-                            <li><i class="fa-solid fa-door-open"></i> <strong>التصميم:</strong> 2 باب + 4 شبابيك للتعديل والتهوية</li>
-                            <li><i class="fa-solid fa-shield-cat"></i> <strong>الوقاية:</strong> تور (تول) لكل باب وشباك لمنع الحشرات</li>
-                            <li><i class="fa-solid fa-cloud-showers-heavy"></i> <strong>القماش:</strong> أكسفورد مقاوم للمطر والثلج</li>
+                            <li><i class="fa-solid fa-ruler-combined"></i> <strong data-key="spec_size">قیاس:</strong> 280 cm | <strong data-key="spec_height">بەرزیا:</strong> 165 cm</li>
+                            <li><i class="fa-solid fa-door-open"></i> <strong data-key="p2_doors">دیزاین:</strong> ٢ دەرگەهـ + ٤ پەنجەرە</li>
+                            <li><i class="fa-solid fa-shield-cat"></i> <strong data-key="p2_mesh">تۆر (تول):</strong> بۆ ڕێگریکرن ل حەشەراتان</li>
                         </ul>
-                        <div class="product-price">80,000 د.ع <span style="font-size: 12px; color: #94a3b8;">(+ 5,000 التوصيل)</span></div>
+                        <div class="product-price">80,000 د.ع <span style="font-size: 12px; color: #94a3b8;" data-key="deliv_tag">(+ 5,000 گەهاندن)</span></div>
 
                         <div class="order-form">
-                            <h4 style="color: #00d2ff; margin-bottom: 10px; font-size: 14px;">نموذج الطلب المباشر:</h4>
-                            <div class="form-group"><label>الاسم الكامل:</label><input type="text" id="cust-name-2" placeholder="أدخل اسمك الكريم"></div>
-                            <div class="form-group"><label>رقم الهاتف:</label><input type="tel" id="cust-phone-2" placeholder="0750XXXXXXX"></div>
+                            <div class="form-group"><label data-key="lbl_name">ناوێ تەمام:</label><input type="text" id="cust-name-2" placeholder="..."></div>
+                            <div class="form-group"><label data-key="lbl_phone">ژمارا تەلەفۆنێ:</label><input type="tel" id="cust-phone-2" placeholder="0750XXXXXXX"></div>
                             <div class="form-group">
-                                <label>المحافظة:</label>
+                                <label data-key="lbl_city">پارێزگەهـ:</label>
                                 <select id="cust-city-2">
-                                    <option value="دهوك">دهوك</option><option value="أربيل">أربيل</option><option value="سليمانية">سليمانية</option><option value="حلبجة">حلبجة</option><option value="كركوك">كركوك</option><option value="الموصل / نينوى">الموصل / نينوى</option><option value="بغداد">بغداد</option><option value="باقي المحافظات">باقي المحافظات</option>
+                                    <option value="دهوك">دهۆک</option><option value="أربيل">هەولێر</option><option value="سليمانية">سلێمانی</option><option value="كركوك">کەرکووک</option><option value="بغداد">بەغدا</option>
                                 </select>
                             </div>
-                            <div class="form-group"><label>المنطقة / الشارع / نقطة دالة:</label><input type="text" id="cust-address-2" placeholder="مثال: زاخو / قرب جامع الكبير"></div>
+                            <div class="form-group"><label data-key="lbl_address">ناونیشان / تاخ / جادە:</label><input type="text" id="cust-address-2" placeholder="..."></div>
                             <div class="form-group">
-                                <label>العدد المطلوب:</label>
-                                <select id="cust-qty-2" onchange="calculateTotal2()">
-                                    <option value="1">1 خيمة</option><option value="2">2 خيمة</option>
-                                </select>
+                                <label data-key="lbl_qty">ژمارا داواکری:</label>
+                                <select id="cust-qty-2" onchange="calculateTotal2()"><option value="1">1</option><option value="2">2</option></select>
                             </div>
                             <div class="price-summary">
-                                <div class="price-row"><span>السعر:</span><span id="price-display-2">80,000 د.ع</span></div>
-                                <div class="price-row"><span>التوصيل:</span><span>5,000 د.ع</span></div>
-                                <div class="price-row total"><span>المجموع:</span><span id="total-display-2">85,000 د.ع</span></div>
+                                <div class="price-row"><span data-key="sum_price">نرخ:</span><span id="price-display-2">80,000 د.ع</span></div>
+                                <div class="price-row"><span data-key="sum_deliv">گەهاندن:</span><span>5,000 د.ع</span></div>
+                                <div class="price-row total"><span data-key="sum_total">کۆمێ گشتی:</span><span id="total-display-2">85,000 د.ع</span></div>
                             </div>
-                            <button onclick="sendOrder2()" class="btn-order"><i class="fa-brands fa-whatsapp"></i> إرسال الطلب عبر واتساب</button>
+                            <button onclick="sendOrder2()" class="btn-order"><i class="fa-brands fa-whatsapp"></i> <span data-key="btn_order">ناردنا داواکاریێ ب واتساپێ</span></button>
                         </div>
                     </div>
                 </div>
 
-                <!-- 3. خێما سريعة الفتح 2x2m -->
+                <!-- خێما 3 (2x2m) -->
                 <div class="product-card">
                     <div class="slider-container" id="slider-3">
                         <button class="slider-btn prev-btn" onclick="moveSlide('slider-3', -1)">&#10095;</button>
-                        <img src="tee1.jpg" class="slider-item active" alt="خيمة أوتوماتيكية 1">
-                        <img src="tee2.jpg" class="slider-item" alt="خيمة أوتوماتيكية 2">
-                        <img src="tee3.jpg" class="slider-item" alt="خيمة أوتوماتيكية 3">
-                        <img src="tee4.jpg" class="slider-item" alt="خيمة أوتوماتيكية 4">
-                        <img src="tee5.jpg" class="slider-item" alt="خيمة أوتوماتيكية 5">
-                        <img src="tee6.jpg" class="slider-item" alt="خيمة أوتوماتيكية 6">
-                        <video class="slider-item" controls playsinline>
-                            <source src="tee9.MP4" type="video/mp4">
-                            <source src="tee9.MP4" type="video/quicktime">
-                        </video>
+                        <img src="tee1.jpg" class="slider-item active">
+                        <img src="tee2.jpg" class="slider-item">
+                        <img src="tee3.jpg" class="slider-item">
+                        <img src="tee4.jpg" class="slider-item">
+                        <img src="tee5.jpg" class="slider-item">
+                        <img src="tee6.jpg" class="slider-item">
+                        <video class="slider-item" controls playsinline><source src="tee9.MP4" type="video/mp4"></video>
                         <button class="slider-btn next-btn" onclick="moveSlide('slider-3', 1)">&#10094;</button>
                         <div class="slider-counter">1 / 7</div>
                     </div>
 
                     <div class="product-info">
-                        <span class="product-badge">⚡ سريعة الفتح | اقتصادية</span>
-                        <h3>خيمة أوتوماتيكية سريعة الفتح</h3>
+                        <span class="product-badge" data-key="p3_badge">⚡ ڤەکرنا خێرا | ئابووری</span>
+                        <h3 data-key="p3_title">خێما ئۆتۆماتیکی سادە (2x2m)</h3>
                         <ul class="product-specs">
-                            <li><i class="fa-solid fa-users"></i> <strong>السعة:</strong> تتسع من 4 إلى 6 أشخاص</li>
-                            <li><i class="fa-solid fa-ruler-combined"></i> <strong>القياس:</strong> 2m X 2m</li>
-                            <li><i class="fa-solid fa-cloud-showers-heavy"></i> <strong>القماش:</strong> مقاوم للماء والأمطار</li>
-                            <li><i class="fa-solid fa-bolt"></i> <strong>التركيب:</strong> فتح أوتوماتيكي سهل جداً وسريع</li>
+                            <li><i class="fa-solid fa-users"></i> <strong data-key="p3_cap">جهـ:</strong> بۆ ٤ تا ٦ کەسان</li>
+                            <li><i class="fa-solid fa-ruler-combined"></i> <strong data-key="spec_size">قیاس:</strong> 2m X 2m</li>
+                            <li><i class="fa-solid fa-cloud-showers-heavy"></i> <strong data-key="spec_features">تایبەتمەندی:</strong> دژی ئاڤ و بارانێ</li>
                         </ul>
-                        <div class="product-price">50,000 د.ع <span style="font-size: 12px; color: #94a3b8;">(+ 5,000 التوصيل)</span></div>
+                        <div class="product-price">50,000 د.ع <span style="font-size: 12px; color: #94a3b8;" data-key="deliv_tag">(+ 5,000 گەهاندن)</span></div>
 
                         <div class="order-form">
-                            <h4 style="color: #00d2ff; margin-bottom: 10px; font-size: 14px;">نموذج الطلب المباشر:</h4>
-                            <div class="form-group"><label>الاسم الكامل:</label><input type="text" id="cust-name-3" placeholder="أدخل اسمك الكريم"></div>
-                            <div class="form-group"><label>رقم الهاتف:</label><input type="tel" id="cust-phone-3" placeholder="0750XXXXXXX"></div>
+                            <div class="form-group"><label data-key="lbl_name">ناوێ تەمام:</label><input type="text" id="cust-name-3" placeholder="..."></div>
+                            <div class="form-group"><label data-key="lbl_phone">ژمارا تەلەفۆنێ:</label><input type="tel" id="cust-phone-3" placeholder="0750XXXXXXX"></div>
                             <div class="form-group">
-                                <label>المحافظة:</label>
+                                <label data-key="lbl_city">پارێزگەهـ:</label>
                                 <select id="cust-city-3">
-                                    <option value="دهوك">دهوك</option><option value="أربيل">أربيل</option><option value="سليمانية">سليمانية</option><option value="حلبجة">حلبجة</option><option value="كركوك">كركوك</option><option value="الموصل / نينوى">الموصل / نينوى</option><option value="بغداد">بغداد</option><option value="باقي المحافظات">باقي المحافظات</option>
+                                    <option value="دهوك">دهۆک</option><option value="أربيل">هەولێر</option><option value="سليمانية">سلێمانی</option><option value="كركوك">کەرکووک</option><option value="بغداد">بەغدا</option>
                                 </select>
                             </div>
-                            <div class="form-group"><label>المنطقة / الشارع / نقطة دالة:</label><input type="text" id="cust-address-3" placeholder="مثال: زاخو / قرب جامع الكبير"></div>
+                            <div class="form-group"><label data-key="lbl_address">ناونیشان / تاخ / جادە:</label><input type="text" id="cust-address-3" placeholder="..."></div>
                             <div class="form-group">
-                                <label>العدد المطلوب:</label>
-                                <select id="cust-qty-3" onchange="calculateTotal3()">
-                                    <option value="1">1 خيمة</option><option value="2">2 خيمة</option>
-                                </select>
+                                <label data-key="lbl_qty">ژمارا داواکری:</label>
+                                <select id="cust-qty-3" onchange="calculateTotal3()"><option value="1">1</option><option value="2">2</option></select>
                             </div>
                             <div class="price-summary">
-                                <div class="price-row"><span>السعر:</span><span id="price-display-3">50,000 د.ع</span></div>
-                                <div class="price-row"><span>التوصيل:</span><span>5,000 د.ع</span></div>
-                                <div class="price-row total"><span>المجموع:</span><span id="total-display-3">55,000 د.ع</span></div>
+                                <div class="price-row"><span data-key="sum_price">نرخ:</span><span id="price-display-3">50,000 د.ع</span></div>
+                                <div class="price-row"><span data-key="sum_deliv">گەهاندن:</span><span>5,000 د.ع</span></div>
+                                <div class="price-row total"><span data-key="sum_total">کۆمێ گشتی:</span><span id="total-display-3">55,000 د.ع</span></div>
                             </div>
-                            <button onclick="sendOrder3()" class="btn-order"><i class="fa-brands fa-whatsapp"></i> إرسال الطلب عبر واتساب</button>
+                            <button onclick="sendOrder3()" class="btn-order"><i class="fa-brands fa-whatsapp"></i> <span data-key="btn_order">ناردنا داواکاریێ ب واتساپێ</span></button>
                         </div>
                     </div>
                 </div>
 
-                <!-- 4. حقيبة حمل الحطب (نوو - ١٥,٠٠٠ د.ع) -->
+                <!-- 4. حقيبة الحطب -->
                 <div class="product-card">
                     <div class="slider-container" id="slider-4">
                         <button class="slider-btn prev-btn" onclick="moveSlide('slider-4', -1)">&#10095;</button>
-                        <img src="ha1.jpg" class="slider-item active" alt="حقيبة حمل الحطب 1">
-                        <img src="ha2.jpg" class="slider-item" alt="حقيبة حمل الحطب 2">
-                        <img src="ha3.jpg" class="slider-item" alt="حقيبة حمل الحطب 3">
-                        <img src="ha4.jpg" class="slider-item" alt="حقيبة حمل الحطب 4">
+                        <img src="ha1.jpg" class="slider-item active">
+                        <img src="ha2.jpg" class="slider-item">
+                        <img src="ha3.jpg" class="slider-item">
+                        <img src="ha4.jpg" class="slider-item">
                         <button class="slider-btn next-btn" onclick="moveSlide('slider-4', 1)">&#10094;</button>
                         <div class="slider-counter">1 / 4</div>
                     </div>
 
                     <div class="product-info">
-                        <span class="product-badge">🪵🔥 متينة ومقاومة للماء</span>
-                        <h3>حقيبة حمل الحطب والمعدات</h3>
+                        <span class="product-badge" data-key="p4_badge">🪵🔥 زۆر قایم و دژی ئاڤێ</span>
+                        <h3 data-key="p4_title">جانتا هه‌لگرتنا داران و کەرەستان</h3>
                         <ul class="product-specs">
-                            <li><i class="fa-solid fa-ruler"></i> <strong>المقاس:</strong> 99 × 48 سم | <strong>السعة:</strong> 35 لتر</li>
-                            <li><i class="fa-solid fa-shield-halved"></i> <strong>الخامة:</strong> قماش متين مقاوم للاهتراء والرطوبة</li>
-                            <li><i class="fa-solid fa-grip-lines"></i> <strong>المميزات:</strong> أحزمة حمل مريحة مع حزام تثبيت للحطب</li>
-                            <li><i class="fa-solid fa-box-archive"></i> <strong>الاستخدام:</strong> قابلة للطي، تنفع للحطب، أجهزة الشواء والتخييم</li>
+                            <li><i class="fa-solid fa-ruler"></i> <strong data-key="spec_size">قیاس:</strong> 99 × 48 cm | <strong data-key="p4_vol">حەجم:</strong> 35L</li>
+                            <li><i class="fa-solid fa-shield-halved"></i> <strong data-key="spec_fabric">قوماش:</strong> زۆر محکم و دژی ئاڤ و شێیێ</li>
                         </ul>
-                        <div class="product-price">15,000 د.ع <span style="font-size: 12px; color: #94a3b8;">(+ 5,000 التوصيل)</span></div>
+                        <div class="product-price">15,000 د.ع <span style="font-size: 12px; color: #94a3b8;" data-key="deliv_tag">(+ 5,000 گەهاندن)</span></div>
 
                         <div class="order-form">
-                            <h4 style="color: #00d2ff; margin-bottom: 10px; font-size: 14px;">نموذج الطلب المباشر:</h4>
-                            <div class="form-group"><label>الاسم الكامل:</label><input type="text" id="cust-name-4" placeholder="أدخل اسمك الكريم"></div>
-                            <div class="form-group"><label>رقم الهاتف:</label><input type="tel" id="cust-phone-4" placeholder="0750XXXXXXX"></div>
+                            <div class="form-group"><label data-key="lbl_name">ناوێ تەمام:</label><input type="text" id="cust-name-4" placeholder="..."></div>
+                            <div class="form-group"><label data-key="lbl_phone">ژمارا تەلەفۆنێ:</label><input type="tel" id="cust-phone-4" placeholder="0750XXXXXXX"></div>
                             <div class="form-group">
-                                <label>المحافظة:</label>
+                                <label data-key="lbl_city">پارێزگەهـ:</label>
                                 <select id="cust-city-4">
-                                    <option value="دهوك">دهوك</option><option value="أربيل">أربيل</option><option value="سليمانية">سليمانية</option><option value="حلبجة">حلبجة</option><option value="كركوك">كركوك</option><option value="الموصل / نينوى">الموصل / نينوى</option><option value="بغداد">بغداد</option><option value="باقي المحافظات">باقي المحافظات</option>
+                                    <option value="دهوك">دهۆک</option><option value="أربيل">هەولێر</option><option value="سليمانية">سلێمانی</option><option value="كركوك">کەرکووک</option><option value="بغداد">بەغدا</option>
                                 </select>
                             </div>
-                            <div class="form-group"><label>المنطقة / الشارع / نقطة دالة:</label><input type="text" id="cust-address-4" placeholder="مثال: زاخو / قرب جامع الكبير"></div>
+                            <div class="form-group"><label data-key="lbl_address">ناونیشان / تاخ / جادە:</label><input type="text" id="cust-address-4" placeholder="..."></div>
                             <div class="form-group">
-                                <label>العدد المطلوب:</label>
-                                <select id="cust-qty-4" onchange="calculateTotal4()">
-                                    <option value="1">1 قطعة</option><option value="2">2 قطعة</option><option value="3">3 قطع</option>
-                                </select>
+                                <label data-key="lbl_qty">ژمارا داواکری:</label>
+                                <select id="cust-qty-4" onchange="calculateTotal4()"><option value="1">1</option><option value="2">2</option></select>
                             </div>
                             <div class="price-summary">
-                                <div class="price-row"><span>السعر:</span><span id="price-display-4">15,000 د.ع</span></div>
-                                <div class="price-row"><span>التوصيل:</span><span>5,000 د.ع</span></div>
-                                <div class="price-row total"><span>المجموع:</span><span id="total-display-4">20,000 د.ع</span></div>
+                                <div class="price-row"><span data-key="sum_price">نرخ:</span><span id="price-display-4">15,000 د.ع</span></div>
+                                <div class="price-row"><span data-key="sum_deliv">گەهاندن:</span><span>5,000 د.ع</span></div>
+                                <div class="price-row total"><span data-key="sum_total">کۆمێ گشتی:</span><span id="total-display-4">20,000 د.ع</span></div>
                             </div>
-                            <button onclick="sendOrder4()" class="btn-order"><i class="fa-brands fa-whatsapp"></i> إرسال الطلب عبر واتساب</button>
+                            <button onclick="sendOrder4()" class="btn-order"><i class="fa-brands fa-whatsapp"></i> <span data-key="btn_order">ناردنا داواکاریێ ب واتساپێ</span></button>
                         </div>
                     </div>
                 </div>
@@ -688,45 +675,59 @@
     <!-- 3. بەشێ فيديوهاتنا -->
     <section class="section-block bg-dark-1" id="videos">
         <div class="container">
-            <h2 class="section-title">فيديوهات خيمنا ومعداتنا</h2>
-            <div class="video-container">
-                <div class="video-card">
-                    <video controls preload="metadata" playsinline style="width:100%; max-height:420px; background:#000;">
-                        <source src="tent2.mp4.MP4" type="video/mp4">
-                        <source src="tent2.mp4.MP4" type="video/quicktime">
-                        متصفحك لا يدعم تشغيل الفيديو.
-                    </video>
-                    <h4>عرض خيمة KD قياس 2x2m</h4>
-                </div>
+            <h2 class="section-title" data-key="nav_videos">ڤیدیۆیێن مە</h2>
+            <div class="video-card">
+                <video controls preload="metadata" playsinline>
+                    <source src="tent2.mp4.MP4" type="video/mp4">
+                </video>
+                <h4 data-key="vid_title">نیشاندانا خێما KD قیاس 2x2m</h4>
             </div>
         </div>
     </section>
 
-    <!-- 4. بەشێ مميزاتنا -->
+    <!-- 4. بەشێ تایبەتمەندیان -->
     <section class="section-block bg-dark-2" id="features">
         <div class="container">
-            <h2 class="section-title">لماذا تختار منتجاتنا؟</h2>
+            <h2 class="section-title" data-key="feat_title">بۆچی بەرهەمێن مە هەڵبژێری؟</h2>
             <div class="grid">
-                <div class="card"><i class="fa-solid fa-tent"></i><h3>خيم عالية الجودة</h3><p>تشكيلة واسعة من الخيم العائلية والفردية المقاومة للظروف الجوية.</p></div>
-                <div class="card"><i class="fa-solid fa-cloud-showers-heavy"></i><h3>أقمشة مقاومة للماء</h3><p>خامات متينة وقماش ممتاز مقاوم لمختلف الظروف الجوية والمطر.</p></div>
-                <div class="card"><i class="fa-solid fa-boxes-packing"></i><h3>جملة ومفرد</h3><p>خيارات البيع للمحلات والتجار بالإضافة إلى الطلبات الشخصية.</p></div>
+                <div class="card"><i class="fa-solid fa-tent"></i><h3 data-key="f1_t">کوالیتییا بەرز</h3><p data-key="f1_d">جۆرێن جۆراوجۆر ێن خێمان بۆ خێزان و کەسان ب کوالیتییا بەرز.</p></div>
+                <div class="card"><i class="fa-solid fa-cloud-showers-heavy"></i><h3 data-key="f2_t">دژی ئاڤێ</h3><p data-key="f2_d">قوماشێ زۆر محکم و بەرهەنگار بۆ کەشوهەوایێ بارانێ.</p></div>
+                <div class="card"><i class="fa-solid fa-boxes-packing"></i><h3 data-key="f3_t">کۆم و تا</h3><p data-key="f3_d">فرۆشتن بۆ دوکانان، بازرگانان و داواکاریێن کەسی.</p></div>
             </div>
         </div>
     </section>
 
-    <!-- 5. بەشێ من نحن -->
+    <!-- 5. بەشێ دبارەیا مەدا -->
     <section class="section-block bg-dark-1" id="about">
         <div class="container">
-            <h2 class="section-title">عن KD SHOP</h2>
-            <div class="about-text">
-                نحن متخصصون في استيراد أحدث وأفضل مستلزمات التخييم والرحلات مباشرة من الصين إلى العراق. نوفر الخيم ومعدات الرحلات للمتاجر والأفراد بأسعار تنافسية وجودة مضمونة.
+            <h2 class="section-title" data-key="nav_about">دبارەیا مەدا</h2>
+            <div style="text-align: center; color: #94a3b8; max-width: 800px; margin: 0 auto;" data-key="about_desc">
+                ئەم تایبەتمەندین د ئینانا نووترین و باشترین کەرەستێن تەخییم و سەیرانان ڕاستەوخۆ ژ چینێ بۆ عیراقێ. مە بەرهەمێن کوالیتی بەرز بۆ دوکان و کەسان هەنە ب نرخێن کێبڕکێکار.
             </div>
         </div>
     </section>
 
-    <a href="https://wa.me/9647769247574" class="floating-whatsapp" target="_blank" title="تواصل عبر واتساب"><i class="fa-brands fa-whatsapp"></i></a>
+    <!-- دوگمەیێن خوارێ: واتساپ ب لایێ چەپێ و زمان ب لایێ ڕاستێ -->
+    <a href="https://wa.me/9647769247574" class="floating-whatsapp" target="_blank"><i class="fa-brands fa-whatsapp"></i></a>
 
-    <footer><p>جميع الحقوق محفوظة &copy; 2026 - KD SHOP</p></footer>
+    <div class="floating-lang-container">
+        <div class="floating-lang-btn" onclick="toggleFloatingLang(event)" title="تغییر اللغة / گۆڕینی زمان">
+            <span id="floating-active-flag"><span class="kurdistan-flag"></span></span>
+        </div>
+        <div class="lang-menu-floating" id="floatingLangMenu">
+            <button class="lang-option-btn" onclick="selectLang('ku', '<span class=\'kurdistan-flag\'></span>')">
+                <span class="kurdistan-flag"></span> کوردی
+            </button>
+            <button class="lang-option-btn" onclick="selectLang('ar', '🇮🇶')">
+                <span>🇮🇶</span> عربي
+            </button>
+            <button class="lang-option-btn" onclick="selectLang('en', '🇬🇧')">
+                <span>🇬🇧</span> English
+            </button>
+        </div>
+    </div>
+
+    <footer><p>&copy; 2026 - KD SHOP</p></footer>
 
     <script>
         const canvas = document.getElementById('snow-canvas');
@@ -762,7 +763,6 @@
             const container = document.getElementById(sliderId);
             const items = container.querySelectorAll('.slider-item');
             const counter = container.querySelector('.slider-counter');
-            
             let activeIndex = 0;
             items.forEach((item, index) => {
                 if (item.classList.contains('active')) {
@@ -771,13 +771,91 @@
                 }
                 item.classList.remove('active');
             });
-
             let newIndex = (activeIndex + direction + items.length) % items.length;
             items[newIndex].classList.add('active');
             counter.innerText = (newIndex + 1) + " / " + items.length;
         }
 
-        // 1. حیساباتی خێما 1
+        function toggleFloatingLang(e) {
+            e.stopPropagation();
+            document.getElementById('floatingLangMenu').classList.toggle('show');
+        }
+
+        document.addEventListener('click', function() {
+            const menu = document.getElementById('floatingLangMenu');
+            if (menu.classList.contains('show')) menu.classList.remove('show');
+        });
+
+        function selectLang(lang, flagHtml) {
+            document.getElementById('floating-active-flag').innerHTML = flagHtml;
+            document.getElementById('floatingLangMenu').classList.remove('show');
+
+            document.documentElement.dir = (lang === 'en') ? 'ltr' : 'rtl';
+            document.documentElement.lang = lang;
+
+            document.querySelectorAll('[data-key]').forEach(elem => {
+                const key = elem.getAttribute('data-key');
+                if (translations[lang] && translations[lang][key]) {
+                    elem.innerText = translations[lang][key];
+                }
+            });
+        }
+
+        // وەرگێڕانا زاراڤێ بادینی یێ پڕاوپڕ
+        const translations = {
+            ku: {
+                nav_social: "پەیجێن مە", nav_products: "بەرهەمێن مە", nav_videos: "ڤیدیۆیێن مە", nav_features: "تایبەتمەندی", nav_about: "دبارەیا مەدا",
+                hero_title: "KD SHOP - جهێ تە یێ ئێکێ بۆ کەرەستێن تەخییمێ", hero_desc: "ئینانا ڕاستەوخۆ ژ چینێ بۆ عیراقێ | بازرگانیا کۆم و تا ب باشترین کوالیتی و نرخ",
+                social_title: "مە ل تۆڕێن کۆمەڵایەتی بپەیڕەوە", products_title: "کۆمەڵا خێمە و کەرەستان",
+                p1_badge: "🔥 زۆرترین فرۆشراو", p1_title: "خێما خێزانی یا فاخڕ",
+                p2_badge: "⚡ ڤەکرنا خێرا (کێمتر ژ ١٠ چڕکان)", p2_title: "خێما ئۆتۆماتیکی (مۆدێل دینار)", p2_doors: "دیزاین: ٢ دەرگەهـ + ٤ پەنجەرە", p2_mesh: "تۆر (تول): بۆ ڕێگریکرن ل حەشەراتان",
+                p3_badge: "⚡ ڤەکرنا خێرا | ئابووری", p3_title: "خێما ئۆتۆماتیکی سادە (2x2m)", p3_cap: "جهـ: بۆ ٤ تا ٦ کەسان",
+                p4_badge: "🪵🔥 زۆر قایم و دژی ئاڤێ", p4_title: "جانتا هه‌لگرتنا داران و کەرەستان", p4_vol: "حەجم: 35L",
+                spec_size: "قیاس:", spec_fabric: "قوماش:", spec_features: "تایبەتمەندی:", spec_height: "بەرزیا:", deliv_tag: "(+ 5,000 گەهاندن)",
+                lbl_name: "ناوێ تەمام:", lbl_phone: "ژمارا تەلەفۆنێ:", lbl_city: "پارێزگەهـ:", lbl_address: "ناونیشان / تاخ / جادە:", lbl_qty: "ژمارا داواکری:",
+                sum_price: "نرخ:", sum_deliv: "گەهاندن:", sum_total: "کۆمێ گشتی:", btn_order: "ناردنا داواکاریێ ب واتساپێ",
+                vid_title: "نیشاندانا خێما KD قیاس 2x2m", feat_title: "بۆچی بەرهەمێن مە هەڵبژێری؟",
+                f1_t: "کوالیتییا بەرز", f1_d: "جۆرێن جۆراوجۆر ێن خێمان بۆ خێزان و کەسان ب کوالیتییا بەرز.",
+                f2_t: "دژی ئاڤێ", f2_d: "قوماشێ زۆر محکم و بەرهەنگار بۆ کەشوهەوایێ بارانێ.",
+                f3_t: "کۆم و تا", f3_d: "فرۆشتن بۆ دوکانان، بازرگانان و داواکاریێن کەسی.",
+                about_desc: "ئەم تایبەتمەندین د ئینانا نووترین و باشترین کەرەستێن تەخییم و سەیرانان ڕاستەوخۆ ژ چینێ بۆ عیراقێ. مە بەرهەمێن کوالیتی بەرز بۆ دوکان و کەسان هەنە ب نرخێن کێبڕکێکار."
+            },
+            ar: {
+                nav_social: "صفحاتنا", nav_products: "منتجاتنا", nav_videos: "فيديوهاتنا", nav_features: "مميزاتنا", nav_about: "من نحن",
+                hero_title: "KD SHOP - وجهتك الأولى لمعدات التخييم", hero_desc: "استيراد مباشر من الصين إلى العراق | تجارة الجملة والمفرد بأعلى جودة وأفضل الأسعار",
+                social_title: "تابعنا على وسائل التواصل الاجتماعي", products_title: "تشكيلة الخيم والمعدات",
+                p1_badge: "🔥 الأكثر مبيعاً", p1_title: "خيمة عائلية فاخرة",
+                p2_badge: "⚡ فتح سريع (أقل من 10 ثواني)", p2_title: "خيمة أوتوماتيكية (موديل دينار)", p2_doors: "التصميم: 2 باب + 4 شبابيك", p2_mesh: "الوقاية: تور لمنع الحشرات",
+                p3_badge: "⚡ فتح سريع | اقتصادية", p3_title: "خيمة أوتوماتيكية سريعة الفتح (2x2m)", p3_cap: "السعة: 4 إلى 6 أشخاص",
+                p4_badge: "🪵🔥 متينة ومقاومة للماء", p4_title: "حقيبة حمل الحطب والمعدات", p4_vol: "السعة: 35 لتر",
+                spec_size: "القياس:", spec_fabric: "القماش:", spec_features: "المميزات:", spec_height: "الارتفاع:", deliv_tag: "(+ 5,000 التوصيل)",
+                lbl_name: "الاسم الكامل:", lbl_phone: "رقم الهاتف:", lbl_city: "المحافظة:", lbl_address: "العنوان التفصيلي / الشارع:", lbl_qty: "العدد المطلوب:",
+                sum_price: "السعر:", sum_deliv: "التوصيل:", sum_total: "المجموع الكلي:", btn_order: "إرسال الطلب عبر واتساب",
+                vid_title: "عرض خيمة KD قياس 2x2m", feat_title: "لماذا تختار منتجاتنا؟",
+                f1_t: "خيم عالية الجودة", f1_d: "تشكيلة واسعة من الخيم العائلية والفردية المقاومة للظروف الجوية.",
+                f2_t: "أقمشة مقاومة للماء", f2_d: "خامات متينة وقماش ممتاز مقاوم لمختلف الظروف الجوية والمطر.",
+                f3_t: "جملة ومفرد", f3_d: "خيارات البيع للمحلات والتجار بالإضافة إلى الطلبات الشخصية.",
+                about_desc: "نحن متخصصون في استيراد أحدث وأفضل مستلزمات التخييم والرحلات مباشرة من الصين إلى العراق. نوفر الخيم ومعدات الرحلات للمتاجر والأفراد بأسعار تنافسية وجودة مضمونة."
+            },
+            en: {
+                nav_social: "Socials", nav_products: "Products", nav_videos: "Videos", nav_features: "Features", nav_about: "About Us",
+                hero_title: "KD SHOP - Your #1 Camping Equipment Destination", hero_desc: "Direct imports from China to Iraq | Wholesale & Retail with top quality & best prices",
+                social_title: "Follow Us On Social Media", products_title: "Tents & Gear Collection",
+                p1_badge: "🔥 Best Seller", p1_title: "Luxury Family Tent",
+                p2_badge: "⚡ Fast Setup (< 10s)", p2_title: "Automatic Tent (Dinar Model)", p2_doors: "Design: 2 Doors + 4 Windows", p2_mesh: "Protection: Anti-bug Mesh",
+                p3_badge: "⚡ Quick Setup | Budget", p3_title: "Automatic Pop-Up Tent (2x2m)", p3_cap: "Capacity: 4 to 6 Persons",
+                p4_badge: "🪵🔥 Heavy-Duty & Waterproof", p4_title: "Firewood & Gear Carrying Bag", p4_vol: "Capacity: 35L",
+                spec_size: "Size:", spec_fabric: "Fabric:", spec_features: "Features:", spec_height: "Height:", deliv_tag: "(+ 5,000 Delivery)",
+                lbl_name: "Full Name:", lbl_phone: "Phone Number:", lbl_city: "City / Governorate:", lbl_address: "Detailed Address / Street:", lbl_qty: "Quantity:",
+                sum_price: "Price:", sum_deliv: "Delivery:", sum_total: "Grand Total:", btn_order: "Order via WhatsApp",
+                vid_title: "KD Tent Demo 2x2m", feat_title: "Why Choose Our Products?",
+                f1_t: "Top Quality Tents", f1_d: "Wide range of weather-resistant family and personal tents.",
+                f2_t: "Waterproof Fabric", f2_d: "Durable and premium materials designed to handle heavy rain.",
+                f3_t: "Wholesale & Retail", f3_d: "Options for shops, business owners, and personal orders.",
+                about_desc: "We specialize in importing premium camping gear directly from China to Iraq. Offering high-grade products for stores and individuals at competitive prices."
+            }
+        };
+
         function calculateTotal1() {
             const qty = parseInt(document.getElementById('cust-qty-1').value);
             document.getElementById('price-display-1').innerText = (qty * 150000).toLocaleString() + " د.ع";
@@ -789,13 +867,12 @@
             const city = document.getElementById('cust-city-1').value;
             const address = document.getElementById('cust-address-1').value;
             const qty = parseInt(document.getElementById('cust-qty-1').value);
-            if(!name || !phone || !address) { alert('يرجى ملء جميع الحقول المطلوبة'); return; }
+            if(!name || !phone || !address) { alert('يرجى ملء كافة الحقول'); return; }
             const grandTotal = (qty * 150000) + 5000;
-            const text = `مرحباً KD SHOP، لدي طلب جديد:%0A📌 *المنتج:* خيمة عائلية فاخرة%0A👤 *الاسم:* ${name}%0A📞 *الهاتف:* ${phone}%0A🏙️ *المحافظة:* ${city}%0A📍 *العنوان:* ${address}%0A📦 *العدد:* ${qty}%0A🚚 *التوصيل:* 5,000 د.ع%0A💰 *المجموع الكلي:* ${grandTotal.toLocaleString()} د.ع`;
+            const text = `طلب جديد:%0A📌 *خيمة عائلية فاخرة*%0A👤 *الاسم:* ${name}%0A📞 *الهاتف:* ${phone}%0A🏙️ *المحافظة:* ${city}%0A📍 *العنوان:* ${address}%0A📦 *العدد:* ${qty}%0A💰 *المجموع:* ${grandTotal.toLocaleString()} د.ع`;
             window.open(`https://wa.me/9647769247574?text=${text}`, '_blank');
         }
 
-        // 2. حیساباتی خێما 2
         function calculateTotal2() {
             const qty = parseInt(document.getElementById('cust-qty-2').value);
             document.getElementById('price-display-2').innerText = (qty * 80000).toLocaleString() + " د.ع";
@@ -807,13 +884,12 @@
             const city = document.getElementById('cust-city-2').value;
             const address = document.getElementById('cust-address-2').value;
             const qty = parseInt(document.getElementById('cust-qty-2').value);
-            if(!name || !phone || !address) { alert('يرجى ملء جميع الحقول المطلوبة'); return; }
+            if(!name || !phone || !address) { alert('يرجى ملء كافة الحقول'); return; }
             const grandTotal = (qty * 80000) + 5000;
-            const text = `مرحباً KD SHOP، لدي طلب جديد:%0A📌 *المنتج:* خيمة أوتوماتيكية (موديل دينار)%0A👤 *الاسم:* ${name}%0A📞 *الهاتف:* ${phone}%0A🏙️ *المحافظة:* ${city}%0A📍 *العنوان:* ${address}%0A📦 *العدد:* ${qty}%0A🚚 *التوصيل:* 5,000 د.ع%0A💰 *المجموع الكلي:* ${grandTotal.toLocaleString()} د.ع`;
+            const text = `طلب جديد:%0A📌 *خيمة دينار*%0A👤 *الاسم:* ${name}%0A📞 *الهاتف:* ${phone}%0A🏙️ *المحافظة:* ${city}%0A📍 *العنوان:* ${address}%0A📦 *العدد:* ${qty}%0A💰 *المجموع:* ${grandTotal.toLocaleString()} د.ع`;
             window.open(`https://wa.me/9647769247574?text=${text}`, '_blank');
         }
 
-        // 3. حیساباتی خێما 3
         function calculateTotal3() {
             const qty = parseInt(document.getElementById('cust-qty-3').value);
             document.getElementById('price-display-3').innerText = (qty * 50000).toLocaleString() + " د.ع";
@@ -825,13 +901,12 @@
             const city = document.getElementById('cust-city-3').value;
             const address = document.getElementById('cust-address-3').value;
             const qty = parseInt(document.getElementById('cust-qty-3').value);
-            if(!name || !phone || !address) { alert('يرجى ملء جميع الحقول المطلوبة'); return; }
+            if(!name || !phone || !address) { alert('يرجى ملء كافة الحقول'); return; }
             const grandTotal = (qty * 50000) + 5000;
-            const text = `مرحباً KD SHOP، لدي طلب جديد:%0A📌 *المنتج:* خيمة أوتوماتيكية سريعة الفتح (2x2m)%0A👤 *الاسم:* ${name}%0A📞 *الهاتف:* ${phone}%0A🏙️ *المحافظة:* ${city}%0A📍 *العنوان:* ${address}%0A📦 *العدد:* ${qty}%0A🚚 *التوصيل:* 5,000 د.ع%0A💰 *المجموع الكلي:* ${grandTotal.toLocaleString()} د.ع`;
+            const text = `طلب جديد:%0A📌 *خيمة 2x2m*%0A👤 *الاسم:* ${name}%0A📞 *الهاتف:* ${phone}%0A🏙️ *المحافظة:* ${city}%0A📍 *العنوان:* ${address}%0A📦 *العدد:* ${qty}%0A💰 *المجموع:* ${grandTotal.toLocaleString()} د.ع`;
             window.open(`https://wa.me/9647769247574?text=${text}`, '_blank');
         }
 
-        // 4. حیساباتی حقيبة حمل الحطب (١٥,٠٠٠ د.ع)
         function calculateTotal4() {
             const qty = parseInt(document.getElementById('cust-qty-4').value);
             document.getElementById('price-display-4').innerText = (qty * 15000).toLocaleString() + " د.ع";
@@ -843,9 +918,9 @@
             const city = document.getElementById('cust-city-4').value;
             const address = document.getElementById('cust-address-4').value;
             const qty = parseInt(document.getElementById('cust-qty-4').value);
-            if(!name || !phone || !address) { alert('يرجى ملء جميع الحقول المطلوبة'); return; }
+            if(!name || !phone || !address) { alert('يرجى ملء كافة الحقول'); return; }
             const grandTotal = (qty * 15000) + 5000;
-            const text = `مرحباً KD SHOP، لدي طلب جديد:%0A📌 *المنتج:* حقيبة حمل الحطب والمعدات%0A👤 *الاسم:* ${name}%0A📞 *الهاتف:* ${phone}%0A🏙️ *المحافظة:* ${city}%0A📍 *العنوان:* ${address}%0A📦 *العدد:* ${qty}%0A🚚 *التوصيل:* 5,000 د.ع%0A💰 *المجموع الكلي:* ${grandTotal.toLocaleString()} د.ع`;
+            const text = `طلب جديد:%0A📌 *حقيبة حمل الحطب*%0A👤 *الاسم:* ${name}%0A📞 *الهاتف:* ${phone}%0A🏙️ *المحافظة:* ${city}%0A📍 *العنوان:* ${address}%0A📦 *العدد:* ${qty}%0A💰 *المجموع:* ${grandTotal.toLocaleString()} د.ع`;
             window.open(`https://wa.me/9647769247574?text=${text}`, '_blank');
         }
     </script>
