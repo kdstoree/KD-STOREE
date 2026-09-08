@@ -627,18 +627,22 @@
             <h2 class="section-title" data-key="products_title">کۆمەڵا خێمە و کەرەستان</h2>
             <div class="grid">
                 
-                <!-- خێما 1 -->
+                <!-- خێما 1 (نووکرى ب ڤیدیۆیا نوو و تایبەتمەندیێن تە) -->
                 <div class="product-card">
-                    <div class="slider-container">
-                        <img src="tent1.jpg.jpg" class="slider-item active" alt="خيمة عائلية">
+                    <div class="slider-container" id="slider-1">
+                        <button class="slider-btn prev-btn" onclick="moveSlide('slider-1', -1)">&#10095;</button>
+                        <video class="slider-item active" controls playsinline><source src="Ten2x3.MOV" type="video/mp4"></video>
+                        <img src="tent1.jpg.jpg" class="slider-item">
+                        <button class="slider-btn next-btn" onclick="moveSlide('slider-1', 1)">&#10094;</button>
+                        <div class="slider-counter">1 / 2</div>
                     </div>
                     <div class="product-info">
-                        <span class="product-badge" data-key="p1_badge">🔥 زۆرترین فرۆشراو</span>
-                        <h3 data-key="p1_title">خێما خێزانی یا فاخڕ</h3>
+                        <span class="product-badge" data-key="p1_badge">🔥 زۆرترین فرۆشراو | کوالیتی بەرز</span>
+                        <h3 data-key="p1_title">خێما خێزانی (٢ ژور)</h3>
                         <ul class="product-specs">
-                            <li><i class="fa-solid fa-ruler-combined"></i> <span data-key="p1_s1">قیاس: 330 X 210 X 180 cm</span></li>
-                            <li><i class="fa-solid fa-shield-halved"></i> <span data-key="p1_s2">قوماش: أكسفورد D210 یێ فاخر</span></li>
-                            <li><i class="fa-solid fa-cloud-showers-heavy"></i> <span data-key="p1_s3">تایبەتمەندی: دژی ئاڤ و بارانێ</span></li>
+                            <li><i class="fa-solid fa-ruler-combined"></i> <span data-key="p1_s1">قیاس: درێژی 330cm | پانی 210cm | بەرزیا 180cm</span></li>
+                            <li><i class="fa-solid fa-shield-halved"></i> <span data-key="p1_s2">قوماش: أكسفورد D210 دژی بەفر و با و بارانێ</span></li>
+                            <li><i class="fa-solid fa-palette"></i> <span data-key="p1_s3">ڕەنگ: سەوز + قاوەیی + شیری + پورتەقاڵی + ڕەش (VIP)</span></li>
                         </ul>
                         <div class="product-price">150,000 <span data-key="currency">د.ع</span> <span style="font-size: 12px; color: #94a3b8;" data-key="deliv_tag">(+ 5,000 گەهاندن)</span></div>
 
@@ -652,6 +656,16 @@
                                 </select>
                             </div>
                             <div class="form-group"><label data-key="lbl_address">ناونیشان / تاخ / جادە:</label><input type="text" id="cust-address-1" placeholder="..."></div>
+                            <div class="form-group">
+                                <label data-key="lbl_color">هەڵبژاردنا ڕەنگی:</label>
+                                <select id="cust-color-1">
+                                    <option value="سەوز">سەوز (Green)</option>
+                                    <option value="قاوەیی">قاوەیی (Brown)</option>
+                                    <option value="شیری">شیری (Milky)</option>
+                                    <option value="پورتەقاڵی">پورتەقاڵی (Orange)</option>
+                                    <option value="ڕەنگی VIP ڕەش">ڕەنگی VIP ڕەش (Black VIP)</option>
+                                </select>
+                            </div>
                             <div class="form-group">
                                 <label data-key="lbl_qty">ژمارا داواکری:</label>
                                 <select id="cust-qty-1" onchange="calculateTotal1()"><option value="1">1</option><option value="2">2</option></select>
@@ -719,24 +733,24 @@
                 <div class="product-card">
                     <div class="slider-container" id="slider-3">
                         <button class="slider-btn prev-btn" onclick="moveSlide('slider-3', -1)">&#10095;</button>
-                        <img src="tee1.jpg" class="slider-item active">
+                        <video class="slider-item active" controls playsinline><source src="Tenta2.MP4" type="video/mp4"></video>
+                        <img src="tee1.jpg" class="slider-item">
                         <img src="tee2.jpg" class="slider-item">
                         <img src="tee3.jpg" class="slider-item">
                         <img src="tee4.jpg" class="slider-item">
                         <img src="tee5.jpg" class="slider-item">
                         <img src="tee6.jpg" class="slider-item">
-                        <video class="slider-item" controls playsinline><source src="tee9.MP4" type="video/mp4"></video>
                         <button class="slider-btn next-btn" onclick="moveSlide('slider-3', 1)">&#10094;</button>
-                        <div class="slider-counter">1 / 7</div>
+                        <div class="slider-counter">1 / 8</div>
                     </div>
 
                     <div class="product-info">
-                        <span class="product-badge" data-key="p3_badge">⚡ ڤەکرنا خێرا | ئابووری</span>
-                        <h3 data-key="p3_title">خێما ئۆتۆماتیکی سادە (2x2m)</h3>
+                        <span class="product-badge" data-key="p3_badge">⚡ خێما ئۆتۆماتیکی | 4-6 کەس</span>
+                        <h3 data-key="p3_title">خێما ئۆتۆماتیکی (قیاس 2x2m)</h3>
                         <ul class="product-specs">
                             <li><i class="fa-solid fa-users"></i> <span data-key="p3_s1">جهـ: بۆ ٤ تا ٦ کەسان</span></li>
                             <li><i class="fa-solid fa-ruler-combined"></i> <span data-key="p3_s2">قیاس: 2m X 2m</span></li>
-                            <li><i class="fa-solid fa-cloud-showers-heavy"></i> <span data-key="p3_s3">تایبەتمەندی: دژی ئاڤ و بارانێ</span></li>
+                            <li><i class="fa-solid fa-shield-halved"></i> <span data-key="p3_s3">قوماش: أكسفورد دژە با و باران</span></li>
                         </ul>
                         <div class="product-price">50,000 <span data-key="currency">د.ع</span> <span style="font-size: 12px; color: #94a3b8;" data-key="deliv_tag">(+ 5,000 گەهاندن)</span></div>
 
@@ -817,11 +831,25 @@
     <section class="section-block bg-dark-1" id="videos">
         <div class="container">
             <h2 class="section-title" data-key="nav_videos">ڤیدیۆیێن مە</h2>
-            <div class="video-card">
-                <video controls preload="metadata" playsinline>
-                    <source src="tent2.mp4.MP4" type="video/mp4">
-                </video>
-                <h4 data-key="vid_title">نیشاندانا خێما KD قیاس 2x2m</h4>
+            <div class="grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px;">
+                <div class="video-card">
+                    <video controls preload="metadata" playsinline>
+                        <source src="Ten2x3.MOV" type="video/mp4">
+                    </video>
+                    <h4 data-key="vid_t0">نیشاندانا خێما خێزانی (٢ ژور) دژی بەفر و باران</h4>
+                </div>
+                <div class="video-card">
+                    <video controls preload="metadata" playsinline>
+                        <source src="Tenta2.MP4" type="video/mp4">
+                    </video>
+                    <h4 data-key="vid_t1">نیشاندانا خێما ئۆتۆماتیکی (2x2m) دژی با و باران</h4>
+                </div>
+                <div class="video-card">
+                    <video controls preload="metadata" playsinline>
+                        <source src="tent2.mp4.MP4" type="video/mp4">
+                    </video>
+                    <h4 data-key="vid_t2">نیشاندانا خێما KD قیاس 2x2m</h4>
+                </div>
             </div>
         </div>
     </section>
@@ -1001,18 +1029,19 @@
                 t3_title: "گەرەنتیا گۆڕینێ", t3_desc: "دروستکرنا ئاریشەیێ دێ ڕاستەوخۆ هێتە گۆڕین",
                 t4_title: "گەهاندنا خێرا", t4_desc: "گەهاندن بۆ هەمی پارێزگەهێن عیراقێ",
                 social_title: "مە ل تۆڕێن کۆمەڵایەتی بپەیڕەوە", products_title: "کۆمەڵا خێمە و کەرەستان",
-                p1_badge: "🔥 زۆرترین فرۆشراو", p1_title: "خێما خێزانی یا فاخڕ",
-                p1_s1: "قیاس: 330 X 210 X 180 cm", p1_s2: "قوماش: أكسفورد D210 یێ فاخر", p1_s3: "تایبەتمەندی: دژی ئاڤ و بارانێ",
+                p1_badge: "🔥 زۆرترین فرۆشراو | کوالیتی بەرز", p1_title: "خێما خێزانی (٢ ژور)",
+                p1_s1: "قیاس: درێژی 330cm | پانی 210cm | بەرزیا 180cm", p1_s2: "قوماش: أكسفورد D210 دژی بەفر و با و بارانێ", p1_s3: "ڕەنگ: سەوز + قاوەیی + شیری + پورتەقاڵی + ڕەش (VIP)",
                 p2_badge: "⚡ ڤەکرنا خێرا (کێمتر ژ ١٠ چڕکان)", p2_title: "خێما ئۆتۆماتیکی (مۆدێل دینار)", 
                 p2_s1: "قیاس: 280 cm | بەرزیا: 165 cm", p2_s2: "دیزاین: ٢ دەرگەهـ + ٤ پەنجەرە", p2_s3: "تۆر (تول): بۆ ڕێگریکرن ل حەشەراتان",
-                p3_badge: "⚡ ڤەکرنا خێرا | ئابووری", p3_title: "خێما ئۆتۆماتیکی سادە (2x2m)", 
-                p3_s1: "جهـ: بۆ ٤ تا ٦ کەسان", p3_s2: "قیاس: 2m X 2m", p3_s3: "تایبەتمەندی: دژی ئاڤ و بارانێ",
+                p3_badge: "⚡ خێما ئۆتۆماتیکی | 4-6 کەس", p3_title: "خێما ئۆتۆماتیکی (قیاس 2x2m)", 
+                p3_s1: "جهـ: بۆ ٤ تا ٦ کەسان", p3_s2: "قیاس: 2m X 2m", p3_s3: "قوماش: أكسفورد دژە با و باران",
                 p4_badge: "🪵🔥 زۆر قایم و دژی ئاڤێ", p4_title: "جانتا هه‌لگرتنا داران و کەرەستان", 
                 p4_s1: "قیاس: 99 × 48 cm | حەجم: 35L", p4_s2: "قوماش: زۆر محکم و دژی ئاڤ و شێیێ",
                 currency: "د.ع", deliv_tag: "(+ 5,000 گەهاندن)", deliv_val: "5,000 د.ع",
-                lbl_name: "ناوێ تەمام:", lbl_phone: "ژمارا تەلەفۆنێ:", lbl_city: "پارێزگەهـ:", lbl_address: "ناونیشان / تاخ / جادە:", lbl_qty: "ژمارا داواکری:",
+                lbl_name: "ناوێ تەمام:", lbl_phone: "ژمارا تەلەفۆنێ:", lbl_city: "پارێزگەهـ:", lbl_address: "ناونیشان / تاخ / جادە:", lbl_color: "هەڵبژاردنا ڕەنگی:", lbl_qty: "ژمارا داواکری:",
                 sum_price: "نرخ:", sum_deliv: "گەهاندن:", sum_total: "کۆمێ گشتی:", btn_order: "ناردنا داواکاریێ ب واتساپێ",
-                vid_title: "نیشاندانا خێما KD قیاس 2x2m", feat_title: "بۆچی بەرهەمێن مە هەڵبژێری؟",
+                vid_t0: "نیشاندانا خێما خێزانی (٢ ژور) دژی بەفر و باران", vid_t1: "نیشاندانا خێما ئۆتۆماتیکی (2x2m) دژی با و باران", vid_t2: "نیشاندانا خێما KD قیاس 2x2m",
+                feat_title: "بۆچی بەرهەمێن مە هەڵبژێری؟",
                 f1_t: "کوالیتییا بەرز", f1_d: "جۆرێن جۆراوجۆر ێن خێمان بۆ خێزان و کەسان ب کوالیتییا بەرز.",
                 f2_t: "دژی ئاڤێ", f2_d: "قوماشێ زۆر محکم و بەرهەنگار بۆ کەشوهەوایێ بارانێ.",
                 f3_t: "کۆم و تا", f3_d: "فرۆشتن بۆ دوکانان، بازرگانان و داواکاریێن کەسی.",
@@ -1030,18 +1059,19 @@
                 t3_title: "ضمان الاستبدال", t3_desc: "استبدال مباشر في حال وجود أي عيب",
                 t4_title: "توصيل سريع", t4_desc: "شحن لكافة محافظات العراق",
                 social_title: "تابعنا على وسائل التواصل الاجتماعي", products_title: "تشكيلة الخيم والمعدات",
-                p1_badge: "🔥 الأكثر مبيعاً", p1_title: "خيمة عائلية فاخرة",
-                p1_s1: "القياس: 330 X 210 X 180 cm", p1_s2: "القماش: أكسفورد D210 فاخر", p1_s3: "المميزات: مقاوم للماء والمطر",
+                p1_badge: "🔥 الأكثر مبيعاً | جودة عالية", p1_title: "خيمة عائلية (2 غرفة)",
+                p1_s1: "القياس: الطول 330cm | العرض 210cm | الارتفاع 180cm", p1_s2: "القماش: أكسفورد D210 مقاوم للثلوج والرياح والمطر", p1_s3: "الألوان: أخضر + بني + حليبي + برتقالي + أسود VIP",
                 p2_badge: "⚡ فتح سريع (أقل من 10 ثواني)", p2_title: "خيمة أوتوماتيكية (موديل دينار)", 
                 p2_s1: "القياس: 280 cm | الارتفاع: 165 cm", p2_s2: "التصميم: 2 باب + 4 شبابيك", p2_s3: "الوقاية: تور لمنع الحشرات",
-                p3_badge: "⚡ فتح سريع | اقتصادية", p3_title: "خيمة أوتوماتيكية سريعة الفتح (2x2m)", 
-                p3_s1: "السعة: 4 إلى 6 أشخاص", p3_s2: "القياس: 2m X 2m", p3_s3: "المميزات: مقاوم للماء والمطر",
+                p3_badge: "⚡ خيمة أوتوماتيكية | 4-6 أشخاص", p3_title: "خيمة أوتوماتيكية (قياس 2x2m)", 
+                p3_s1: "السعة: 4 إلى 6 أشخاص", p3_s2: "القياس: 2m X 2m", p3_s3: "القماش: أكسفورد ضد الرياح والمطر",
                 p4_badge: "🪵🔥 متينة ومقاومة للماء", p4_title: "حقيبة حمل الحطب والمعدات", 
                 p4_s1: "القياس: 99 × 48 cm | السعة: 35 لتر", p4_s2: "القماش: متين ومقاوم للماء والكرطوبة",
                 currency: "د.ع", deliv_tag: "(+ 5,000 التوصيل)", deliv_val: "5,000 د.ع",
-                lbl_name: "الاسم الكامل:", lbl_phone: "رقم الهاتف:", lbl_city: "المحافظة:", lbl_address: "العنوان التفصيلي / الشارع:", lbl_qty: "العدد المطلوب:",
+                lbl_name: "الاسم الكامل:", lbl_phone: "رقم الهاتف:", lbl_city: "المحافظة:", lbl_address: "العنوان التفصيلي / الشارع:", lbl_color: "اختيار اللون:", lbl_qty: "العدد المطلوب:",
                 sum_price: "السعر:", sum_deliv: "التوصيل:", sum_total: "المجموع الكلي:", btn_order: "إرسال الطلب عبر واتساب",
-                vid_title: "عرض خيمة KD قياس 2x2m", feat_title: "لماذا تختار منتجاتنا؟",
+                vid_t0: "عرض خيمة عائلية (2 غرفة) مقاومة للثلوج والمطر", vid_t1: "عرض خيمة أوتوماتيكية (2x2m) ضد الرياح والمطر", vid_t2: "عرض خيمة KD قياس 2x2m",
+                feat_title: "لماذا تختار منتجاتنا؟",
                 f1_t: "خيم عالية الجودة", f1_d: "تشكيلة واسعة من الخيم العائلية والفردية المقاومة للظروف الجوية.",
                 f2_t: "أقمشة مقاومة للماء", f2_d: "خامات متينة وقماش ممتاز مقاوم لمختلف الظروف الجوية والمطر.",
                 f3_t: "جملة ومفرد", f3_d: "خيارات البيع للمحلات والتجار بالإضافة إلى الطلبات الشخصية.",
@@ -1059,18 +1089,19 @@
                 t3_title: "Replacement Guarantee", t3_desc: "Instant exchange in case of defects",
                 t4_title: "Fast Shipping", t4_desc: "Fast delivery across all of Iraq",
                 social_title: "Follow Us On Social Media", products_title: "Tents & Gear Collection",
-                p1_badge: "🔥 Best Seller", p1_title: "Luxury Family Tent",
-                p1_s1: "Size: 330 X 210 X 180 cm", p1_s2: "Fabric: Premium Oxford D210", p1_s3: "Features: Waterproof & Rainproof",
+                p1_badge: "🔥 Best Seller | High Quality", p1_title: "Family Tent (2 Rooms)",
+                p1_s1: "Size: Length 330cm | Width 210cm | Height 180cm", p1_s2: "Fabric: Oxford D210 Snow, Wind & Rainproof", p1_s3: "Colors: Green + Brown + Milky + Orange + Black VIP",
                 p2_badge: "⚡ Fast Setup (< 10s)", p2_title: "Automatic Tent (Dinar Model)", 
                 p2_s1: "Size: 280 cm | Height: 165 cm", p2_s2: "Design: 2 Doors + 4 Windows", p2_s3: "Protection: Anti-bug Mesh",
-                p3_badge: "⚡ Quick Setup | Budget", p3_title: "Automatic Pop-Up Tent (2x2m)", 
-                p3_s1: "Capacity: 4 to 6 Persons", p3_s2: "Size: 2m X 2m", p3_s3: "Features: Waterproof & Rainproof",
+                p3_badge: "⚡ Automatic Tent | 4-6 Persons", p3_title: "Automatic Tent (2x2m)", 
+                p3_s1: "Capacity: 4 to 6 Persons", p3_s2: "Size: 2m X 2m", p3_s3: "Fabric: Oxford Wind & Rainproof",
                 p4_badge: "🪵🔥 Heavy-Duty & Waterproof", p4_title: "Firewood & Gear Carrying Bag", 
                 p4_s1: "Size: 99 × 48 cm | Capacity: 35L", p4_s2: "Fabric: Heavy Duty & Moisture-proof",
                 currency: "IQD", deliv_tag: "(+ 5,000 Delivery)", deliv_val: "5,000 IQD",
-                lbl_name: "Full Name:", lbl_phone: "Phone Number:", lbl_city: "City / Governorate:", lbl_address: "Detailed Address / Street:", lbl_qty: "Quantity:",
+                lbl_name: "Full Name:", lbl_phone: "Phone Number:", lbl_city: "City / Governorate:", lbl_address: "Detailed Address / Street:", lbl_color: "Color Choice:", lbl_qty: "Quantity:",
                 sum_price: "Price:", sum_deliv: "Delivery:", sum_total: "Grand Total:", btn_order: "Order via WhatsApp",
-                vid_title: "KD Tent Demo 2x2m", feat_title: "Why Choose Our Products?",
+                vid_t0: "Family Tent Demo (2 Rooms) Snow & Rainproof", vid_t1: "Automatic Tent Demo (2x2m) Wind & Rainproof", vid_t2: "KD Tent Demo 2x2m",
+                feat_title: "Why Choose Our Products?",
                 f1_t: "Top Quality Tents", f1_d: "Wide range of weather-resistant family and personal tents.",
                 f2_t: "Waterproof Fabric", f2_d: "Durable and premium materials designed to handle heavy rain.",
                 f3_t: "Wholesale & Retail", f3_d: "Options for shops, business owners, and personal orders.",
@@ -1093,10 +1124,11 @@
             const phone = document.getElementById('cust-phone-1').value;
             const city = document.getElementById('cust-city-1').value;
             const address = document.getElementById('cust-address-1').value;
+            const color = document.getElementById('cust-color-1').value;
             const qty = parseInt(document.getElementById('cust-qty-1').value);
             if(!name || !phone || !address) { alert('يرجى ملء كافة الحقول'); return; }
             const grandTotal = (qty * 150000) + 5000;
-            const text = `طلب جديد:%0A📌 *خيمة عائلية فاخرة*%0A👤 *الاسم:* ${name}%0A📞 *الهاتف:* ${phone}%0A🏙️ *المحافظة:* ${city}%0A📍 *العنوان:* ${address}%0A📦 *العدد:* ${qty}%0A💰 *المجموع:* ${grandTotal.toLocaleString()} د.ع`;
+            const text = `طلب جديد:%0A📌 *خيمة خێزانی (٢ ژور)*%0A🎨 *اللون:* ${color}%0A👤 *الاسم:* ${name}%0A📞 *الهاتف:* ${phone}%0A🏙️ *المحافظة:* ${city}%0A📍 *العنوان:* ${address}%0A📦 *العدد:* ${qty}%0A💰 *المجموع:* ${grandTotal.toLocaleString()} د.ع`;
             window.open(`https://wa.me/9647769247574?text=${text}`, '_blank');
         }
 
@@ -1132,7 +1164,7 @@
             const qty = parseInt(document.getElementById('cust-qty-3').value);
             if(!name || !phone || !address) { alert('يرجى ملء كافة الحقول'); return; }
             const grandTotal = (qty * 50000) + 5000;
-            const text = `طلب جديد:%0A📌 *خيمة 2x2m*%0A👤 *الاسم:* ${name}%0A📞 *الهاتف:* ${phone}%0A🏙️ *المحافظة:* ${city}%0A📍 *العنوان:* ${address}%0A📦 *العدد:* ${qty}%0A💰 *المجموع:* ${grandTotal.toLocaleString()} د.ع`;
+            const text = `طلب جديد:%0A📌 *خيمة أوتوماتيكية 2x2m (4-6 کەس)*%0A👤 *الاسم:* ${name}%0A📞 *الهاتف:* ${phone}%0A🏙️ *المحافظة:* ${city}%0A📍 *العنوان:* ${address}%0A📦 *العدد:* ${qty}%0A💰 *المجموع:* ${grandTotal.toLocaleString()} د.ع`;
             window.open(`https://wa.me/9647769247574?text=${text}`, '_blank');
         }
 
