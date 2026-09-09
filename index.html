@@ -627,7 +627,61 @@
             <h2 class="section-title" data-key="products_title">کۆمەڵا خێمە و کەرەستان</h2>
             <div class="grid">
                 
-                <!-- خێما 1 (خێزانی 2 ژور - وێنە لە سەرەتا، ڤیدیۆ لە دوماهیکێ) -->
+                <!-- 1. سرير نفخ (جديد) -->
+                <div class="product-card">
+                    <div class="slider-container" id="slider-bed">
+                        <button class="slider-btn prev-btn" onclick="moveSlide('slider-bed', -1)">&#10095;</button>
+                        <img src="15.1.jpg" class="slider-item active" alt="سرير نفخ">
+                        <img src="15.2.jpg" class="slider-item" alt="سرير نفخ">
+                        <img src="15.3.jpg" class="slider-item" alt="سرير نفخ">
+                        <img src="15.4.jpg" class="slider-item" alt="سرير نفخ">
+                        <button class="slider-btn next-btn" onclick="moveSlide('slider-bed', 1)">&#10094;</button>
+                        <div class="slider-counter">1 / 4</div>
+                    </div>
+                    <div class="product-info">
+                        <span class="product-badge" data-key="pb_badge">✨ مريح وعملي | للتخييم والرحلات</span>
+                        <h3 data-key="pb_title">سرير نفخ للتخييم والرحلات</h3>
+                        <ul class="product-specs">
+                            <li><i class="fa-solid fa-ruler-combined"></i> <span data-key="pb_s1">القياس: 60 × 190 سم</span></li>
+                            <li><i class="fa-solid fa-weight-scale"></i> <span data-key="pb_s2">الوزن: تقريباً 1 كغم فقط (خفيف وسهل الحمل)</span></li>
+                            <li><i class="fa-solid fa-shield-halved"></i> <span data-key="pb_s3">تصميم بخلايا هوائية متعددة لعزل الجسم عن الأرض</span></li>
+                            <li><i class="fa-solid fa-palette"></i> <span data-key="pb_s4">الألوان: أسود + أزرق + أخضر</span></li>
+                        </ul>
+                        <div class="product-price">15,000 <span data-key="currency">د.ع</span> <span style="font-size: 12px; color: #94a3b8;" data-key="deliv_tag">(+ 5,000 گەهاندن)</span></div>
+
+                        <div class="order-form">
+                            <div class="form-group"><label data-key="lbl_name">ناوێ تەمام:</label><input type="text" id="cust-name-bed" placeholder="..."></div>
+                            <div class="form-group"><label data-key="lbl_phone">ژمارا تەلەفۆنێ:</label><input type="tel" id="cust-phone-bed" placeholder="0750XXXXXXX"></div>
+                            <div class="form-group">
+                                <label data-key="lbl_city">پارێزگەهـ:</label>
+                                <select id="cust-city-bed">
+                                    <option value="دهوك">دهۆک / Duhok</option><option value="أربيل">هەولێر / Erbil</option><option value="سليمانية">سلێمانی / Sulaymaniyah</option><option value="كركوك">کەرکووک / Kirkuk</option><option value="بغداد">بەغدا / Baghdad</option><option value="الموصل">مووسڵ / Mosul</option>
+                                </select>
+                            </div>
+                            <div class="form-group"><label data-key="lbl_address">ناونیشان / تاخ / جادە:</label><input type="text" id="cust-address-bed" placeholder="..."></div>
+                            <div class="form-group">
+                                <label data-key="lbl_color">هەڵبژاردنا ڕەنگی:</label>
+                                <select id="cust-color-bed">
+                                    <option value="ڕەش">ڕەش (Black)</option>
+                                    <option value="شین">شین (Blue)</option>
+                                    <option value="سەوز">سەوز (Green)</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label data-key="lbl_qty">ژمارا داواکری:</label>
+                                <select id="cust-qty-bed" onchange="calculateTotalBed()"><option value="1">1</option><option value="2">2</option></select>
+                            </div>
+                            <div class="price-summary">
+                                <div class="price-row"><span data-key="sum_price">نرخ:</span><span id="price-display-bed">15,000 د.ع</span></div>
+                                <div class="price-row"><span data-key="sum_deliv">گەهاندن:</span><span data-key="deliv_val">5,000 د.ع</span></div>
+                                <div class="price-row total"><span data-key="sum_total">کۆمێ گشتی:</span><span id="total-display-bed">20,000 د.ع</span></div>
+                            </div>
+                            <button onclick="sendOrderBed()" class="btn-order"><i class="fa-brands fa-whatsapp"></i> <span data-key="btn_order">ناردنا داواکاریێ ب واتساپێ</span></button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- خێما 1 (خێزانی 2 ژور) -->
                 <div class="product-card">
                     <div class="slider-container" id="slider-1">
                         <button class="slider-btn prev-btn" onclick="moveSlide('slider-1', -1)">&#10095;</button>
@@ -1029,6 +1083,8 @@
                 t3_title: "گەرەنتیا گۆڕینێ", t3_desc: "دروستکرنا ئاریشەیێ دێ ڕاستەوخۆ هێتە گۆڕین",
                 t4_title: "گەهاندنا خێرا", t4_desc: "گەهاندن بۆ هەمی پارێزگەهێن عیراقێ",
                 social_title: "مە ل تۆڕێن کۆمەڵایەتی بپەیڕەوە", products_title: "کۆمەڵا خێمە و کەرەستان",
+                pb_badge: "✨ مريح وعملي | للتخييم والرحلات", pb_title: "سرير نفخ للتخييم والرحلات",
+                pb_s1: "القياس: 60 × 190 سم", pb_s2: "الوزن: تقريباً 1 كغم فقط (خفيف وسهل الحمل)", pb_s3: "تصميم بخلايا هوائية متعددة لعزل الجسم عن الأرض", pb_s4: "الألوان: أسود + أزرق + أخضر",
                 p1_badge: "🔥 زۆرترین فرۆشراو | کوالیتی بەرز", p1_title: "خێما خێزانی (٢ ژور)",
                 p1_s1: "قیاس: درێژی 330cm | پانی 210cm | بەرزیا 180cm", p1_s2: "قوماش: أكسفورد D210 دژی بەفر و با و بارانێ", p1_s3: "ڕەنگ: سەوز + قاوەیی + شیری + پورتەقاڵی + ڕەش (VIP)",
                 p2_badge: "⚡ ڤەکرنا خێرا (کێمتر ژ ١٠ چڕکان)", p2_title: "خێما ئۆتۆماتیکی (مۆدێل دینار)", 
@@ -1059,6 +1115,8 @@
                 t3_title: "ضمان الاستبدال", t3_desc: "استبدال مباشر في حال وجود أي عيب",
                 t4_title: "توصيل سريع", t4_desc: "شحن لكافة محافظات العراق",
                 social_title: "تابعنا على وسائل التواصل الاجتماعي", products_title: "تشكيلة الخيم والمعدات",
+                pb_badge: "✨ مريح وعملي | للتخييم والرحلات", pb_title: "سرير نفخ للتخييم والرحلات",
+                pb_s1: "القياس: 60 × 190 سم", pb_s2: "الوزن: تقريباً 1 كغم فقط (خفيف وسهل الحمل)", pb_s3: "تصميم بخلايا هوائية متعددة لعزل الجسم عن الأرض", pb_s4: "الألوان: أسود + أزرق + أخضر",
                 p1_badge: "🔥 الأكثر مبيعاً | جودة عالية", p1_title: "خيمة عائلية (2 غرفة)",
                 p1_s1: "القياس: الطول 330cm | العرض 210cm | الارتفاع 180cm", p1_s2: "القماش: أكسفورد D210 مقاوم للثلوج والرياح والمطر", p1_s3: "الألوان: أخضر + بني + حليبي + برتقالي + أسود VIP",
                 p2_badge: "⚡ فتح سريع (أقل من 10 ثواني)", p2_title: "خيمة أوتوماتيكية (موديل دينار)", 
@@ -1089,6 +1147,8 @@
                 t3_title: "Replacement Guarantee", t3_desc: "Instant exchange in case of defects",
                 t4_title: "Fast Shipping", t4_desc: "Fast delivery across all of Iraq",
                 social_title: "Follow Us On Social Media", products_title: "Tents & Gear Collection",
+                pb_badge: "✨ Comfortable & Practical | Camping & Trips", pb_title: "Inflatable Camping Bed",
+                pb_s1: "Size: 60 × 190 cm", pb_s2: "Weight: Approx 1 kg (Light and portable)", pb_s3: "Multi-air cell design for better body insulation", pb_s4: "Colors: Black + Blue + Green",
                 p1_badge: "🔥 Best Seller | High Quality", p1_title: "Family Tent (2 Rooms)",
                 p1_s1: "Size: Length 330cm | Width 210cm | Height 180cm", p1_s2: "Fabric: Oxford D210 Snow, Wind & Rainproof", p1_s3: "Colors: Green + Brown + Milky + Orange + Black VIP",
                 p2_badge: "⚡ Fast Setup (< 10s)", p2_title: "Automatic Tent (Dinar Model)", 
@@ -1112,6 +1172,25 @@
                 about_desc: "We specialize in importing premium camping gear directly from China to Iraq. Offering high-grade products for stores and individuals at competitive prices."
             }
         };
+
+        function calculateTotalBed() {
+            const qty = parseInt(document.getElementById('cust-qty-bed').value);
+            const curr = document.documentElement.lang === 'en' ? 'IQD' : 'د.ع';
+            document.getElementById('price-display-bed').innerText = (qty * 15000).toLocaleString() + " " + curr;
+            document.getElementById('total-display-bed').innerText = ((qty * 15000) + 5000).toLocaleString() + " " + curr;
+        }
+        function sendOrderBed() {
+            const name = document.getElementById('cust-name-bed').value;
+            const phone = document.getElementById('cust-phone-bed').value;
+            const city = document.getElementById('cust-city-bed').value;
+            const address = document.getElementById('cust-address-bed').value;
+            const color = document.getElementById('cust-color-bed').value;
+            const qty = parseInt(document.getElementById('cust-qty-bed').value);
+            if(!name || !phone || !address) { alert('يرجى ملء كافة الحقول'); return; }
+            const grandTotal = (qty * 15000) + 5000;
+            const text = `طلب جديد:%0A📌 *سرير نفخ للتخييم والرحلات*%0A🎨 *اللون:* ${color}%0A👤 *الاسم:* ${name}%0A📞 *الهاتف:* ${phone}%0A🏙️ *المحافظة:* ${city}%0A📍 *العنوان:* ${address}%0A📦 *العدد:* ${qty}%0A💰 *المجموع:* ${grandTotal.toLocaleString()} د.ع`;
+            window.open(`https://wa.me/9647769247574?text=${text}`, '_blank');
+        }
 
         function calculateTotal1() {
             const qty = parseInt(document.getElementById('cust-qty-1').value);
