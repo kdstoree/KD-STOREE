@@ -369,6 +369,50 @@
 
         .btn-order:hover { background-color: #1ebd59; }
 
+        /* Reviews Section Styles */
+        .reviews-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 20px;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .review-card {
+            background: var(--card-bg);
+            border: 1px solid rgba(0, 210, 255, 0.2);
+            border-radius: 16px;
+            padding: 20px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+            text-align: right;
+        }
+
+        [dir="ltr"] .review-card { text-align: left; }
+
+        .review-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 12px;
+        }
+
+        .review-author {
+            font-weight: bold;
+            color: #ffffff;
+            font-size: 15px;
+        }
+
+        .review-stars {
+            color: #fbbf24;
+            font-size: 13px;
+        }
+
+        .review-text {
+            color: #cbd5e1;
+            font-size: 14px;
+            line-height: 1.5;
+        }
+
         .faq-container {
             max-width: 800px;
             margin: 0 auto;
@@ -565,6 +609,7 @@
             <ul class="nav-links">
                 <li><a href="#social" data-key="nav_social">پەیجێن مە</a></li>
                 <li><a href="#products" data-key="nav_products">بەرهەمێن مە</a></li>
+                <li><a href="#reviews" data-key="nav_reviews">ڕاوبوچوون</a></li>
                 <li><a href="#videos" data-key="nav_videos">ڤیدیۆیێن مە</a></li>
                 <li><a href="#features" data-key="nav_features">تایبەتمەندی</a></li>
                 <li><a href="#faq" data-key="nav_faq">پرسیارێن بەربەڵاڤ</a></li>
@@ -627,7 +672,7 @@
             <h2 class="section-title" data-key="products_title">کۆمەڵا خێمە و کەرەستان</h2>
             <div class="grid">
                 
-                <!-- 1. سرير نفخ (جديد) -->
+                <!-- 1. سرير نفخ -->
                 <div class="product-card">
                     <div class="slider-container" id="slider-bed">
                         <button class="slider-btn prev-btn" onclick="moveSlide('slider-bed', -1)">&#10095;</button>
@@ -881,8 +926,38 @@
         </div>
     </section>
 
+    <!-- بەشێ ڕاوبوچوونێن مێڤانان (Customer Reviews) -->
+    <section class="section-block bg-dark-1" id="reviews">
+        <div class="container">
+            <h2 class="section-title" data-key="rev_title">ڕاوبوچوونێن مێڤانێن مە</h2>
+            <div class="reviews-container">
+                <div class="review-card">
+                    <div class="review-header">
+                        <span class="review-author" data-key="rev_name1">ئارام حەسەن (دهۆک)</span>
+                        <span class="review-stars"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i></span>
+                    </div>
+                    <p class="review-text" data-key="rev_txt1">"بەڕاستی خێما خێزانی گەلەک یا باش و کوالیتی بەرز بوو، و گەهاندن ژی گەلەک زوو گەهشت. دەستخۆش بۆ پەیجا KD SHOP!"</p>
+                </div>
+                <div class="review-card">
+                    <div class="review-header">
+                        <span class="review-author" data-key="rev_name2">شیلان عەلی (هەولێر)</span>
+                        <span class="review-stars"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i></span>
+                    </div>
+                    <p class="review-text" data-key="rev_txt2">"مافێ پشکنینێ هەبوو و مە بەرهەم بەری پارەدانێ پشکنین کر، زۆر ب ڕەفتار و راستگۆ نە. سەرکەفتی بن."</p>
+                </div>
+                <div class="review-card">
+                    <div class="review-header">
+                        <span class="review-author" data-key="rev_name3">عومەر محەمەد (سلێمانی)</span>
+                        <span class="review-stars"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i></span>
+                    </div>
+                    <p class="review-text" data-key="rev_txt3">"سرير نفخ گەلەک یێ ب سوود و رەحەتە بۆ سەیرانان، نرخەک گەلەک گونجای هەیە. سپاس بۆ هەوە."</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <!-- 3. بەشێ فيديوهاتنا -->
-    <section class="section-block bg-dark-1" id="videos">
+    <section class="section-block bg-dark-2" id="videos">
         <div class="container">
             <h2 class="section-title" data-key="nav_videos">ڤیدیۆیێن مە</h2>
             <div class="grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px;">
@@ -909,7 +984,7 @@
     </section>
 
     <!-- 4. بەشێ تایبەتمەندیان -->
-    <section class="section-block bg-dark-2" id="features">
+    <section class="section-block bg-dark-1" id="features">
         <div class="container">
             <h2 class="section-title" data-key="feat_title">بۆچی بەرهەمێن مە هەڵبژێری؟</h2>
             <div class="grid">
@@ -921,7 +996,7 @@
     </section>
 
     <!-- 5. بەشێ پرسیارێن بەربەڵاڤ (FAQ) -->
-    <section class="section-block bg-dark-1" id="faq">
+    <section class="section-block bg-dark-2" id="faq">
         <div class="container">
             <h2 class="section-title" data-key="nav_faq">پرسیارێن بەربەڵاڤ</h2>
             <div class="faq-container">
@@ -966,7 +1041,7 @@
     </section>
 
     <!-- 6. بەشێ دبارەیا مەدا -->
-    <section class="section-block bg-dark-2" id="about">
+    <section class="section-block bg-dark-1" id="about">
         <div class="container">
             <h2 class="section-title" data-key="nav_about">دبارەیا مەدا</h2>
             <div style="text-align: center; color: #94a3b8; max-width: 800px; margin: 0 auto;" data-key="about_desc">
@@ -1076,7 +1151,7 @@
 
         const translations = {
             ku: {
-                nav_social: "پەیجێن مە", nav_products: "بەرهەمێن مە", nav_videos: "ڤیدیۆیێن مە", nav_features: "تایبەتمەندی", nav_faq: "پرسیارێن بەربەڵاڤ", nav_about: "دبارەیا مەدا",
+                nav_social: "پەیجێن مە", nav_products: "بەرهەمێن مە", nav_reviews: "ڕاوبوچوون", nav_videos: "ڤیدیۆیێن مە", nav_features: "تایبەتمەندی", nav_faq: "پرسیارێن بەربەڵاڤ", nav_about: "دبارەیا مەدا",
                 hero_title: "KD SHOP - جهێ تە یێ ئێکێ بۆ کەرەستێن تەخییمێ", hero_desc: "ئینانا ڕاستەوخۆ ژ چینێ بۆ عیراقێ | بازرگانیا کۆم و تا ب باشترین کوالیتی و نرخ",
                 t1_title: "پارەدان ل دەمێ وەرگرتنێ", t1_desc: "بەری وەرگرتنا بەرهەمی تو چ پارەی نادەی",
                 t2_title: "مافێ پشکنینێ", t2_desc: "تو دشێی بەرهەمی پشکنین بکەی بەری بکی",
@@ -1093,6 +1168,10 @@
                 p3_s1: "جهـ: بۆ ٤ تا ٦ کەسان", p3_s2: "قیاس: 2m X 2m", p3_s3: "قوماش: أكسفورد دژە با و باران",
                 p4_badge: "🪵🔥 زۆر قایم و دژی ئاڤێ", p4_title: "جانتا هه‌لگرتنا داران و کەرەستان", 
                 p4_s1: "قیاس: 99 × 48 cm | حەجم: 35L", p4_s2: "قوماش: زۆر محکم و دژی ئاڤ و شێیێ",
+                rev_title: "ڕاوبوچوونێن مێڤانێن مە",
+                rev_name1: "ئارام حەسەن (دهۆک)", rev_txt1: "\"بەڕاستی خێما خێزانی گەلەک یار باش و کوالیتی بەرز بوو، و گەهاندن ژی گەلەک زوو گەهشت. دەستخۆش بۆ پەیجا KD SHOP!\"",
+                rev_name2: "شیلان عەلی (هەولێر)", rev_txt2: "\"مافێ پشکنینێ هەبوو و مە بەرهەم بەری پارەدانێ پشکنین کر، زۆر ب ڕەفتار و راستگۆ نە. سەرکەفتی بن.\"",
+                rev_name3: "عومەر محەمەد (سلێمانی)", rev_txt3: "\"سرير نفخ گەلەک یێ ب سوود و رەحەتە بۆ سەیرانان، نرخەک گەلەک گونجای هەیە. سپاس بۆ هەوە.\"",
                 currency: "د.ع", deliv_tag: "(+ 5,000 گەهاندن)", deliv_val: "5,000 د.ع",
                 lbl_name: "ناوێ تەمام:", lbl_phone: "ژمارا تەلەفۆنێ:", lbl_city: "پارێزگەهـ:", lbl_address: "ناونیشان / تاخ / جادە:", lbl_color: "هەڵبژاردنا ڕەنگی:", lbl_qty: "ژمارا داواکری:",
                 sum_price: "نرخ:", sum_deliv: "گەهاندن:", sum_total: "کۆمێ گشتی:", btn_order: "ناردنا داواکاریێ ب واتساپێ",
@@ -1108,7 +1187,7 @@
                 about_desc: "ئەم تایبەتمەندین د ئینانا نووترین و باشترین کەرەستێن تەخییم و سەیرانان ڕاستەوخۆ ژ چینێ بۆ عیراقێ. مە بەرهەمێن کوالیتی بەرز بۆ دوکان و کەسان هەنە ب نرخێن کێبڕکێکار."
             },
             ar: {
-                nav_social: "صفحاتنا", nav_products: "منتجاتنا", nav_videos: "فيديوهاتنا", nav_features: "مميزاتنا", nav_faq: "الأسئلة الشائعة", nav_about: "من نحن",
+                nav_social: "صفحاتنا", nav_products: "منتجاتنا", nav_reviews: "الآراء", nav_videos: "فيديوهاتنا", nav_features: "مميزاتنا", nav_faq: "الأسئلة الشائعة", nav_about: "من نحن",
                 hero_title: "KD SHOP - وجهتك الأولى لمعدات التخييم", hero_desc: "استيراد مباشر من الصين إلى العراق | تجارة الجملة والمفرد بأعلى جودة وأفضل الأسعار",
                 t1_title: "الدفع عند الاستلام", t1_desc: "لا تدفع أي مبلغ حتى تستلم منتجك",
                 t2_title: "حق المعاينة", t2_desc: "يمكنك فحص المنتج قبل إتمام الدفع",
@@ -1125,6 +1204,10 @@
                 p3_s1: "السعة: 4 إلى 6 أشخاص", p3_s2: "القياس: 2m X 2m", p3_s3: "القماش: أكسفورد ضد الرياح والمطر",
                 p4_badge: "🪵🔥 متينة ومقاومة للماء", p4_title: "حقيبة حمل الحطب والمعدات", 
                 p4_s1: "القياس: 99 × 48 cm | السعة: 35 لتر", p4_s2: "القماش: متين ومقاوم للماء والكرطوبة",
+                rev_title: "آراء عملائنا الكرام",
+                rev_name1: "أرام حسن (دهوك)", rev_txt1: "\"صراحة الخيمة العائلية ممتازة جداً وجودتها عالية، والتوصيل وصل بسرعة. شكراً متجر KD SHOP!\"",
+                rev_name2: "شيلان علي (أربيل)", rev_txt2: "\"كان لدي حق معاينة المنتج قبل الدفع، تعاملهم راقي وصادقين جداً. بالتوفيق لكم.\"",
+                rev_name3: "عمر محمد (السليمانية)", rev_txt3: "\"سرير النفخ مريح وعملي جداً للرحلات وبسعر مناسب جداً. شكراً لكم.\"",
                 currency: "د.ع", deliv_tag: "(+ 5,000 التوصيل)", deliv_val: "5,000 د.ع",
                 lbl_name: "الاسم الكامل:", lbl_phone: "رقم الهاتف:", lbl_city: "المحافظة:", lbl_address: "العنوان التفصيلي / الشارع:", lbl_color: "اختيار اللون:", lbl_qty: "العدد المطلوب:",
                 sum_price: "السعر:", sum_deliv: "التوصيل:", sum_total: "المجموع الكلي:", btn_order: "إرسال الطلب عبر واتساب",
@@ -1140,7 +1223,7 @@
                 about_desc: "نحن متخصصون في استيراد أحدث وأفضل مستلزمات التخييم والرحلات مباشرة من الصين إلى العراق. نوفر الخيم ومعدات الرحلات للمتاجر والأفراد بأسعار تنافسية وجودة مضمونة."
             },
             en: {
-                nav_social: "Socials", nav_products: "Products", nav_videos: "Videos", nav_features: "Features", nav_faq: "FAQ", nav_about: "About Us",
+                nav_social: "Socials", nav_products: "Products", nav_reviews: "Reviews", nav_videos: "Videos", nav_features: "Features", nav_faq: "FAQ", nav_about: "About Us",
                 hero_title: "KD SHOP - Your #1 Camping Equipment Destination", hero_desc: "Direct imports from China to Iraq | Wholesale & Retail with top quality & best prices",
                 t1_title: "Cash on Delivery", t1_desc: "Pay only when you receive your item",
                 t2_title: "Inspection Right", t2_desc: "Inspect product quality before payment",
@@ -1157,6 +1240,10 @@
                 p3_s1: "Capacity: 4 to 6 Persons", p3_s2: "Size: 2m X 2m", p3_s3: "Fabric: Oxford Wind & Rainproof",
                 p4_badge: "🪵🔥 Heavy-Duty & Waterproof", p4_title: "Firewood & Gear Carrying Bag", 
                 p4_s1: "Size: 99 × 48 cm | Capacity: 35L", p4_s2: "Fabric: Heavy Duty & Moisture-proof",
+                rev_title: "Customer Reviews",
+                rev_name1: "Aram Hassan (Duhok)", rev_txt1: "\"The family tent is truly amazing and high quality, and delivery was super fast. Thanks KD SHOP!\"",
+                rev_name2: "Shilan Ali (Erbil)", rev_txt2: "\"I had the right to inspect before paying, very professional and honest service. Highly recommended.\"",
+                rev_name3: "Omar Mohammed (Sulaymaniyah)", rev_txt3: "\"The inflatable bed is very comfortable and practical for trips with a great price. Thank you!\"",
                 currency: "IQD", deliv_tag: "(+ 5,000 Delivery)", deliv_val: "5,000 IQD",
                 lbl_name: "Full Name:", lbl_phone: "Phone Number:", lbl_city: "City / Governorate:", lbl_address: "Detailed Address / Street:", lbl_color: "Color Choice:", lbl_qty: "Quantity:",
                 sum_price: "Price:", sum_deliv: "Delivery:", sum_total: "Grand Total:", btn_order: "Order via WhatsApp",
