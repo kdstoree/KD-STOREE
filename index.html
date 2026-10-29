@@ -145,7 +145,7 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background: rgba(0,0,0,0.8);
+            background: rgba(0,0,0,0.85);
             z-index: 2000;
             justify-content: center;
             align-items: center;
@@ -158,7 +158,7 @@
             background: var(--card-bg);
             border: 1px solid rgba(0, 210, 255, 0.3);
             border-radius: 20px;
-            max-width: 500px;
+            max-width: 520px;
             width: 100%;
             max-height: 90vh;
             overflow-y: auto;
@@ -176,7 +176,7 @@
             background: transparent;
             border: none;
             color: #fff;
-            font-size: 20px;
+            font-size: 22px;
             cursor: pointer;
         }
 
@@ -184,17 +184,48 @@
 
         .cart-items-list {
             margin: 15px 0;
-            max-height: 250px;
+            max-height: 280px;
             overflow-y: auto;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
         }
 
+        /* Modern Cart Item Styling with Image */
         .cart-item-row {
             display: flex;
-            justify-content: space-between;
             align-items: center;
-            padding: 10px 0;
-            border-bottom: 1px solid rgba(255,255,255,0.1);
-            font-size: 13px;
+            gap: 12px;
+            background: rgba(8, 12, 20, 0.6);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: 12px;
+            padding: 10px;
+        }
+
+        .cart-item-img {
+            width: 60px;
+            height: 60px;
+            border-radius: 8px;
+            object-fit: cover;
+            border: 1px solid rgba(0, 210, 255, 0.2);
+            background: #000;
+            flex-shrink: 0;
+        }
+
+        .cart-item-info {
+            flex-grow: 1;
+        }
+
+        .cart-item-info strong {
+            display: block;
+            font-size: 14px;
+            color: #ffffff;
+            margin-bottom: 2px;
+        }
+
+        .cart-item-info span {
+            font-size: 12px;
+            color: #94a3b8;
         }
 
         .hero {
@@ -814,7 +845,7 @@
                                 <label data-key="lbl_qty">ژمارا داواکری:</label>
                                 <select id="cust-qty-bed"><option value="1">1</option><option value="2">2</option><option value="3">3</option></select>
                             </div>
-                            <button onclick="addToCart('سرير نفخ للتخييم والرحلات', 15000, 'cust-color-bed', 'cust-qty-bed')" class="btn-add-cart"><i class="fa-solid fa-cart-plus"></i> <span data-key="btn_add">زێدەکرن بۆ سەبەتێ</span></button>
+                            <button onclick="addToCart('سرير نفخ للتخييم والرحلات', 15000, 'cust-color-bed', 'cust-qty-bed', '15.1.jpg')" class="btn-add-cart"><i class="fa-solid fa-cart-plus"></i> <span data-key="btn_add">زێدەکرن بۆ سەبەتێ</span></button>
                         </div>
                     </div>
                 </div>
@@ -853,7 +884,7 @@
                                 <label data-key="lbl_qty">ژمارا داواکری:</label>
                                 <select id="cust-qty-1"><option value="1">1</option><option value="2">2</option><option value="3">3</option></select>
                             </div>
-                            <button onclick="addToCart('خێما خێزانی (٢ ژور)', 150000, 'cust-color-1', 'cust-qty-1')" class="btn-add-cart"><i class="fa-solid fa-cart-plus"></i> <span data-key="btn_add">زێدەکرن بۆ سەبەتێ</span></button>
+                            <button onclick="addToCart('خێما خێزانی (٢ ژور)', 150000, 'cust-color-1', 'cust-qty-1', 'tent1.jpg.jpg')" class="btn-add-cart"><i class="fa-solid fa-cart-plus"></i> <span data-key="btn_add">زێدەکرن بۆ سەبەتێ</span></button>
                         </div>
                     </div>
                 </div>
@@ -888,7 +919,7 @@
                                 <label data-key="lbl_qty">ژمارا داواکری:</label>
                                 <select id="cust-qty-2"><option value="1">1</option><option value="2">2</option><option value="3">3</option></select>
                             </div>
-                            <button onclick="addToCart('خێما ئۆتۆماتیکی (مۆدێل دینار)', 80000, null, 'cust-qty-2')" class="btn-add-cart"><i class="fa-solid fa-cart-plus"></i> <span data-key="btn_add">زێدەکرن بۆ سەبەتێ</span></button>
+                            <button onclick="addToCart('خێما ئۆتۆماتیکی (مۆدێل دینار)', 80000, null, 'cust-qty-2', 'dinare1.jpg')" class="btn-add-cart"><i class="fa-solid fa-cart-plus"></i> <span data-key="btn_add">زێدەکرن بۆ سەبەتێ</span></button>
                         </div>
                     </div>
                 </div>
@@ -923,7 +954,7 @@
                                 <label data-key="lbl_qty">ژمارا داواکری:</label>
                                 <select id="cust-qty-3"><option value="1">1</option><option value="2">2</option><option value="3">3</option></select>
                             </div>
-                            <button onclick="addToCart('خێما ئۆتۆماتیکی (قیاس 2x2m)', 50000, null, 'cust-qty-3')" class="btn-add-cart"><i class="fa-solid fa-cart-plus"></i> <span data-key="btn_add">زێدەکرن بۆ سەبەتێ</span></button>
+                            <button onclick="addToCart('خێما ئۆتۆماتیکی (قیاس 2x2m)', 50000, null, 'cust-qty-3', 'tee1.jpg')" class="btn-add-cart"><i class="fa-solid fa-cart-plus"></i> <span data-key="btn_add">زێدەکرن بۆ سەبەتێ</span></button>
                         </div>
                     </div>
                 </div>
@@ -954,7 +985,7 @@
                                 <label data-key="lbl_qty">ژمارا داواکری:</label>
                                 <select id="cust-qty-4"><option value="1">1</option><option value="2">2</option><option value="3">3</option></select>
                             </div>
-                            <button onclick="addToCart('جانتا هه‌لگرتنا داران', 15000, null, 'cust-qty-4')" class="btn-add-cart"><i class="fa-solid fa-cart-plus"></i> <span data-key="btn_add">زێدەکرن بۆ سەبەتێ</span></button>
+                            <button onclick="addToCart('جانتا هه‌لگرتنا داران', 15000, null, 'cust-qty-4', 'ha1.jpg')" class="btn-add-cart"><i class="fa-solid fa-cart-plus"></i> <span data-key="btn_add">زێدەکرن بۆ سەبەتێ</span></button>
                         </div>
                     </div>
                 </div>
@@ -1139,14 +1170,14 @@
         }
         setInterval(drawSnow, 33);
 
-        // Cart Logic
+        // Cart Logic with Images
         let cart = [];
 
         function toggleCartModal() {
             document.getElementById('cartModal').classList.toggle('show');
         }
 
-        function addToCart(productName, price, colorId, qtyId) {
+        function addToCart(productName, price, colorId, qtyId, imgSrc) {
             let color = colorId ? document.getElementById(colorId).value : 'عام';
             let qty = parseInt(document.getElementById(qtyId).value);
             
@@ -1154,7 +1185,7 @@
             if(existing) {
                 existing.qty += qty;
             } else {
-                cart.push({ name: productName, price: price, color: color, qty: qty });
+                cart.push({ name: productName, price: price, color: color, qty: qty, img: imgSrc });
             }
             updateCartUI();
             alert('بەرهەم هاتە زێدەکرن بۆ سەبەتێ! 🛒');
@@ -1185,14 +1216,13 @@
                 subtotal += itemTotal;
                 html += `
                     <div class="cart-item-row">
-                        <div>
-                            <strong>${item.name}</strong><br>
-                            <span style="font-size:11px; color:#94a3b8;">ڕەنگ: ${item.color} | ژمارە: ${item.qty}</span>
+                        <img src="${item.img}" class="cart-item-img" alt="${item.name}">
+                        <div class="cart-item-info">
+                            <strong>${item.name}</strong>
+                            <span>ڕەنگ: ${item.color} | ژمارە: ${item.qty}</span><br>
+                            <span style="color:#00ff88; font-weight:bold;">${itemTotal.toLocaleString()} د.ع</span>
                         </div>
-                        <div style="text-align: left;">
-                            <span style="color:#00ff88;">${itemTotal.toLocaleString()} د.ع</span><br>
-                            <button onclick="removeFromCart(${index})" style="background:transparent; border:none; color:#ef4444; cursor:pointer; font-size:12px;"><i class="fa-solid fa-trash"></i></button>
-                        </div>
+                        <button onclick="removeFromCart(${index})" style="background:transparent; border:none; color:#ef4444; cursor:pointer; font-size:16px; padding: 5px;"><i class="fa-solid fa-trash"></i></button>
                     </div>
                 `;
             });
