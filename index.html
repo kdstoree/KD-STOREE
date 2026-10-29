@@ -106,6 +106,97 @@
             text-shadow: 0 0 10px var(--accent-color);
         }
 
+        /* Cart Floating Button */
+        .cart-float-btn {
+            position: fixed;
+            top: 20px;
+            left: 20px;
+            background: linear-gradient(45deg, var(--accent-color), #00ff88);
+            color: #000;
+            border: none;
+            padding: 10px 18px;
+            border-radius: 50px;
+            font-weight: bold;
+            font-size: 14px;
+            cursor: pointer;
+            z-index: 1001;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            box-shadow: 0 4px 15px rgba(0, 210, 255, 0.4);
+            transition: transform 0.2s;
+        }
+
+        .cart-float-btn:hover { transform: scale(1.05); }
+
+        .cart-count {
+            background: #000;
+            color: #fff;
+            border-radius: 50%;
+            padding: 2px 8px;
+            font-size: 12px;
+        }
+
+        /* Cart Modal Overlay */
+        .cart-modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.8);
+            z-index: 2000;
+            justify-content: center;
+            align-items: center;
+            padding: 15px;
+        }
+
+        .cart-modal.show { display: flex; }
+
+        .cart-content {
+            background: var(--card-bg);
+            border: 1px solid rgba(0, 210, 255, 0.3);
+            border-radius: 20px;
+            max-width: 500px;
+            width: 100%;
+            max-height: 90vh;
+            overflow-y: auto;
+            padding: 25px;
+            position: relative;
+            text-align: right;
+        }
+
+        [dir="ltr"] .cart-content { text-align: left; }
+
+        .close-cart {
+            position: absolute;
+            top: 15px;
+            left: 15px;
+            background: transparent;
+            border: none;
+            color: #fff;
+            font-size: 20px;
+            cursor: pointer;
+        }
+
+        [dir="ltr"] .close-cart { left: auto; right: 15px; }
+
+        .cart-items-list {
+            margin: 15px 0;
+            max-height: 250px;
+            overflow-y: auto;
+        }
+
+        .cart-item-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px 0;
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+            font-size: 13px;
+        }
+
         .hero {
             background: linear-gradient(rgba(8, 12, 20, 0.75), rgba(8, 12, 20, 0.98)), 
                         url('https://images.unsplash.com/photo-1504280390367-361c6d9f38f4?auto=format&fit=crop&w=1350&q=80') center/cover;
@@ -341,33 +432,14 @@
             outline: none;
         }
 
-        .price-summary {
-            background: rgba(0, 210, 255, 0.05);
-            border: 1px solid rgba(0, 210, 255, 0.2);
-            border-radius: 8px;
-            padding: 12px;
-            margin: 15px 0;
-            font-size: 13px;
-        }
-
-        .price-row { display: flex; justify-content: space-between; margin-bottom: 6px; color: #cbd5e1; }
-        .price-row.total {
-            border-top: 1px dashed rgba(255,255,255,0.2);
-            padding-top: 8px;
-            margin-top: 6px;
-            font-size: 16px;
-            font-weight: bold;
-            color: #00ff88;
-        }
-
-        .btn-order {
+        .btn-add-cart {
             display: flex; align-items: center; justify-content: center; gap: 8px;
-            background-color: var(--whatsapp-color); color: white; padding: 12px 18px;
+            background: linear-gradient(45deg, #00d2ff, #0099ff); color: white; padding: 12px 18px;
             border-radius: 10px; text-decoration: none; font-weight: bold; font-size: 15px;
-            border: none; cursor: pointer; width: 100%; transition: background 0.3s;
+            border: none; cursor: pointer; width: 100%; transition: opacity 0.3s; margin-top: 10px;
         }
 
-        .btn-order:hover { background-color: #1ebd59; }
+        .btn-add-cart:hover { opacity: 0.9; }
 
         /* Reviews Section Styles */
         .reviews-container {
@@ -603,6 +675,41 @@
 
     <canvas id="snow-canvas"></canvas>
 
+    <!-- Floating Cart Button -->
+    <button class="cart-float-btn" onclick="toggleCartModal()">
+        <i class="fa-solid fa-cart-shopping"></i> <span data-key="cart_title">سەبەت</span> <span class="cart-count" id="cart-counter-badge">0</span>
+    </button>
+
+    <!-- Cart Modal -->
+    <div class="cart-modal" id="cartModal">
+        <div class="cart-content">
+            <button class="close-cart" onclick="toggleCartModal()">&times;</button>
+            <h3 style="color: #fff; margin-bottom: 15px;" data-key="cart_header">🛒 سەبەتەداکاریێن تە</h3>
+            
+            <div class="cart-items-list" id="cartItemsList">
+                <p style="color: #94a3b8; text-align: center;" data-key="cart_empty">سەبەتەیا تە ڤالا یە</p>
+            </div>
+
+            <div style="border-top: 1px solid rgba(255,255,255,0.1); padding-top: 15px; margin-top: 15px;">
+                <div class="form-group"><label data-key="lbl_name">ناوێ تەمام:</label><input type="text" id="cart-name" placeholder="..."></div>
+                <div class="form-group"><label data-key="lbl_phone">ژمارا تەلەفۆنێ:</label><input type="tel" id="cart-phone" placeholder="0750XXXXXXX"></div>
+                <div class="form-group">
+                    <label data-key="lbl_city">پارێزگەهـ:</label>
+                    <select id="cart-city">
+                        <option value="دهوك">دهۆک / Duhok</option><option value="أربيل">هەولێر / Erbil</option><option value="سليمانية">سلێمانی / Sulaymaniyah</option><option value="كركوك">کەرکووک / Kirkuk</option><option value="بغداد">بەغدا / Baghdad</option><option value="الموصل">مووسڵ / Mosul</option>
+                    </select>
+                </div>
+                <div class="form-group"><label data-key="lbl_address">ناونیشان / تاخ / جادە:</label><input type="text" id="cart-address" placeholder="..."></div>
+                
+                <div class="price-summary" style="background: rgba(0,210,255,0.05); border: 1px solid rgba(0,210,255,0.2); border-radius: 8px; padding: 10px; margin: 15px 0; font-size: 14px;">
+                    <div class="price-row" style="display: flex; justify-content: space-between; margin-bottom: 5px;"><span data-key="sum_total">کۆمێ گشتی:</span><span id="cart-total-display" style="color: #00ff88; font-weight: bold;">0 د.ع</span></div>
+                </div>
+                
+                <button onclick="sendCartOrder()" class="btn-order"><i class="fa-brands fa-whatsapp"></i> <span data-key="btn_order">ناردنا داواکاریێ ب واتساپێ</span></button>
+            </div>
+        </div>
+    </div>
+
     <header>
         <div class="navbar">
             <a href="#" class="logo"><i class="fa-solid fa-campground"></i> KD SHOP</a>
@@ -685,25 +792,16 @@
                     </div>
                     <div class="product-info">
                         <span class="product-badge" data-key="pb_badge">✨ مريح وعملي | للتخييم والرحلات</span>
-                        <h3 data-key="pb_title">سرير نفخ للتخييم والرحلات</h3>
+                        <h3 data-key="pb_title" id="p-name-bed">سرير نفخ للتخييم والرحلات</h3>
                         <ul class="product-specs">
                             <li><i class="fa-solid fa-ruler-combined"></i> <span data-key="pb_s1">القياس: 60 × 190 سم</span></li>
                             <li><i class="fa-solid fa-weight-scale"></i> <span data-key="pb_s2">الوزن: تقريباً 1 كغم فقط (خفيف وسهل الحمل)</span></li>
                             <li><i class="fa-solid fa-shield-halved"></i> <span data-key="pb_s3">تصميم بخلايا هوائية متعددة لعزل الجسم عن الأرض</span></li>
                             <li><i class="fa-solid fa-palette"></i> <span data-key="pb_s4">الألوان: أسود + أزرق + أخضر</span></li>
                         </ul>
-                        <div class="product-price">15,000 <span data-key="currency">د.ع</span> <span style="font-size: 12px; color: #94a3b8;" data-key="deliv_tag">(+ 5,000 گەهاندن)</span></div>
+                        <div class="product-price">15,000 <span data-key="currency">د.ع</span></div>
 
                         <div class="order-form">
-                            <div class="form-group"><label data-key="lbl_name">ناوێ تەمام:</label><input type="text" id="cust-name-bed" placeholder="..."></div>
-                            <div class="form-group"><label data-key="lbl_phone">ژمارا تەلەفۆنێ:</label><input type="tel" id="cust-phone-bed" placeholder="0750XXXXXXX"></div>
-                            <div class="form-group">
-                                <label data-key="lbl_city">پارێزگەهـ:</label>
-                                <select id="cust-city-bed">
-                                    <option value="دهوك">دهۆک / Duhok</option><option value="أربيل">هەولێر / Erbil</option><option value="سليمانية">سلێمانی / Sulaymaniyah</option><option value="كركوك">کەرکووک / Kirkuk</option><option value="بغداد">بەغدا / Baghdad</option><option value="الموصل">مووسڵ / Mosul</option>
-                                </select>
-                            </div>
-                            <div class="form-group"><label data-key="lbl_address">ناونیشان / تاخ / جادە:</label><input type="text" id="cust-address-bed" placeholder="..."></div>
                             <div class="form-group">
                                 <label data-key="lbl_color">هەڵبژاردنا ڕەنگی:</label>
                                 <select id="cust-color-bed">
@@ -714,14 +812,9 @@
                             </div>
                             <div class="form-group">
                                 <label data-key="lbl_qty">ژمارا داواکری:</label>
-                                <select id="cust-qty-bed" onchange="calculateTotalBed()"><option value="1">1</option><option value="2">2</option></select>
+                                <select id="cust-qty-bed"><option value="1">1</option><option value="2">2</option><option value="3">3</option></select>
                             </div>
-                            <div class="price-summary">
-                                <div class="price-row"><span data-key="sum_price">نرخ:</span><span id="price-display-bed">15,000 د.ع</span></div>
-                                <div class="price-row"><span data-key="sum_deliv">گەهاندن:</span><span data-key="deliv_val">5,000 د.ع</span></div>
-                                <div class="price-row total"><span data-key="sum_total">کۆمێ گشتی:</span><span id="total-display-bed">20,000 د.ع</span></div>
-                            </div>
-                            <button onclick="sendOrderBed()" class="btn-order"><i class="fa-brands fa-whatsapp"></i> <span data-key="btn_order">ناردنا داواکاریێ ب واتساپێ</span></button>
+                            <button onclick="addToCart('سرير نفخ للتخييم والرحلات', 15000, 'cust-color-bed', 'cust-qty-bed')" class="btn-add-cart"><i class="fa-solid fa-cart-plus"></i> <span data-key="btn_add">زێدەکرن بۆ سەبەتێ</span></button>
                         </div>
                     </div>
                 </div>
@@ -737,24 +830,15 @@
                     </div>
                     <div class="product-info">
                         <span class="product-badge" data-key="p1_badge">🔥 زۆرترین فرۆشراو | کوالیتی بەرز</span>
-                        <h3 data-key="p1_title">خێما خێزانی (٢ ژور)</h3>
+                        <h3 data-key="p1_title" id="p-name-1">خێما خێزانی (٢ ژور)</h3>
                         <ul class="product-specs">
                             <li><i class="fa-solid fa-ruler-combined"></i> <span data-key="p1_s1">قیاس: درێژی 330cm | پانی 210cm | بەرزیا 180cm</span></li>
                             <li><i class="fa-solid fa-shield-halved"></i> <span data-key="p1_s2">قوماش: أكسفورد D210 دژی بەفر و با و بارانێ</span></li>
                             <li><i class="fa-solid fa-palette"></i> <span data-key="p1_s3">ڕەنگ: سەوز + قاوەیی + شیری + پورتەقاڵی + ڕەش (VIP)</span></li>
                         </ul>
-                        <div class="product-price">150,000 <span data-key="currency">د.ع</span> <span style="font-size: 12px; color: #94a3b8;" data-key="deliv_tag">(+ 5,000 گەهاندن)</span></div>
+                        <div class="product-price">150,000 <span data-key="currency">د.ع</span></div>
 
                         <div class="order-form">
-                            <div class="form-group"><label data-key="lbl_name">ناوێ تەمام:</label><input type="text" id="cust-name-1" placeholder="..."></div>
-                            <div class="form-group"><label data-key="lbl_phone">ژمارا تەلەفۆنێ:</label><input type="tel" id="cust-phone-1" placeholder="0750XXXXXXX"></div>
-                            <div class="form-group">
-                                <label data-key="lbl_city">پارێزگەهـ:</label>
-                                <select id="cust-city-1">
-                                    <option value="دهوك">دهۆک / Duhok</option><option value="أربيل">هەولێر / Erbil</option><option value="سليمانية">سلێمانی / Sulaymaniyah</option><option value="كركوك">کەرکووک / Kirkuk</option><option value="بغداد">بەغدا / Baghdad</option><option value="الموصل">مووسڵ / Mosul</option>
-                                </select>
-                            </div>
-                            <div class="form-group"><label data-key="lbl_address">ناونیشان / تاخ / جادە:</label><input type="text" id="cust-address-1" placeholder="..."></div>
                             <div class="form-group">
                                 <label data-key="lbl_color">هەڵبژاردنا ڕەنگی:</label>
                                 <select id="cust-color-1">
@@ -767,14 +851,9 @@
                             </div>
                             <div class="form-group">
                                 <label data-key="lbl_qty">ژمارا داواکری:</label>
-                                <select id="cust-qty-1" onchange="calculateTotal1()"><option value="1">1</option><option value="2">2</option></select>
+                                <select id="cust-qty-1"><option value="1">1</option><option value="2">2</option><option value="3">3</option></select>
                             </div>
-                            <div class="price-summary">
-                                <div class="price-row"><span data-key="sum_price">نرخ:</span><span id="price-display-1">150,000 د.ع</span></div>
-                                <div class="price-row"><span data-key="sum_deliv">گەهاندن:</span><span data-key="deliv_val">5,000 د.ع</span></div>
-                                <div class="price-row total"><span data-key="sum_total">کۆمێ گشتی:</span><span id="total-display-1">155,000 د.ع</span></div>
-                            </div>
-                            <button onclick="sendOrder1()" class="btn-order"><i class="fa-brands fa-whatsapp"></i> <span data-key="btn_order">ناردنا داواکاریێ ب واتساپێ</span></button>
+                            <button onclick="addToCart('خێما خێزانی (٢ ژور)', 150000, 'cust-color-1', 'cust-qty-1')" class="btn-add-cart"><i class="fa-solid fa-cart-plus"></i> <span data-key="btn_add">زێدەکرن بۆ سەبەتێ</span></button>
                         </div>
                     </div>
                 </div>
@@ -802,28 +881,14 @@
                             <li><i class="fa-solid fa-door-open"></i> <span data-key="p2_s2">دیزاین: ٢ دەرگەهـ + ٤ پەنجەرە</span></li>
                             <li><i class="fa-solid fa-shield-cat"></i> <span data-key="p2_s3">تۆر (تول): بۆ ڕێگریکرن ل حەشەراتان</span></li>
                         </ul>
-                        <div class="product-price">80,000 <span data-key="currency">د.ع</span> <span style="font-size: 12px; color: #94a3b8;" data-key="deliv_tag">(+ 5,000 گەهاندن)</span></div>
+                        <div class="product-price">80,000 <span data-key="currency">د.ع</span></div>
 
                         <div class="order-form">
-                            <div class="form-group"><label data-key="lbl_name">ناوێ تەمام:</label><input type="text" id="cust-name-2" placeholder="..."></div>
-                            <div class="form-group"><label data-key="lbl_phone">ژمارا تەلەفۆنێ:</label><input type="tel" id="cust-phone-2" placeholder="0750XXXXXXX"></div>
-                            <div class="form-group">
-                                <label data-key="lbl_city">پارێزگەهـ:</label>
-                                <select id="cust-city-2">
-                                    <option value="دهوك">دهۆک / Duhok</option><option value="أربيل">هەولێر / Erbil</option><option value="سليمانية">سلێمانی / Sulaymaniyah</option><option value="كركوك">کەرکووک / Kirkuk</option><option value="بغداد">بەغدا / Baghdad</option>
-                                </select>
-                            </div>
-                            <div class="form-group"><label data-key="lbl_address">ناونیشان / تاخ / جادە:</label><input type="text" id="cust-address-2" placeholder="..."></div>
                             <div class="form-group">
                                 <label data-key="lbl_qty">ژمارا داواکری:</label>
-                                <select id="cust-qty-2" onchange="calculateTotal2()"><option value="1">1</option><option value="2">2</option></select>
+                                <select id="cust-qty-2"><option value="1">1</option><option value="2">2</option><option value="3">3</option></select>
                             </div>
-                            <div class="price-summary">
-                                <div class="price-row"><span data-key="sum_price">نرخ:</span><span id="price-display-2">80,000 د.ع</span></div>
-                                <div class="price-row"><span data-key="sum_deliv">گەهاندن:</span><span data-key="deliv_val">5,000 د.ع</span></div>
-                                <div class="price-row total"><span data-key="sum_total">کۆمێ گشتی:</span><span id="total-display-2">85,000 د.ع</span></div>
-                            </div>
-                            <button onclick="sendOrder2()" class="btn-order"><i class="fa-brands fa-whatsapp"></i> <span data-key="btn_order">ناردنا داواکاریێ ب واتساپێ</span></button>
+                            <button onclick="addToCart('خێما ئۆتۆماتیکی (مۆدێل دینار)', 80000, null, 'cust-qty-2')" class="btn-add-cart"><i class="fa-solid fa-cart-plus"></i> <span data-key="btn_add">زێدەکرن بۆ سەبەتێ</span></button>
                         </div>
                     </div>
                 </div>
@@ -851,28 +916,14 @@
                             <li><i class="fa-solid fa-ruler-combined"></i> <span data-key="p3_s2">قیاس: 2m X 2m</span></li>
                             <li><i class="fa-solid fa-shield-halved"></i> <span data-key="p3_s3">قوماش: أكسفورد دژە با و باران</span></li>
                         </ul>
-                        <div class="product-price">50,000 <span data-key="currency">د.ع</span> <span style="font-size: 12px; color: #94a3b8;" data-key="deliv_tag">(+ 5,000 گەهاندن)</span></div>
+                        <div class="product-price">50,000 <span data-key="currency">د.ع</span></div>
 
                         <div class="order-form">
-                            <div class="form-group"><label data-key="lbl_name">ناوێ تەمام:</label><input type="text" id="cust-name-3" placeholder="..."></div>
-                            <div class="form-group"><label data-key="lbl_phone">ژمارا تەلەفۆنێ:</label><input type="tel" id="cust-phone-3" placeholder="0750XXXXXXX"></div>
-                            <div class="form-group">
-                                <label data-key="lbl_city">پارێزگەهـ:</label>
-                                <select id="cust-city-3">
-                                    <option value="دهوك">دهۆک / Duhok</option><option value="أربيل">هەولێر / Erbil</option><option value="سليمانية">سلێمانی / Sulaymaniyah</option><option value="كركوك">کەرکووک / Kirkuk</option><option value="بغداد">بەغدا / Baghdad</option>
-                                </select>
-                            </div>
-                            <div class="form-group"><label data-key="lbl_address">ناونیشان / تاخ / جادە:</label><input type="text" id="cust-address-3" placeholder="..."></div>
                             <div class="form-group">
                                 <label data-key="lbl_qty">ژمارا داواکری:</label>
-                                <select id="cust-qty-3" onchange="calculateTotal3()"><option value="1">1</option><option value="2">2</option></select>
+                                <select id="cust-qty-3"><option value="1">1</option><option value="2">2</option><option value="3">3</option></select>
                             </div>
-                            <div class="price-summary">
-                                <div class="price-row"><span data-key="sum_price">نرخ:</span><span id="price-display-3">50,000 د.ع</span></div>
-                                <div class="price-row"><span data-key="sum_deliv">گەهاندن:</span><span data-key="deliv_val">5,000 د.ع</span></div>
-                                <div class="price-row total"><span data-key="sum_total">کۆمێ گشتی:</span><span id="total-display-3">55,000 د.ع</span></div>
-                            </div>
-                            <button onclick="sendOrder3()" class="btn-order"><i class="fa-brands fa-whatsapp"></i> <span data-key="btn_order">ناردنا داواکاریێ ب واتساپێ</span></button>
+                            <button onclick="addToCart('خێما ئۆتۆماتیکی (قیاس 2x2m)', 50000, null, 'cust-qty-3')" class="btn-add-cart"><i class="fa-solid fa-cart-plus"></i> <span data-key="btn_add">زێدەکرن بۆ سەبەتێ</span></button>
                         </div>
                     </div>
                 </div>
@@ -896,28 +947,14 @@
                             <li><i class="fa-solid fa-ruler"></i> <span data-key="p4_s1">قیاس: 99 × 48 cm | حەجم: 35L</span></li>
                             <li><i class="fa-solid fa-shield-halved"></i> <span data-key="p4_s2">قوماش: زۆر محکم و دژی ئاڤ و شێیێ</span></li>
                         </ul>
-                        <div class="product-price">15,000 <span data-key="currency">د.ع</span> <span style="font-size: 12px; color: #94a3b8;" data-key="deliv_tag">(+ 5,000 گەهاندن)</span></div>
+                        <div class="product-price">15,000 <span data-key="currency">د.ع</span></div>
 
                         <div class="order-form">
-                            <div class="form-group"><label data-key="lbl_name">ناوێ تەمام:</label><input type="text" id="cust-name-4" placeholder="..."></div>
-                            <div class="form-group"><label data-key="lbl_phone">ژمارا تەلەفۆنێ:</label><input type="tel" id="cust-phone-4" placeholder="0750XXXXXXX"></div>
-                            <div class="form-group">
-                                <label data-key="lbl_city">پارێزگەهـ:</label>
-                                <select id="cust-city-4">
-                                    <option value="دهوك">دهۆک / Duhok</option><option value="أربيل">هەولێر / Erbil</option><option value="سليمانية">سلێمانی / Sulaymaniyah</option><option value="كركوك">کەرکووک / Kirkuk</option><option value="بغداد">بەغدا / Baghdad</option>
-                                </select>
-                            </div>
-                            <div class="form-group"><label data-key="lbl_address">ناونیشان / تاخ / جادە:</label><input type="text" id="cust-address-4" placeholder="..."></div>
                             <div class="form-group">
                                 <label data-key="lbl_qty">ژمارا داواکری:</label>
-                                <select id="cust-qty-4" onchange="calculateTotal4()"><option value="1">1</option><option value="2">2</option></select>
+                                <select id="cust-qty-4"><option value="1">1</option><option value="2">2</option><option value="3">3</option></select>
                             </div>
-                            <div class="price-summary">
-                                <div class="price-row"><span data-key="sum_price">نرخ:</span><span id="price-display-4">15,000 د.ع</span></div>
-                                <div class="price-row"><span data-key="sum_deliv">گەهاندن:</span><span data-key="deliv_val">5,000 د.ع</span></div>
-                                <div class="price-row total"><span data-key="sum_total">کۆمێ گشتی:</span><span id="total-display-4">20,000 د.ع</span></div>
-                            </div>
-                            <button onclick="sendOrder4()" class="btn-order"><i class="fa-brands fa-whatsapp"></i> <span data-key="btn_order">ناردنا داواکاریێ ب واتساپێ</span></button>
+                            <button onclick="addToCart('جانتا هه‌لگرتنا داران', 15000, null, 'cust-qty-4')" class="btn-add-cart"><i class="fa-solid fa-cart-plus"></i> <span data-key="btn_add">زێدەکرن بۆ سەبەتێ</span></button>
                         </div>
                     </div>
                 </div>
@@ -1102,6 +1139,90 @@
         }
         setInterval(drawSnow, 33);
 
+        // Cart Logic
+        let cart = [];
+
+        function toggleCartModal() {
+            document.getElementById('cartModal').classList.toggle('show');
+        }
+
+        function addToCart(productName, price, colorId, qtyId) {
+            let color = colorId ? document.getElementById(colorId).value : 'عام';
+            let qty = parseInt(document.getElementById(qtyId).value);
+            
+            let existing = cart.find(item => item.name === productName && item.color === color);
+            if(existing) {
+                existing.qty += qty;
+            } else {
+                cart.push({ name: productName, price: price, color: color, qty: qty });
+            }
+            updateCartUI();
+            alert('بەرهەم هاتە زێدەکرن بۆ سەبەتێ! 🛒');
+        }
+
+        function removeFromCart(index) {
+            cart.splice(index, 1);
+            updateCartUI();
+        }
+
+        function updateCartUI() {
+            const listEl = document.getElementById('cartItemsList');
+            const badgeEl = document.getElementById('cart-counter-badge');
+            const totalEl = document.getElementById('cart-total-display');
+            
+            badgeEl.innerText = cart.reduce((sum, item) => sum + item.qty, 0);
+            
+            if(cart.length === 0) {
+                listEl.innerHTML = '<p style="color: #94a3b8; text-align: center;" data-key="cart_empty">سەبەتەیا تە ڤالا یە</p>';
+                totalEl.innerText = '0 د.ع';
+                return;
+            }
+
+            let html = '';
+            let subtotal = 0;
+            cart.forEach((item, index) => {
+                let itemTotal = item.price * item.qty;
+                subtotal += itemTotal;
+                html += `
+                    <div class="cart-item-row">
+                        <div>
+                            <strong>${item.name}</strong><br>
+                            <span style="font-size:11px; color:#94a3b8;">ڕەنگ: ${item.color} | ژمارە: ${item.qty}</span>
+                        </div>
+                        <div style="text-align: left;">
+                            <span style="color:#00ff88;">${itemTotal.toLocaleString()} د.ع</span><br>
+                            <button onclick="removeFromCart(${index})" style="background:transparent; border:none; color:#ef4444; cursor:pointer; font-size:12px;"><i class="fa-solid fa-trash"></i></button>
+                        </div>
+                    </div>
+                `;
+            });
+            listEl.innerHTML = html;
+            let grandTotal = subtotal + 5000;
+            const curr = document.documentElement.lang === 'en' ? 'IQD' : 'د.ع';
+            totalEl.innerText = grandTotal.toLocaleString() + " " + curr + " (تێدا گەهاندن 5,000)";
+        }
+
+        function sendCartOrder() {
+            const name = document.getElementById('cart-name').value;
+            const phone = document.getElementById('cart-phone').value;
+            const city = document.getElementById('cart-city').value;
+            const address = document.getElementById('cart-address').value;
+
+            if(!name || !phone || !address) { alert('يرجى ملء كافة حقول المعلومات الشخصية'); return; }
+            if(cart.length === 0) { alert('سەبەتەیا تە ڤالا یە'); return; }
+
+            let subtotal = cart.reduce((sum, item) => sum + (item.price * item.qty), 0);
+            let grandTotal = subtotal + 5000;
+
+            let text = `🛒 داواکارییا نوو ژ سەبەتێ:%0A`;
+            cart.forEach((item, i) => {
+                text += `%0A${i+1}. *${item.name}*%0A   - ڕەنگ: ${item.color}%0A   - ژمارە: ${item.qty}%0A   - نرخ: ${(item.price * item.qty).toLocaleString()} د.ع`;
+            });
+            text += `%0A%0A-------------------%0A👤 *الاسم:* ${name}%0A📞 *الهاتف:* ${phone}%0A🏙️ *المحافظة:* ${city}%0A📍 *العنوان:* ${address}%0A🚚 *گەهاندن:* 5,000 د.ع%0A💰 *کۆمێ گشتی:* ${grandTotal.toLocaleString()} د.ع`;
+
+            window.open(`https://wa.me/9647769247574?text=${text}`, '_blank');
+        }
+
         function moveSlide(sliderId, direction) {
             const container = document.getElementById(sliderId);
             const items = container.querySelectorAll('.slider-item');
@@ -1174,7 +1295,8 @@
                 rev_name3: "عومەر محەمەد (سلێمانی)", rev_txt3: "\"سرير نفخ گەلەک یێ ب سوود و رەحەتە بۆ سەیرانان، نرخەک گەلەک گونجای هەیە. سپاس بۆ هەوە.\"",
                 currency: "د.ع", deliv_tag: "(+ 5,000 گەهاندن)", deliv_val: "5,000 د.ع",
                 lbl_name: "ناوێ تەمام:", lbl_phone: "ژمارا تەلەفۆنێ:", lbl_city: "پارێزگەهـ:", lbl_address: "ناونیشان / تاخ / جادە:", lbl_color: "هەڵبژاردنا ڕەنگی:", lbl_qty: "ژمارا داواکری:",
-                sum_price: "نرخ:", sum_deliv: "گەهاندن:", sum_total: "کۆمێ گشتی:", btn_order: "ناردنا داواکاریێ ب واتساپێ",
+                sum_price: "نرخ:", sum_deliv: "گەهاندن:", sum_total: "کۆمێ گشتی:", btn_order: "ناردنا داواکاریێ ب واتساپێ", btn_add: "زێدەکرن بۆ سەبەتێ",
+                cart_title: "سەبەت", cart_header: "🛒 سەبەتەداکاریێن تە", cart_empty: "سەبەتەیا تە ڤالا یە",
                 vid_t0: "نیشاندانا خێما خێزانی (٢ ژور) دژی بەفر و باران", vid_t1: "نیشاندانا خێما ئۆتۆماتیکی (2x2m) دژی با و باران", vid_t2: "نیشاندانا خێما KD قیاس 2x2m",
                 feat_title: "بۆچی بەرهەمێن مە هەڵبژێری؟",
                 f1_t: "کوالیتییا بەرز", f1_d: "جۆرێن جۆراوجۆر ێن خێمان بۆ خێزان و کەسان ب کوالیتییا بەرز.",
@@ -1210,7 +1332,8 @@
                 rev_name3: "عمر محمد (السليمانية)", rev_txt3: "\"سرير النفخ مريح وعملي جداً للرحلات وبسعر مناسب جداً. شكراً لكم.\"",
                 currency: "د.ع", deliv_tag: "(+ 5,000 التوصيل)", deliv_val: "5,000 د.ع",
                 lbl_name: "الاسم الكامل:", lbl_phone: "رقم الهاتف:", lbl_city: "المحافظة:", lbl_address: "العنوان التفصيلي / الشارع:", lbl_color: "اختيار اللون:", lbl_qty: "العدد المطلوب:",
-                sum_price: "السعر:", sum_deliv: "التوصيل:", sum_total: "المجموع الكلي:", btn_order: "إرسال الطلب عبر واتساب",
+                sum_price: "السعر:", sum_deliv: "التوصيل:", sum_total: "المجموع الكلي:", btn_order: "إرسال الطلب عبر واتساب", btn_add: "أضف إلى السلة",
+                cart_title: "السلة", cart_header: "🛒 سلة مشترياتك", cart_empty: "سلتك فارغة حالياً",
                 vid_t0: "عرض خيمة عائلية (2 غرفة) مقاومة للثلوج والمطر", vid_t1: "عرض خيمة أوتوماتيكية (2x2m) ضد الرياح والمطر", vid_t2: "عرض خيمة KD قياس 2x2m",
                 feat_title: "لماذا تختار منتجاتنا؟",
                 f1_t: "خيم عالية الجودة", f1_d: "تشكيلة واسعة من الخيم العائلية والفردية المقاومة للظروف الجوية.",
@@ -1246,7 +1369,8 @@
                 rev_name3: "Omar Mohammed (Sulaymaniyah)", rev_txt3: "\"The inflatable bed is very comfortable and practical for trips with a great price. Thank you!\"",
                 currency: "IQD", deliv_tag: "(+ 5,000 Delivery)", deliv_val: "5,000 IQD",
                 lbl_name: "Full Name:", lbl_phone: "Phone Number:", lbl_city: "City / Governorate:", lbl_address: "Detailed Address / Street:", lbl_color: "Color Choice:", lbl_qty: "Quantity:",
-                sum_price: "Price:", sum_deliv: "Delivery:", sum_total: "Grand Total:", btn_order: "Order via WhatsApp",
+                sum_price: "Price:", sum_deliv: "Delivery:", sum_total: "Grand Total:", btn_order: "Order via WhatsApp", btn_add: "Add to Cart",
+                cart_title: "Cart", cart_header: "🛒 Shopping Cart", cart_empty: "Your cart is empty",
                 vid_t0: "Family Tent Demo (2 Rooms) Snow & Rainproof", vid_t1: "Automatic Tent Demo (2x2m) Wind & Rainproof", vid_t2: "KD Tent Demo 2x2m",
                 feat_title: "Why Choose Our Products?",
                 f1_t: "Top Quality Tents", f1_d: "Wide range of weather-resistant family and personal tents.",
@@ -1259,98 +1383,6 @@
                 about_desc: "We specialize in importing premium camping gear directly from China to Iraq. Offering high-grade products for stores and individuals at competitive prices."
             }
         };
-
-        function calculateTotalBed() {
-            const qty = parseInt(document.getElementById('cust-qty-bed').value);
-            const curr = document.documentElement.lang === 'en' ? 'IQD' : 'د.ع';
-            document.getElementById('price-display-bed').innerText = (qty * 15000).toLocaleString() + " " + curr;
-            document.getElementById('total-display-bed').innerText = ((qty * 15000) + 5000).toLocaleString() + " " + curr;
-        }
-        function sendOrderBed() {
-            const name = document.getElementById('cust-name-bed').value;
-            const phone = document.getElementById('cust-phone-bed').value;
-            const city = document.getElementById('cust-city-bed').value;
-            const address = document.getElementById('cust-address-bed').value;
-            const color = document.getElementById('cust-color-bed').value;
-            const qty = parseInt(document.getElementById('cust-qty-bed').value);
-            if(!name || !phone || !address) { alert('يرجى ملء كافة الحقول'); return; }
-            const grandTotal = (qty * 15000) + 5000;
-            const text = `طلب جديد:%0A📌 *سرير نفخ للتخييم والرحلات*%0A🎨 *اللون:* ${color}%0A👤 *الاسم:* ${name}%0A📞 *الهاتف:* ${phone}%0A🏙️ *المحافظة:* ${city}%0A📍 *العنوان:* ${address}%0A📦 *العدد:* ${qty}%0A💰 *المجموع:* ${grandTotal.toLocaleString()} د.ع`;
-            window.open(`https://wa.me/9647769247574?text=${text}`, '_blank');
-        }
-
-        function calculateTotal1() {
-            const qty = parseInt(document.getElementById('cust-qty-1').value);
-            const curr = document.documentElement.lang === 'en' ? 'IQD' : 'د.ع';
-            document.getElementById('price-display-1').innerText = (qty * 150000).toLocaleString() + " " + curr;
-            document.getElementById('total-display-1').innerText = ((qty * 150000) + 5000).toLocaleString() + " " + curr;
-        }
-        function sendOrder1() {
-            const name = document.getElementById('cust-name-1').value;
-            const phone = document.getElementById('cust-phone-1').value;
-            const city = document.getElementById('cust-city-1').value;
-            const address = document.getElementById('cust-address-1').value;
-            const color = document.getElementById('cust-color-1').value;
-            const qty = parseInt(document.getElementById('cust-qty-1').value);
-            if(!name || !phone || !address) { alert('يرجى ملء كافة الحقول'); return; }
-            const grandTotal = (qty * 150000) + 5000;
-            const text = `طلب جديد:%0A📌 *خيمة خێزانی (٢ ژور)*%0A🎨 *اللون:* ${color}%0A👤 *الاسم:* ${name}%0A📞 *الهاتف:* ${phone}%0A🏙️ *المحافظة:* ${city}%0A📍 *العنوان:* ${address}%0A📦 *العدد:* ${qty}%0A💰 *المجموع:* ${grandTotal.toLocaleString()} د.ع`;
-            window.open(`https://wa.me/9647769247574?text=${text}`, '_blank');
-        }
-
-        function calculateTotal2() {
-            const qty = parseInt(document.getElementById('cust-qty-2').value);
-            const curr = document.documentElement.lang === 'en' ? 'IQD' : 'د.ع';
-            document.getElementById('price-display-2').innerText = (qty * 80000).toLocaleString() + " " + curr;
-            document.getElementById('total-display-2').innerText = ((qty * 80000) + 5000).toLocaleString() + " " + curr;
-        }
-        function sendOrder2() {
-            const name = document.getElementById('cust-name-2').value;
-            const phone = document.getElementById('cust-phone-2').value;
-            const city = document.getElementById('cust-city-2').value;
-            const address = document.getElementById('cust-address-2').value;
-            const qty = parseInt(document.getElementById('cust-qty-2').value);
-            if(!name || !phone || !address) { alert('يرجى ملء كافة الحقول'); return; }
-            const grandTotal = (qty * 80000) + 5000;
-            const text = `طلب جديد:%0A📌 *خيمة دينار*%0A👤 *الاسم:* ${name}%0A📞 *الهاتف:* ${phone}%0A🏙️ *المحافظة:* ${city}%0A📍 *العنوان:* ${address}%0A📦 *العدد:* ${qty}%0A💰 *المجموع:* ${grandTotal.toLocaleString()} د.ع`;
-            window.open(`https://wa.me/9647769247574?text=${text}`, '_blank');
-        }
-
-        function calculateTotal3() {
-            const qty = parseInt(document.getElementById('cust-qty-3').value);
-            const curr = document.documentElement.lang === 'en' ? 'IQD' : 'د.ع';
-            document.getElementById('price-display-3').innerText = (qty * 50000).toLocaleString() + " " + curr;
-            document.getElementById('total-display-3').innerText = ((qty * 50000) + 5000).toLocaleString() + " " + curr;
-        }
-        function sendOrder3() {
-            const name = document.getElementById('cust-name-3').value;
-            const phone = document.getElementById('cust-phone-3').value;
-            const city = document.getElementById('cust-city-3').value;
-            const address = document.getElementById('cust-address-3').value;
-            const qty = parseInt(document.getElementById('cust-qty-3').value);
-            if(!name || !phone || !address) { alert('يرجى ملء كافة الحقول'); return; }
-            const grandTotal = (qty * 50000) + 5000;
-            const text = `طلب جديد:%0A📌 *خيمة أوتوماتيكية 2x2m (4-6 کەس)*%0A👤 *الاسم:* ${name}%0A📞 *الهاتف:* ${phone}%0A🏙️ *المحافظة:* ${city}%0A📍 *العنوان:* ${address}%0A📦 *العدد:* ${qty}%0A💰 *المجموع:* ${grandTotal.toLocaleString()} د.ع`;
-            window.open(`https://wa.me/9647769247574?text=${text}`, '_blank');
-        }
-
-        function calculateTotal4() {
-            const qty = parseInt(document.getElementById('cust-qty-4').value);
-            const curr = document.documentElement.lang === 'en' ? 'IQD' : 'د.ع';
-            document.getElementById('price-display-4').innerText = (qty * 15000).toLocaleString() + " " + curr;
-            document.getElementById('total-display-4').innerText = ((qty * 15000) + 5000).toLocaleString() + " " + curr;
-        }
-        function sendOrder4() {
-            const name = document.getElementById('cust-name-4').value;
-            const phone = document.getElementById('cust-phone-4').value;
-            const city = document.getElementById('cust-city-4').value;
-            const address = document.getElementById('cust-address-4').value;
-            const qty = parseInt(document.getElementById('cust-qty-4').value);
-            if(!name || !phone || !address) { alert('يرجى ملء كافة الحقول'); return; }
-            const grandTotal = (qty * 15000) + 5000;
-            const text = `طلب جديد:%0A📌 *حقيبة حمل الحطب*%0A👤 *الاسم:* ${name}%0A📞 *الهاتف:* ${phone}%0A🏙️ *المحافظة:* ${city}%0A📍 *العنوان:* ${address}%0A📦 *العدد:* ${qty}%0A💰 *المجموع:* ${grandTotal.toLocaleString()} د.ع`;
-            window.open(`https://wa.me/9647769247574?text=${text}`, '_blank');
-        }
     </script>
 
 </body>
